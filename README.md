@@ -1,6 +1,6 @@
 # blog
 
-##2017.10.9
+## 2017.10.9
 KM:Hello,you are so beautiful and I want to make a friend with you.
 Girl:(with expression of amazing!)I...Oh I am a senior student.
 KM:But I am a senior student too contrary to the senior student.
