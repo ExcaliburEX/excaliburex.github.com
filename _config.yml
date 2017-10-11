@@ -18,8 +18,10 @@ email: 912011727@qq.com
 description: >- # this means to ignore newlines until "baseurl:"
   我将在这里记录一切，从生活到学习，从细节到感情，人的一生可以记录的太多太多。
   如果任其流逝，对我来说是不断的痛苦。
+  
+  
   “当你见到克利斯朵夫的面容之日,是你将死而不死于恶死之日。”
-                                                  ————————《克利斯朵夫》
+                                                                    ————————《克利斯朵夫》
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: Excaliburjp
