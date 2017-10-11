@@ -10,7 +10,8 @@ permalink: /about/
  
 
 此外你也可以关注我的[Twitter@Excaliburjp](https://twitter.com/Excaliburjp)
- 
+
+
 邮箱：
 # 912011727@qq.com
 
