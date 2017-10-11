@@ -2,8 +2,7 @@
 layout: post
 title:  "我的第一篇博客"
 date:   2017-8-25 16:52:09 +0800
-categories: 123
+categories: 1jekyll updates
 ---
 今天开始学习FreeCodeCamp，这种任务式的学习法确实有一种停不下来的乐趣。
 没有相关的语言基础，不知道能进行到哪一步？
-比较好vbjhvbjhvjgvujgbujkbjkhukhikljhiljilj 
