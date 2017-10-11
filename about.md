@@ -8,6 +8,8 @@ permalink: /about/
 
 QQ邮箱：[柯摩SH](http://weibo.com/u/5339619827/home)
  
+
 此外你也可以关注我的[Twitter](https://twitter.com/Excaliburjp)
  
+
 希望能遇见更多的朋友，当然没有未来的未来不是我想要的未来！
