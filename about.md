@@ -16,12 +16,12 @@ permalink: /about/
 
 邮箱：
 
-<code class="hljs livecodeserver">{% highlight ruby %}
+<code class="hljs livecodeserver">
  912011727@qq.com
 
  yedongdong83@gmail.com
 
  a912011727@gmail.com
-{% endhighlight %}</code> 
+</code> 
 
 希望能遇见更多的朋友，当然没有未来的未来不是我想要的未来！
