@@ -1,18 +1,12 @@
 ---
 layout: page
-title: About
+title: 关于
 permalink: /about/
 ---
-
-This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](https://jekyllrb.com/)
-
-You can find the source code for Minima at GitHub:
-[jekyll][jekyll-organization] /
-[minima](https://github.com/jekyll/minima)
-
-You can find the source code for Jekyll at GitHub:
-[jekyll][jekyll-organization] /
-[jekyll](https://github.com/jekyll/jekyll)
-
-
-[jekyll-organization]: https://github.com/jekyll
+ 
+这是柯摩的生活与学习的博客，如果你想联系我可以关注我的微博(虽然不怎么常用)。
+QQ邮箱：[柯摩SH](http://weibo.com/u/5339619827/home)
+ 
+此外你也可以关注我的[Twitter](https://twitter.com/Excaliburjp)
+ 
+希望能遇见更多的朋友，当然没有未来的未来不是我想要的未来！
