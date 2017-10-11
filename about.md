@@ -17,12 +17,12 @@ permalink: /about/
 邮箱：
 
 <code class="hljs livecodeserver">
+
 912011727@qq.com
 
+yedongdong83@gmail.com
 
- yedongdong83@gmail.com
-
- a912011727@gmail.com
+a912011727@gmail.com
 
 </code> 
 
