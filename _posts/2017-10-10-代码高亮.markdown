@@ -1,0 +1,15 @@
+﻿---
+layout: post
+title:  "代码高亮"
+date:   2017-10-10 13:21:09 +0800
+categories: jekyll update
+---
+{% highlight ruby %} 
+def show 
+@widget = Widget(params[:id])
+ respond_to do |format| 
+format.html # show.html.erb 
+format.json { render json: @widget } 
+end 
+end 
+{% endhighlight %}
