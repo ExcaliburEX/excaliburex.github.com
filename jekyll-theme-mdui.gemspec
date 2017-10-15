@@ -1,13 +1,13 @@
 # coding: utf-8
 
 Gem::Specification.new do |spec|
-  spec.name          = "jekyll-theme-mdui"
+  spec.name          = "柯摩"
   spec.version       = "0.5.2.1"
-  spec.authors       = ["KeJun"]
-  spec.email         = ["kejun1997@gmail.com"]
+  spec.authors       = ["柯摩"]
+  spec.email         = ["912011727@qq.com"]
 
-  spec.summary       = "A Jekyll theme based on mdui"
-  spec.homepage      = "https://github.com/KeJunMao/jekyll-theme-mdui.git"
+  spec.summary       = "just jekyll blog"
+  spec.homepage      = "https://github.com/ExcaliburEX/excaliburex.github.com"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0").select { |f| f.match(%r{^(assets/css|assets/js|_layouts|_includes|LICENSE|README)}i) }
