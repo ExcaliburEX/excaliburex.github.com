@@ -53,7 +53,17 @@ music_player:
       author: '小林未郁'
       url: 'http://other.web.ri01.sycdn.kuwo.cn/resource/n1/73/62/1915202197.mp3'
       pic: 'http://e.hiphotos.baidu.com/image/pic/item/0df3d7ca7bcb0a463e4bd3576163f6246b60af77.jpg'
-
+      
+    - title: 'aliez'
+      author: 'Mizuki'
+      url: 'http://other.web.rh01.sycdn.kuwo.cn/resource/n2/68/51/4004641621.mp3'
+      pic: 'http://img1.imgtn.bdimg.com/it/u=3100415869,590484096&fm=27&gp=0.jpg'
+      
+    - title: '恋愛サーキュレーション'
+      author: '花澤香菜'
+      url: 'http://other.web.ra01.sycdn.kuwo.cn/resource/n1/192/37/85/4264444656.mp3'
+      pic: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1508094066246&di=eed8dc278632b5276ac7e5e2eff0954e&imgtype=jpg&src=http%3A%2F%2Fimg4.imgtn.bdimg.com%2Fit%2Fu%3D976770393%2C2650539388%26fm%3D214%26gp%3D0.jpg'
+  
 head_card:
   switch: true
   left_img: "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1508092286061&di=3d40576da7432a565b312b0f6399a03e&imgtype=0&src=http%3A%2F%2Fu.candou.com%2F2016%2F0923%2F1474593993157.png"
