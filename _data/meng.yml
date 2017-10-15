@@ -52,7 +52,7 @@ music_player:
   music:
     - title: 'βίος'
       author: '小林未郁'
-      url: 'http://www.xiami.com/play?ids=/song/playlist/id/1770776544/object_name/default/object_id/0#loaded'
+      url: 'http://www.xiami.com/play?ids=/song/playlist/id/1770776544/object_name/default/object_id/0#loaded.mp3'
       pic: 'http://pic.xiami.net/images/album/img31/59831/4912071472451130.jpg'
    
 
