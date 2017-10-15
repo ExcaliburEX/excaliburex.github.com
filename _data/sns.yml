@@ -1,11 +1,11 @@
 - name: bilibili
-  url: 
+  url: https://space.bilibili.com/2142109/#!/
 
 - name: facebook
   url: 
 
 - name: github
-  url: https://github.com
+  url: https://github.com/ExcaliburEX
 
 - name: gplus
   url: 
@@ -17,16 +17,15 @@
   url: 
 
 - name: telegram
-  url: https://web.telegram.org
+  url: 
 
 - name: tumblr
   url: 
 
 - name: twitter
-  url: https://twitter.com/
-
+  url: https://twitter.com/Excaliburjp
 - name: weibo
-  url: 
+  url: http://weibo.com/u/5339619827/home
 
 - name: zhihu
   url: 
