@@ -2,7 +2,7 @@ head:
    favicon: "https://ooo.0o0.ooo/2017/05/27/59294212bc16e.png" #  the favicon
    high_res_favicon: "https://ooo.0o0.ooo/2017/06/08/5939484dc618e.png" #  the favicon using high quality format
    apple_touch_icon: "https://ooo.0o0.ooo/2017/06/08/5939484dc618e.png" # the iOS Home button icon
-   keywords: "blog jekyll mdui theme" #  the site keywords
+   keywords: "From Avalon" #  the site keywords
 
 uiux:
    android_chrome_color: "#eeeeee" #  the color of the Chrome address bar
@@ -12,7 +12,7 @@ uiux:
 
 background: 
    purecolor: "#eeeeee" # the background color
-
+   <img src="F:\杂类\248911-106.jpg">
 img: 
    avatar: "https://ooo.0o0.ooo/2017/05/26/5928368d409dd.png" # your avatar
 
@@ -52,7 +52,7 @@ comment:
   valine_verify: false #validation code
   valine_app_id: ''
   valine_app_key: ''
-  valine_placeholder: "ヾﾉ≧∀≦)o来啊，快活啊!"
+  valine_placeholder: "造化钟神秀，红砖QQ秀"
 
 prism:
   themes: prism-okaidia
