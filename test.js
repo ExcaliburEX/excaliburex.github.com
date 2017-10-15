@@ -1,1 +1,0 @@
-var testStr = "hello world"; 
