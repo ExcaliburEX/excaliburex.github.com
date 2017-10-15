@@ -2,7 +2,8 @@
 layout: post
 title:  "第一次接触"
 date:   2017-10-09 21:52:09 +0800
-categories: jekyll update
+categories: technology
+tags: editor
 ---
 KM:Hello,you are so beautiful and I want to make a friend with you.
 
