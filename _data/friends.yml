@@ -7,3 +7,28 @@
   image: 
   url: https://www.mdui.org/
   describe: 一套用于开发 Material Design 网页的前端框架
+
+- name: 袁昆仑
+  image: https://i.loli.net/2017/10/15/59e3852b3d3fe.jpg
+  url: https://user.qzone.qq.com/980871893?ptlang=2052&source=aiostar
+  describe: 小轮子，昆仑袁，地下城手游，lol，clash of royal等游戏顶级高手！
+  
+- name: 二次元君
+  image: https://i.loli.net/2017/10/15/59e385b3b703f.jpg
+  url: https://user.qzone.qq.com/719095996?ptlang=2052&source=aiostar
+  describe: 混迹CV圈的大佬，OW，炉石死忠玩家，喜欢白丝小姐姐。
+  
+- name: 王忠大
+  image: https://i.loli.net/2017/10/16/59e386192ab09.jpg
+  url: https://user.qzone.qq.com/857919702?ptlang=2052&source=aiostar
+  describe: 21世纪头号种子。
+ 
+- name: 啪啪哲
+  image: https://i.loli.net/2017/10/16/59e3867808317.jpg
+  url: https://user.qzone.qq.com/1913853208?ptlang=2052&source=aiostar
+  describe: 茶道爱好者，古玩收藏家，养生专家，LOL顶级大神，吃鸡国服第一！
+  
+- name: 政
+  image: https://i.loli.net/2017/10/16/59e386d761796.jpg
+  url: https://user.qzone.qq.com/563272761?ptlang=2052&source=aiostar
+  describe: 国内外政治军事资深研究者，中国历史专家，红警骨灰级玩家，现已称霸亚洲，孤独寂寞，谁人晓？！  
