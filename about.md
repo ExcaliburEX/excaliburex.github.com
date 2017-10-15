@@ -2,6 +2,7 @@
 layout: page
 title: 关于
 permalink: /about/
+img: https://i.loli.net/2017/10/15/59e37eaa1e1a0.jpg
 ---
  
 
