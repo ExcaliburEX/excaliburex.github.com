@@ -10,8 +10,8 @@
 - name: FRIENDS
   url: /friends/
   icon: "&#xe8a3;"
-- name: EDITOR
-  url: /editor/
+- name: about
+  url: /about/
   icon: "&#xe150;"
 - name: navSearch
   switch: true
