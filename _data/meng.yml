@@ -51,8 +51,8 @@ music_player:
   music:
     title: 'Faded'
     author: 'Alan Walker'
-    url: 'http://www.170mv.com/kw/other.web.rh01.sycdn.kuwo.cn/resource/n2/14/71/3899067167.mp3'
-    pic: 'http://p4.music.126.net/8dzD62VK8jLDbhEqkmpIAg==/18277181788626198.jpg?param=130y130'
+    url: 'http://other.web.ri01.sycdn.kuwo.cn/resource/n1/73/62/1915202197.mp3'
+    pic: 'http://e.hiphotos.baidu.com/image/pic/item/0df3d7ca7bcb0a463e4bd3576163f6246b60af77.jpg'
 
 head_card:
   switch: true
