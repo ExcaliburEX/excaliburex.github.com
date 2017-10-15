@@ -1,7 +1,7 @@
 title: "柯摩的Blog"
 description: "只是热爱物理学！"
 url: 
-baseurl: ""
+baseurl: "/blog"
 author: "柯摩"
 paginate: 5
 paginate_path: "/blog/page:num/"
