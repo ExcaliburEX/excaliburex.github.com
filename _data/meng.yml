@@ -1,12 +1,12 @@
-title:"元气弹！"# Meng title
+title:  # Meng title
   switch: true # Meng title switch
   visible: "(*´∇｀*) 被发现啦~" # State is visible text
   hidden:  "(つェ⊂)看不到我~" # State is hidden text
   with_default_title: true # with default title
   reset_time: 1000 # If state is visible , reset default title times(ms)
 
-cursor: # Meng cursor
-  switch:true # Meng cursor switch
+cursor: # cursor
+  switch: true # cursor switch
   auto_url: "https://ooo.0o0.ooo/2017/06/12/593ea1901c930.png" # State is auto style
   pointer_url: "https://ooo.0o0.ooo/2017/06/12/593ea3612fd77.png" # State is pointer style
 
@@ -22,10 +22,10 @@ header: # Meng header color + theme-color
 
 background: # Meng background
   switch: true
-  background_img: "https://ooo.0o0.ooo/2017/06/14/5940a9b8e4c21.jpg"
+  background_img: "https://ooo.0o0.ooo/2017/06/13/593fd8dacf986.jpg"
   transparent_header: true
-  transparent_footer: false
-  text_color: '#000'
+  transparent_footer: true
+  text_color: '#fff'
 
 card: # Meng card
   switch: true
@@ -36,7 +36,6 @@ live2d: # live2d ,see https://github.com/EYHN/hexo-helper-live2d
   switch: true
   model: "/assets/live2d/koharu/koharu.model.json" # model.json path
   drag: true # is drag ?
-  in_mobile: false
   width: 130 # canvas width
   height: 190 # canvas height
   bottom: 100 # canvas bottom
@@ -47,14 +46,13 @@ animation: # animate.css, see https://github.com/daneden/animate.css
   switch: true # switch on and you can see the animation
 
 music_player:
-  player: "aplayer" #cplayer or aplayer
+  player: "cplayer" #cplayer or aplayer
   button_color: "#1abc9c"
   music:
-    - title: 'βίος'
-      author: '小林未郁'
-      url: 'http://link.hhtjim.com/xiami/mQAHOC7fa6e.mp3'
-      pic: 'http://pic.xiami.net/images/album/img31/59831/4912071472451130.jpg'
-   
+    title: 'Faded'
+    author: 'Alan Walker'
+    url: 'http://www.170mv.com/kw/other.web.rh01.sycdn.kuwo.cn/resource/n2/14/71/3899067167.mp3'
+    pic: 'http://p4.music.126.net/8dzD62VK8jLDbhEqkmpIAg==/18277181788626198.jpg?param=130y130'
 
 head_card:
   switch: true
