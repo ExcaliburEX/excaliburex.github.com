@@ -13,5 +13,7 @@
 - name: about
   url: /about/
   icon: "&#xe150;"
+- name: editor
+  icon: home
 - name: navSearch
   switch: true
