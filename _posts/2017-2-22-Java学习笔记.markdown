@@ -69,7 +69,6 @@ double[] averages= new double[20];
 * 投票统计
 写一个程序，输入数量不确定的[0,9]范围内的整数，统计每一种数字出现的次数，输入-1表示结束。
 
-
 ```Scanner in=new Scanner(System.in);
 		int x;
 		int [] numbers =new int[10];
@@ -88,10 +87,6 @@ double[] averages= new double[20];
 		{
 			System.out.println(i+":"+numbers[i]);
 		}```
-
-
-
-
 
 * 搜索
 
