@@ -86,7 +86,7 @@ double[] averages= new double[20];
 		for(int i=0;i<numbers.length;i++)
 		{
 			System.out.println(i+":"+numbers[i]);
-		}```
+		} ```
 
 * 搜索
 
