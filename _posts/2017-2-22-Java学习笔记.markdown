@@ -8,6 +8,7 @@ img: https://i.loli.net/2017/10/16/59e4482166117.jpg
 ---
  
 关于Java学习的笔记。
+
  
  
 {% highlight ruby linenos%}  
@@ -39,7 +40,8 @@ System.out.println(sum/cnt);
 
 
 
-* 定义数组变量
+* 定义数组变量  
+
 <类型>[]<名字>=new<类型>[元素个数];
 {% highlight ruby linenos%} 
 int[] grades  =new int[100];
@@ -52,7 +54,8 @@ double[] averages= new double[20];
 元素个数可以是变量
 
 
-* 直接初始化数组
+* 直接初始化数组  
+
 {% highlight ruby linenos%} 
 int[] scores={87,98,54};
 {% endhighlight %}
@@ -69,7 +72,8 @@ int[] scores={87,98,54};
 
 
 * 投票统计
-写一个程序，输入数量不确定的[0,9]范围内的整数，统计每一种数字出现的次数，输入-1表示结束。
+写一个程序，输入数量不确定的[0,9]范围内的整数，统计每一种数字出现的次数，输入-1表示结束。  
+
 {% highlight ruby linenos%} 
 Scanner in=new Scanner(System.in);
 		int x;
@@ -91,7 +95,8 @@ Scanner in=new Scanner(System.in);
 		}
 {% endhighlight %}
 
-* 搜索
+* 搜索  
+
 
 {% highlight ruby linenos%} 
 int[] data={3,2,5,7,4,9,11,34,12,28};
@@ -119,7 +124,8 @@ int[] data={3,2,5,7,4,9,11,34,12,28};
 
 * 数组的例子 素数
 
-去掉偶数后，从3到x-1，每次加2
+去掉偶数后，从3到x-1，每次加2  
+
 {% highlight ruby linenos%} 
 if( x==1 || x%2 ==0 && x!=2)
 		{
@@ -141,7 +147,8 @@ if( x==1 || x%2 ==0 && x!=2)
 
 
 
-* 无须到x-1，到sqrt(x)就够了
+* 无须到x-1，到sqrt(x)就够了  
+
 {% highlight ruby linenos%} 
 for(int i=3;i<Math.sqrt(x);i+=2)
 {
@@ -179,7 +186,8 @@ int[] primes=new int[50];
 
 
 
-* 计算机的算法
+* 计算机的算法  
+
 {% highlight ruby linenos%} 
 boolean[] isPrime =new boolean[100];
 		for (int i=0;i<isPrime.length;i++)
@@ -209,7 +217,8 @@ boolean[] isPrime =new boolean[100];
 
 
 
-* 二维数组
+* 二维数组  
+
 {% highlight ruby linenos%} 
 int[][]  a =new int[3][5];
 {% endhighlight %}
@@ -217,7 +226,8 @@ int[][]  a =new int[3][5];
 通常理解为a是一个3行5列的矩阵
 
 
-初始化
+初始化  
+
 {% highlight ruby linenos%} 
 int[][] a ={
 	{1,2,3,4},
@@ -227,7 +237,8 @@ int[][] a ={
 
 
  
-圈叉游戏 
+圈叉游戏   
+
 {% highlight ruby linenos%} 
 final int SIZE=3;
 		int[][] board =new int[SIZE][SIZE];
