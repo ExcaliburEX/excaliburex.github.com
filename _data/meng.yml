@@ -62,7 +62,6 @@ music_player:
       url: 'http://other.web.rh01.sycdn.kuwo.cn/resource/n2/68/51/4004641621.mp3'
       pic: 'http://img1.imgtn.bdimg.com/it/u=3100415869,590484096&fm=27&gp=0.jpg'
       
-  
 head_card:
   switch: true
   left_img: "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1508092286061&di=3d40576da7432a565b312b0f6399a03e&imgtype=0&src=http%3A%2F%2Fu.candou.com%2F2016%2F0923%2F1474593993157.png"
