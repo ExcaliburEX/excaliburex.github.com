@@ -37,14 +37,17 @@ System.out.println(sum/cnt);
 }  
 ```  
  定义数组变量  
+ 
 
 <类型>[]<名字>=new<类型>[元素个数];  
+
 
 ```
 int[] grades  =new int[100];
 
 double[] averages= new double[20];  
-```
+```  
+
 
 元素个数必须是整数
 元素个数必须给出
