@@ -1,12 +1,12 @@
 title:  # Meng title
-  switch: true # Meng title switch
+  switch: true 
   visible: "(*´∇｀*) 被发现啦~" # State is visible text
   hidden:  "(つェ⊂)看不到我~" # State is hidden text
   with_default_title: true # with default title
   reset_time: 1000 # If state is visible , reset default title times(ms)
 
-cursor: # Meng cursor
-  switch: false # Meng cursor switch
+cursor: # cursor
+  switch: true # cursor switch
   auto_url: "https://ooo.0o0.ooo/2017/06/12/593ea1901c930.png" # State is auto style
   pointer_url: "https://ooo.0o0.ooo/2017/06/12/593ea3612fd77.png" # State is pointer style
 
@@ -22,10 +22,10 @@ header: # Meng header color + theme-color
 
 background: # Meng background
   switch: true
-  background_img: "https://ooo.0o0.ooo/2017/06/14/5940a9b8e4c21.jpg"
+  background_img: "https://i.loli.net/2017/10/16/59e46e683653d.jpg"
   transparent_header: true
-  transparent_footer: false
-  text_color: '#000'
+  transparent_footer: true
+  text_color: '#fff'
 
 card: # Meng card
   switch: true
@@ -33,10 +33,9 @@ card: # Meng card
   card_img_opacity: '0.8'
 
 live2d: # live2d ,see https://github.com/EYHN/hexo-helper-live2d
-  switch: false
+  switch: true
   model: "/assets/live2d/koharu/koharu.model.json" # model.json path
   drag: true # is drag ?
-  in_mobile: false
   width: 130 # canvas width
   height: 190 # canvas height
   bottom: 100 # canvas bottom
@@ -50,7 +49,7 @@ music_player:
   player: "aplayer" #cplayer or aplayer
   button_color: "#1abc9c"
   music:
-    - title: '~memory~'
+　  - title: '~memory~'
       author: '久石让'
       url: 'http://other.web.rc01.sycdn.kuwo.cn/resource/n3/34/89/855457567.mp3'
       pic: ''
@@ -62,10 +61,10 @@ music_player:
       author: 'Mizuki'
       url: 'http://other.web.rh01.sycdn.kuwo.cn/resource/n2/68/51/4004641621.mp3'
       pic: 'http://img1.imgtn.bdimg.com/it/u=3100415869,590484096&fm=27&gp=0.jpg'
-
+      
 head_card:
   switch: true
-  left_img: "https://ooo.0o0.ooo/2017/06/19/5947b272d418b.jpg"
+  left_img: "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1508092286061&di=3d40576da7432a565b312b0f6399a03e&imgtype=0&src=http%3A%2F%2Fu.candou.com%2F2016%2F0923%2F1474593993157.png"
   left_text: "『 · 如果真爱有颜色 』"
-  right_img: "https://ooo.0o0.ooo/2017/06/08/5939484dc618e.png"
+  right_img: "https://i.loli.net/2017/10/15/59e3848f19e5d.jpg"
   offset_level: 2
