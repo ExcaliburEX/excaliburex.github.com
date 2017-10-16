@@ -4,6 +4,7 @@ title:  "第一次接触"
 date:   2017-10-09 21:52:09 +0800
 categories: technology
 tags: editor
+img: https://i.loli.net/2017/10/16/59e46cc23ad7c.jpg
 ---
 KM:Hello,you are so beautiful and I want to make a friend with you.
 
