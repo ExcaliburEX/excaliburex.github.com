@@ -15,6 +15,6 @@
   icon: "&#xe150;"
 - name:editor
   url: /pages/editor.html
-  icon: home
+  icon: "&#xe151;"
 - name: navSearch
   switch: true
