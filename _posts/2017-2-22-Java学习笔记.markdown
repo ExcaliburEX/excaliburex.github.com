@@ -11,7 +11,8 @@ img: https://i.loli.net/2017/10/16/59e4482166117.jpg
 
  
  
-{% highlight ruby linenos%}  
+{% highlight ruby linenos%}   
+
 Scanner in = new Scanner(System.in);
 int x;
 double sum=0;
@@ -35,7 +36,8 @@ int [] numbers=new int [cnt];    定义数组
   }
 System.out.println(sum/cnt);
 }
-}
+}  
+
 {% endhighlight %}
 
 
@@ -43,10 +45,12 @@ System.out.println(sum/cnt);
 * 定义数组变量  
 
 <类型>[]<名字>=new<类型>[元素个数];
-{% highlight ruby linenos%} 
+{% highlight ruby linenos%}   
+
 int[] grades  =new int[100];
 
-double[] averages= new double[20];
+double[] averages= new double[20];  
+
 {% endhighlight %}
 
 元素个数必须是整数
@@ -56,8 +60,10 @@ double[] averages= new double[20];
 
 * 直接初始化数组  
 
-{% highlight ruby linenos%} 
-int[] scores={87,98,54};
+{% highlight ruby linenos%}   
+
+int[] scores={87,98,54};  
+
 {% endhighlight %}
 
  
@@ -74,7 +80,8 @@ int[] scores={87,98,54};
 * 投票统计
 写一个程序，输入数量不确定的[0,9]范围内的整数，统计每一种数字出现的次数，输入-1表示结束。  
 
-{% highlight ruby linenos%} 
+{% highlight ruby linenos%}   
+
 Scanner in=new Scanner(System.in);
 		int x;
 		int [] numbers =new int[10];
@@ -92,13 +99,15 @@ Scanner in=new Scanner(System.in);
 		for(int i=0;i<numbers.length;i++)
 		{
 			System.out.println(i+":"+numbers[i]);
-		}
+		}  
+		
 {% endhighlight %}
 
 * 搜索  
 
 
-{% highlight ruby linenos%} 
+{% highlight ruby linenos%}   
+
 int[] data={3,2,5,7,4,9,11,34,12,28};
 		int x=in.nextInt();
 		int loc=-1;
@@ -118,7 +127,8 @@ int[] data={3,2,5,7,4,9,11,34,12,28};
 		else
 		{
 			System.out.println(x+"不在其中");
-		}
+		}  
+		
 {% endhighlight %}
 
 
@@ -126,7 +136,8 @@ int[] data={3,2,5,7,4,9,11,34,12,28};
 
 去掉偶数后，从3到x-1，每次加2  
 
-{% highlight ruby linenos%} 
+{% highlight ruby linenos%}   
+
 if( x==1 || x%2 ==0 && x!=2)
 		{
 			isPrime =false;
@@ -141,7 +152,8 @@ if( x==1 || x%2 ==0 && x!=2)
 					break;
 				}
 			}
-		}
+		}  
+		
 {% endhighlight %}
 
 
@@ -149,7 +161,8 @@ if( x==1 || x%2 ==0 && x!=2)
 
 * 无须到x-1，到sqrt(x)就够了  
 
-{% highlight ruby linenos%} 
+{% highlight ruby linenos%}   
+
 for(int i=3;i<Math.sqrt(x);i+=2)
 {
  	if(x%i ==0)
@@ -212,15 +225,18 @@ boolean[] isPrime =new boolean[100];
 			}	
 			
 		}
-		System.out.println();
+		System.out.println();  
+		
 {% endhighlight %}
 
 
 
 * 二维数组  
 
-{% highlight ruby linenos%} 
-int[][]  a =new int[3][5];
+{% highlight ruby linenos%}   
+
+int[][]  a =new int[3][5];  
+
 {% endhighlight %}
 
 通常理解为a是一个3行5列的矩阵
@@ -228,18 +244,22 @@ int[][]  a =new int[3][5];
 
 初始化  
 
-{% highlight ruby linenos%} 
+{% highlight ruby linenos%}   
+
 int[][] a ={
 	{1,2,3,4},
 	{1,2,3},
-};
+};  
+
+
 {% endhighlight %}
 
 
  
 圈叉游戏   
 
-{% highlight ruby linenos%} 
+{% highlight ruby linenos%}   
+
 final int SIZE=3;
 		int[][] board =new int[SIZE][SIZE];
 		boolean gotResult=false;
@@ -370,7 +390,8 @@ final int SIZE=3;
 				{
 					System.out.println("0赢了");
 				}
-			}
+			}  
+			
 {% endhighlight %}
 
 
