@@ -46,6 +46,7 @@ System.out.println(sum/cnt);
 
 `
 int[] grades  =new int[100];
+
 double[] averages= new double[20];  
 `
 
