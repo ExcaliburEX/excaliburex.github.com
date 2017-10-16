@@ -1,10 +1,10 @@
 ---
 layout: post
-title: 2017-10-16-《三体》随记
+title: "《三体》随记"
 date: 2017-10-16 19:39:42 +0800
 categories: Thinking
 tags: editor
-img: https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1508164153050&di=20091f324cf6ca1f1e33c77139cb8302&imgtype=jpg&src=http%3A%2F%2Fimg4.imgtn.bdimg.com%2Fit%2Fu%3D470868538%2C634463036%26fm%3D214%26gp%3D0.jpg
+img: https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1508164681513&di=6cc3a2c893509554f4995571ab8cddb6&imgtype=0&src=http%3A%2F%2Fd.hiphotos.baidu.com%2Fzhidao%2Fpic%2Fitem%2F32fa828ba61ea8d39eb70e03970a304e251f581b.jpg
 ---
 给岁月以文明，而不是给文明以岁月。
 
