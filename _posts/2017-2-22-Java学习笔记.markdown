@@ -231,8 +231,8 @@ int[][] a ={
  
 圈叉游戏   
 {% highlight ruby %}
-final int SIZE=3;
-		int[][] board =new int[SIZE][SIZE];
+	final int SIZE=3;
+	int[][] board =new int[SIZE][SIZE];
 		boolean gotResult=false;
 		int numOfx=0;
 		int numOfO=0;
