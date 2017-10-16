@@ -9,7 +9,7 @@ img: https://i.loli.net/2017/10/16/59e4482166117.jpg
  
 关于Java学习的笔记。
  
-``` 
+{% highlight ruby linenos%}  
 Scanner in = new Scanner(System.in);
 int x;
 double sum=0;
@@ -34,17 +34,17 @@ int [] numbers=new int [cnt];    定义数组
 System.out.println(sum/cnt);
 }
 }
-```
+{% endhighlight %}
 
 
 
 * 定义数组变量
 <类型>[]<名字>=new<类型>[元素个数];
-```
+{% highlight ruby linenos%} 
 int[] grades  =new int[100];
 
 double[] averages= new double[20];
-```
+{% endhighlight %}
 
 元素个数必须是整数
 元素个数必须给出
@@ -52,9 +52,9 @@ double[] averages= new double[20];
 
 
 * 直接初始化数组
-```
+{% highlight ruby linenos%} 
 int[] scores={87,98,54};
-```
+{% endhighlight %}
 
  
 数组变量是数组的管理者而非数组本身
@@ -69,7 +69,7 @@ int[] scores={87,98,54};
 
 * 投票统计
 写一个程序，输入数量不确定的[0,9]范围内的整数，统计每一种数字出现的次数，输入-1表示结束。
-```
+{% highlight ruby linenos%} 
 Scanner in=new Scanner(System.in);
 		int x;
 		int [] numbers =new int[10];
@@ -88,11 +88,11 @@ Scanner in=new Scanner(System.in);
 		{
 			System.out.println(i+":"+numbers[i]);
 		}
-```
+{% endhighlight %}
 
 * 搜索
 
-```
+{% highlight ruby linenos%} 
 int[] data={3,2,5,7,4,9,11,34,12,28};
 		int x=in.nextInt();
 		int loc=-1;
@@ -113,13 +113,13 @@ int[] data={3,2,5,7,4,9,11,34,12,28};
 		{
 			System.out.println(x+"不在其中");
 		}
-```
+{% endhighlight %}
 
 
 * 数组的例子 素数
 
 去掉偶数后，从3到x-1，每次加2
-```
+{% highlight ruby linenos%} 
 if( x==1 || x%2 ==0 && x!=2)
 		{
 			isPrime =false;
@@ -135,13 +135,13 @@ if( x==1 || x%2 ==0 && x!=2)
 				}
 			}
 		}
-```
+{% endhighlight %}
 
 
 
 
 * 无须到x-1，到sqrt(x)就够了
-```
+{% highlight ruby linenos%} 
 for(int i=3;i<Math.sqrt(x);i+=2)
 {
  	if(x%i ==0)
@@ -173,13 +173,13 @@ int[] primes=new int[50];
 		{
 			System.out.print(k+" ");
 		}
-```
+{% endhighlight %}
 
 
 
 
 * 计算机的算法
-```
+{% highlight ruby linenos%} 
 boolean[] isPrime =new boolean[100];
 		for (int i=0;i<isPrime.length;i++)
 		{
@@ -204,30 +204,30 @@ boolean[] isPrime =new boolean[100];
 			
 		}
 		System.out.println();
-```
+{% endhighlight %}
 
 
 
 * 二维数组
-```
+{% highlight ruby linenos%} 
 int[][]  a =new int[3][5];
-```
+{% endhighlight %}
 
 通常理解为a是一个3行5列的矩阵
 
 
 初始化
-```
+{% highlight ruby linenos%} 
 int[][] a ={
 	{1,2,3,4},
 	{1,2,3},
 };
-```
+{% endhighlight %}
 
 
-
-* 圈叉游戏
-```
+ 
+圈叉游戏 
+{% highlight ruby linenos%} 
 final int SIZE=3;
 		int[][] board =new int[SIZE][SIZE];
 		boolean gotResult=false;
@@ -359,7 +359,7 @@ final int SIZE=3;
 					System.out.println("0赢了");
 				}
 			}
-```
+{% endhighlight %}
 
 
 
