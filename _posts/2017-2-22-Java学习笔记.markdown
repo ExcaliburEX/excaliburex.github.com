@@ -115,8 +115,8 @@ Scanner in=new Scanner(System.in);
 * 数组的例子 素数
 
 去掉偶数后，从3到x-1，每次加2
-```
-if( x==1 || x%2 ==0 && x!=2)
+
+```if( x==1 || x%2 ==0 && x!=2)
 		{
 			isPrime =false;
 		}
