@@ -10,7 +10,7 @@ img: https://i.loli.net/2017/10/16/59e4482166117.jpg
 关于Java学习的笔记。
 
  
-```
+{% highlight ruby %} 
 Scanner in = new Scanner(System.in);
 int x;
 double sum=0;
@@ -35,7 +35,7 @@ int [] numbers=new int [cnt];    定义数组
 System.out.println(sum/cnt);
 }
 }  
-```
+{% endhighlight %}
 
 
  定义数组变量  
