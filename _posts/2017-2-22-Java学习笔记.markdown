@@ -4,7 +4,7 @@ title:  "Java学习笔记"
 date:   2017-2-22 21:52:09 +0800
 categories: technology
 tags: editor
-img: https://i.loli.net/2017/10/16/59e43051216cc.png
+img: https://i.loli.net/2017/10/16/59e4482166117.jpg
 ---
  
 关于Java学习的笔记。
