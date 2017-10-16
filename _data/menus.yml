@@ -13,7 +13,7 @@
 - name: about
   url: /about/
   icon: "&#xe150;"
-- name:editor
+- name: editor
   url: /editor/
   icon: "&#xe151;"
 - name: navSearch
