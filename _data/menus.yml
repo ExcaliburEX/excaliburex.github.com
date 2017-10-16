@@ -14,7 +14,7 @@
   url: /about/
   icon: "&#xe150;"
 - name:editor
-  url: /pages/editor.html
+  url: /pages/editor.html/
   icon: "&#xe151;"
 - name: navSearch
   switch: true
