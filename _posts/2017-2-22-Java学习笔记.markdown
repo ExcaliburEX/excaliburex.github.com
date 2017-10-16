@@ -95,7 +95,7 @@ double[] averages= new double[20];
 
 * 搜索
 
-``` int[] data={3,2,5,7,4,9,11,34,12,28};
+```int[] data={3,2,5,7,4,9,11,34,12,28};
 		int x=in.nextInt();
 		int loc=-1;
 		for(int i=0;i<data.length;i++)
@@ -114,8 +114,7 @@ double[] averages= new double[20];
 		else
 		{
 			System.out.println(x+"不在其中");
-		}
-```
+		}```
 
 
 * 数组的例子 素数
