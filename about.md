@@ -1,7 +1,7 @@
 ---
 layout: page
 title: 关于
-date:   2017-10-10 21:00:06 +0800
+date:   2017-1-25 21:00:06 +0800
 permalink: /about/
 img: https://i.loli.net/2017/10/15/59e37eaa1e1a0.jpg
 lastupdate: 2017-10-11 12:24:49 +0800
