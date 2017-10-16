@@ -4,6 +4,7 @@ title:  "代码高亮"
 date:   2017-10-10 21:52:09 +0800
 categories: technology
 tags: editor
+img: https://i.loli.net/2017/10/16/59e43051216cc.png
 ---
 {% highlight ruby %} 
 def show 
