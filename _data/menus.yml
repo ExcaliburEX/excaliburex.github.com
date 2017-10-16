@@ -13,8 +13,5 @@
 - name: about
   url: /about/
   icon: "&#xe150;"
-- name: editor
-   url: /editor/
-  icon: home
 - name: navSearch
   switch: true
