@@ -53,6 +53,22 @@ music_player:
       author: '久石让'
       url: 'http://other.web.rc01.sycdn.kuwo.cn/resource/n3/34/89/855457567.mp3'
       pic: 'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2802384005,2189008487&fm=27&gp=0.jpg'
+      
+    - title: 'βίος'
+      author: '小林未郁'
+      url: 'http://other.web.ri01.sycdn.kuwo.cn/resource/n1/73/62/1915202197.mp3'
+      pic: 'http://e.hiphotos.baidu.com/image/pic/item/0df3d7ca7bcb0a463e4bd3576163f6246b60af77.jpg'
+      
+    - title: 'aliez'
+      author: 'Mizuki'
+      url: 'http://other.web.rh01.sycdn.kuwo.cn/resource/n2/68/51/4004641621.mp3'
+      pic: 'http://img1.imgtn.bdimg.com/it/u=3100415869,590484096&fm=27&gp=0.jpg'
+      
+   - title: '沉默镇魂曲'
+     author: '末廣健一郎'
+     url: 'http://other.web.ri01.sycdn.kuwo.cn/resource/n1/54/77/4203857399.mp3'
+     pic: ''
+
   
 head_card:
   switch: true
