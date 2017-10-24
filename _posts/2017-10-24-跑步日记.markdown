@@ -30,3 +30,9 @@ img: https://i.loli.net/2017/10/16/59e46cc23ad7c.jpg
 链接：http://www.jianshu.com/p/q81RER/
 來源：简书
 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+
+Name | Academy | score 
+- | :-: | -: 
+Harry Potter | Gryffindor| 90 
+Hermione Granger | Gryffindor | 100 
+Draco Malfoy | Slytherin | 90
