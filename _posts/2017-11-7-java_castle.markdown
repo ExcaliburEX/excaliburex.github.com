@@ -9,10 +9,8 @@ img: https://i.loli.net/2017/10/16/59e43051216cc.png
 java类与对象的实例以及可扩展性
 
 - game.java
-
----
+{% highlight ruby %} 
 package castle;
-
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -108,8 +106,9 @@ public class Game {
        
     }
 }
----
 
+
+{% endhighlight %}
 
 - Handler.java
 
