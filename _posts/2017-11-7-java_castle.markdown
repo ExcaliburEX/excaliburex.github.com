@@ -9,17 +9,18 @@ img: https://i.loli.net/2017/10/16/59e43051216cc.png
 java类与对象的实例以及可扩展性
 
 - game.java
+
 ---
+
+
 package castle;
----
 import java.util.HashMap;
 import java.util.Scanner;
----
 public class Game {
+
     private Room currentRoom;
     private HashMap<String, Handler>handlers =new HashMap<String,Handler>();
- --- 
- --- 
+    
     public Game() 
     {
     	//handlers.put("go", new HandlerGo());
@@ -131,9 +132,11 @@ public class Game {
 - Handler.java
 
 ---
-package castle;
 
+
+package castle;
 public class Handler {
+
 	protected Game game;
 	
 	public Handler(Game game) {
@@ -145,7 +148,10 @@ public class Handler {
 ---
 
 - HandlerBye.java
+
 ---
+
+
 package castle;
 
 public class HandlerBye extends Handler {
