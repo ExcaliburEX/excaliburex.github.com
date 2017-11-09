@@ -4,7 +4,7 @@ title:  "java_castle"
 date:   2017-11-07 21:52:09 +0800
 categories: technology
 tags: learning
-img: https://i.loli.net/2017/10/16/59e43051216cc.png
+img: https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1510248617612&di=e15e8fd9280159cd4edf213e6955c3f0&imgtype=0&src=http%3A%2F%2Fb.hiphotos.baidu.com%2Fimage%2Fpic%2Fitem%2Ff31fbe096b63f624129bc8e98d44ebf81b4ca312.jpg
 ---
 java类与对象的实例以及可扩展性
 
