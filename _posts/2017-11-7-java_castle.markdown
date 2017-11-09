@@ -15,6 +15,7 @@ java类与对象的实例以及可扩展性
 	
 
 {% highlight ruby %} 
+
 	package castle;
 	import java.util.HashMap;
 	import java.util.Scanner;
