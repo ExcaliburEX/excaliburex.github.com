@@ -8,21 +8,25 @@ img: https://i.loli.net/2017/10/16/59e43051216cc.png
 ---
 java类与对象的实例以及可扩展性
 
+
 - game.java
 
 ---
 
 
-package castle;
-import java.util.HashMap;
-import java.util.Scanner;
-public class Game {
+	package castle;
+	import java.util.HashMap;
+	import java.util.Scanner;
+
+	public class Game {
+
 
     private Room currentRoom;
     private HashMap<String, Handler>handlers =new HashMap<String,Handler>();
     
     public Game() 
     {
+  
     	//handlers.put("go", new HandlerGo());
     	handlers.put("bye", new HandlerBye(this));
     	handlers.put("help", new HandlerHelp(this));
@@ -104,14 +108,14 @@ public class Game {
     				break;
     		
     		}
-//    		if ( words[0].equals("help") ) {
-//    			printHelp();
-//    		} else if (words[0].equals("go") ) {
-//    			goRoom(words[1]);
-//    		} else if ( words[0].equals("bye") ) {
-//    			break;
-//    		}
-//    }
+	//    		if ( words[0].equals("help") ) {
+	//    			printHelp();
+	//    		} else if (words[0].equals("go") ) {
+	//    			goRoom(words[1]);
+	//    		} else if ( words[0].equals("bye") ) {
+	//    			break;
+	//    		}
+	//    }
     		 
     	}
     	in.close();
@@ -134,8 +138,8 @@ public class Game {
 ---
 
 
-package castle;
-public class Handler {
+	package castle;
+	public class Handler {
 
 	protected Game game;
 	
@@ -144,7 +148,7 @@ public class Handler {
 	}
 	public void doCmd(String word) {}
 	public boolean isBye() {return false;}
-}
+	}
 ---
 
 - HandlerBye.java
@@ -152,10 +156,10 @@ public class Handler {
 ---
 
 
-package castle;
+	package castle;
 
-public class HandlerBye extends Handler {
-	public HandlerBye(Game game) {
+	public class HandlerBye extends Handler {
+		public HandlerBye(Game game) {
 		super(game);
 	}
 	@Override
@@ -172,9 +176,9 @@ public class HandlerBye extends Handler {
 - HandlerGo.java
 
 ---
-package castle;
+	package castle;
 
-public class HandlerGo extends Handler {
+	public class HandlerGo extends Handler {
 	public HandlerGo(Game game) {
 		super(game);
 	}
@@ -188,9 +192,9 @@ public class HandlerGo extends Handler {
 
 - HandlerHelp.java
 ---
-package castle;
+	package castle;
 
-public class HandlerHelp extends Handler {
+	public class HandlerHelp extends Handler {
 	public HandlerHelp(Game game) {
 		super(game);
 	}
@@ -205,14 +209,14 @@ public class HandlerHelp extends Handler {
 
 - Room.java
 ---
-package castle;
+	package castle;
 
-import java.util.HashMap;
+	import java.util.HashMap;
 
 
-public class Room {
-   private String description;
-   private HashMap<String,Room> exits=new HashMap<String,Room>();
+	public class Room {
+   	private String description;
+  	 private HashMap<String,Room> exits=new HashMap<String,Room>();
  
     public Room(String description) 
     {
