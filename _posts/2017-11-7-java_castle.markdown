@@ -11,7 +11,7 @@ java类与对象的实例以及可扩展性
 
 - game.java
 
----
+{% highlight ruby %} 
 
 
 	package castle;
@@ -131,11 +131,11 @@ java类与对象的实例以及可扩展性
     }
 }
 
----
+{% endhighlight %}
 
 - Handler.java
 
----
+{% highlight ruby %}
 
 
 	package castle;
@@ -149,11 +149,11 @@ java类与对象的实例以及可扩展性
 	public void doCmd(String word) {}
 	public boolean isBye() {return false;}
 	}
----
+{% endhighlight %}
 
 - HandlerBye.java
 
----
+{% highlight ruby %}
 
 
 	package castle;
@@ -171,11 +171,12 @@ java类与对象的实例以及可扩展性
 	
 	
 }
----
+{% endhighlight %}
 
 - HandlerGo.java
 
----
+{% highlight ruby %}
+	
 	package castle;
 
 	public class HandlerGo extends Handler {
@@ -188,10 +189,11 @@ java类与对象的实例以及可扩展性
 	}
 
 }
----
+{% endhighlight %}
 
 - HandlerHelp.java
----
+{% highlight ruby %}
+	
 	package castle;
 
 	public class HandlerHelp extends Handler {
@@ -205,10 +207,12 @@ java类与对象的实例以及可扩展性
 	}
 
 }
----
+{% endhighlight %}
 
 - Room.java
----
+
+{% highlight ruby %}
+	
 	package castle;
 
 	import java.util.HashMap;
@@ -246,4 +250,4 @@ java类与对象的实例以及可扩展性
     	return exits.get(direction);
     }
 }
----
+{% endhighlight %}
