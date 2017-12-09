@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "2016年的一些日记"
-date:   2017-12-09 11:52:09 +0800
+date:   2017-12-09 00:52:09 +0800
 categories: Life
 tags: editor
 img: https://i.loli.net/2017/12/09/5a2b5a2b47fc2.jpg
