@@ -101,14 +101,46 @@ img: https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1510248
 </table>
 
 # 2018
-| Date          | Records         |num    |
-| ------------- |-------------    | ----- |
-| 3.25        |   √             | 9     |
-| 3.26        |   √             | 10     |
-| 3.28        |   √             | 10     |
-| 4.2         |   √             | 10    |
-| 4.9        |   √             | 10     |
-| 4.11        |   √             | 9     |
+<table>
+   <tr>
+      <td>Date</td>
+      <td>Records</td>
+      <td>num</td>
+   </tr>
+   <tr>
+      <td>3.25       </td>
+      <td>√            </td>
+      <td>9    </td>
+   </tr>
+   <tr>
+      <td>3.26       </td>
+      <td>√            </td>
+      <td>10    </td>
+   </tr>
+   <tr>
+      <td>3.28       </td>
+      <td>√            </td>
+      <td>10    </td>
+   </tr>
+   <tr>
+      <td>4.2       </td>
+      <td>√            </td>
+      <td>10   </td>
+   </tr>
+   <tr>
+      <td>4.9       </td>
+      <td>√            </td>
+      <td>10    </td>
+   </tr>
+   <tr>
+      <td>4.11       </td>
+      <td>√            </td>
+      <td>9    </td>
+   </tr>
+   <tr>
+      <td></td>
+   </tr>
+</table>
  
  
  
