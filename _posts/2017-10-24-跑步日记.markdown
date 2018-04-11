@@ -14,24 +14,91 @@ img: https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1510248
 
 
 # 2017
-
-| Date          | Records         |num    |
-| ------------- |-------------    | ----- |
-| 10.13         |   √             | 8     |
-| 10.14         |   √             | 7     |
-| 10.20         |   √             | 8     |
-| 10.23         |   √             | 8     |
-| 10.24         |   √             | 8     |
-| 10.31         |   √             | 10    |
-| 11.1          |   √             | 10    |
-| 11.2          |   √             | 10    |
-| 11.6          |   √             | 10    |
-| 11.8          |   √             | 11    |
-| 11.9          |   √             | 11    |
-| 11.16         |   √             | 11    |
-| 11.30         |   √             | 10    |
-| 12.4          |   √             | 10    |
-| 12.5          |   √             | 10    |
+<table>
+   <tr>
+      <td>Date</td>
+      <td>Records</td>
+      <td>num</td>
+   </tr>
+   <tr>
+      <td>10.13        </td>
+      <td>√            </td>
+      <td>8    </td>
+   </tr>
+   <tr>
+      <td>10.14</td>
+      <td>√</td>
+      <td>7</td>
+   </tr>
+   <tr>
+      <td>10.2</td>
+      <td>√</td>
+      <td>8</td>
+   </tr>
+   <tr>
+      <td>10.23</td>
+      <td>√</td>
+      <td>8</td>
+   </tr>
+   <tr>
+      <td>10.24</td>
+      <td>√</td>
+      <td>8</td>
+   </tr>
+   <tr>
+      <td>10.31</td>
+      <td>√</td>
+      <td>10</td>
+   </tr>
+   <tr>
+      <td>11.1</td>
+      <td>√</td>
+      <td>10</td>
+   </tr>
+   <tr>
+      <td>11.2</td>
+      <td>√</td>
+      <td>10</td>
+   </tr>
+   <tr>
+      <td>11.6</td>
+      <td>√</td>
+      <td>10</td>
+   </tr>
+   <tr>
+      <td>11.8</td>
+      <td>√</td>
+      <td>11</td>
+   </tr>
+   <tr>
+      <td>11.9</td>
+      <td>√</td>
+      <td>11</td>
+   </tr>
+   <tr>
+      <td>11.16</td>
+      <td>√</td>
+      <td>11</td>
+   </tr>
+   <tr>
+      <td>11.3</td>
+      <td>√</td>
+      <td>10</td>
+   </tr>
+   <tr>
+      <td>12.4        </td>
+      <td>  √            </td>
+      <td>10</td>
+   </tr>
+   <tr>
+      <td>12.5        </td>
+      <td>  √            </td>
+      <td>10</td>
+   </tr>
+   <tr>
+      <td></td>
+   </tr>
+</table>
 
 # 2018
 | Date          | Records         |num    |
