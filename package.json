@@ -1,31 +1,19 @@
 {
-  "name": "jekyll-theme-mdui",
-  "version": "0.5.2",
-  "description": "A Jekyll theme based on MDUI",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "name": "hexo-site",
+  "version": "0.0.0",
+  "private": true,
+  "hexo": {
+    "version": "3.9.0"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/KeJunMao/jekyll-theme-mdui.git"
-  },
-  "keywords": [
-    "Jekyll",
-    "theme",
-    "MDUI"
-  ],
-  "author": "KeJun",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/KeJunMao/jekyll-theme-mdui/issues"
-  },
-  "homepage": "https://github.com/KeJunMao/jekyll-theme-mdui#readme",
-  "devDependencies": {
-    "browser-sync": "^2.18.12",
-    "gulp": "^3.9.1",
-    "gulp-concat": "^2.6.1",
-    "gulp-sass": "^3.1.0",
-    "gulp-util": "^3.0.8"
+  "dependencies": {
+    "hexo": "^3.9.0",
+    "hexo-generator-archive": "^0.1.5",
+    "hexo-generator-category": "^0.1.3",
+    "hexo-generator-index": "^0.2.1",
+    "hexo-generator-tag": "^0.2.0",
+    "hexo-renderer-ejs": "^0.3.1",
+    "hexo-renderer-stylus": "^0.3.3",
+    "hexo-renderer-marked": "^1.0.1",
+    "hexo-server": "^0.3.3"
   }
 }
