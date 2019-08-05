@@ -4,12 +4,14 @@
 
 # Site
 title: 柯摩的BLOG
-subtitle:
-description:
+subtitle: 杂谈
+description: 真实自有万钧之力
 keywords:
 author: 柯摩
-language: zh_CN
-timezone: 
+language: zh-CN
+timezone:
+
+
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
@@ -73,9 +75,41 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: landscape
+theme: next
 
 # Deployment
-## Docs: https://hexo.io/docs/deployment.html
+# Docs: https://hexo.io/docs/deployment.html
 deploy:
-  type:
+  type: git
+  repo: https://github.com/ExcaliburEX/excaliburex.github.com
+  branch: run-page
+  
+search:
+  path: ./public/search.xml
+  field: post
+  format: html
+  limit: 10000
+
+# feed:  
+# type: atom  
+# path: atom.xml  
+# limit: 0  
+
+# plugins:
+#   - hexo-generator-feed
+
+live2d:
+  enable: true
+  scriptFrom: local
+  pluginRootPath: live2dw/
+  pluginJsPath: lib/
+  pluginModelPath: assets/
+  model:
+    # 填写你所需要的看板娘名称
+    use: live2d-widget-model-izumi
+  display:
+    position: right
+    width: 200
+    height: 400
+  mobile:
+    show: true
