@@ -1,0 +1,17 @@
+---
+layout: post
+title: "日记"
+date: 2017-11-02 21:52:09 +0800
+categories: Thinking
+tags: Diary
+photos: "https://i.loli.net/2017/10/16/59e46cc23ad7c.jpg"
+copyright: true
+---
+
+计数要从零开始。
+
+<!-- more -->
+
+- 11.2
+
+我的动力来自于哪里？或许更多的来自于与移情对象的交流中来，一次次的寥寥几语让我感受到的是深深的自责，没有资本没有能力。

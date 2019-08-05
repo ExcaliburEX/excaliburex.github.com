@@ -1,0 +1,10 @@
+---
+layout: post
+title:  "我的第一篇博客"
+date:   2017-10-10 13:21:09 +0800
+categories: technology
+tags: editor
+img: https://i.loli.net/2017/10/16/59e46c8e57d63.jpg
+---
+今天开始学习FreeCodeCamp，这种任务式的学习法确实有一种停不下来的乐趣。
+没有相关的语言基础，不知道能进行到哪一步？
