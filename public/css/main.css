@@ -1753,6 +1753,16 @@ pre .javascript .function {
   align-self: center;
   height: 30px;
 }
+.reading-progress-bar {
+  background: #37c6c0;
+  display: block;
+  height: 2px;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 0;
+  z-index: 9999;
+}
 .my_post_copyright {
   width: 85%;
   max-width: 45em;
@@ -1897,7 +1907,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #5cffff;
+  background: #fffe55;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2359,6 +2369,10 @@ ul.popular-posts .popular-posts-item .popular-posts-title {
   font-weight: normal;
   line-height: 2.4;
   margin: 0;
+}
+.has-jax {
+  overflow-x: auto;
+  overflow-y: hidden;
 }
 .page-archive .posts-collapse .archive-move-on {
   background: #999;

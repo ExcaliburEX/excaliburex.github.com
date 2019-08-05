@@ -20,6 +20,8 @@
 
 <link rel="stylesheet" href="https://fonts.loli.net/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Roboto Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
 <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+  <link rel="stylesheet" href="/lib/fancybox/source/jquery.fancybox.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/ilyabirman-likely@2/release/likely.css">
   <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
   <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
   <link rel="stylesheet" href="/lib/pace/pace-theme-center-atom.min.css?v=1.0.2">
@@ -35,7 +37,7 @@
     back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
     save_scroll: false,
     copycode: {"enable":true,"show_result":true,"style":null},
-    fancybox: false,
+    fancybox: true,
     mediumzoom: false,
     lazyload: false,
     pangu: false,
@@ -58,18 +60,20 @@
   };
 </script>
 
-  <meta name="description" content="我是第一个我是小标题我是连接![www.baidu.com] 😄🙃🙃          document.querySelectorAll(&apos;.github-emoji&apos;)           .forEach(el =&amp;gt; {             if (!el.dataset.src) { return; }             const img = document.creat">
+  <meta name="description" content="我是连接[www.baidu.com] 😄🙃🙃                                                    var ap = new APlayer({             element: document.getElementById(&quot;aplayer-IvYPcdvB&quot;),             narrow: false,">
 <meta name="keywords" content="666">
 <meta property="og:type" content="article">
 <meta property="og:title" content="测试博客">
 <meta property="og:url" content="http://yoursite.com/2019/08/05/测试博客/index.html">
 <meta property="og:site_name" content="柯摩的BLOG">
-<meta property="og:description" content="我是第一个我是小标题我是连接![www.baidu.com] 😄🙃🙃          document.querySelectorAll(&apos;.github-emoji&apos;)           .forEach(el =&amp;gt; {             if (!el.dataset.src) { return; }             const img = document.creat">
+<meta property="og:description" content="我是连接[www.baidu.com] 😄🙃🙃                                                    var ap = new APlayer({             element: document.getElementById(&quot;aplayer-IvYPcdvB&quot;),             narrow: false,">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-05T09:38:18.454Z">
+<meta property="og:image" content="https://i.loli.net/2017/10/16/59e46cc23ad7c.jpg">
+<meta property="og:updated_time" content="2019-08-05T14:56:32.478Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="测试博客">
-<meta name="twitter:description" content="我是第一个我是小标题我是连接![www.baidu.com] 😄🙃🙃          document.querySelectorAll(&apos;.github-emoji&apos;)           .forEach(el =&amp;gt; {             if (!el.dataset.src) { return; }             const img = document.creat">
+<meta name="twitter:description" content="我是连接[www.baidu.com] 😄🙃🙃                                                    var ap = new APlayer({             element: document.getElementById(&quot;aplayer-IvYPcdvB&quot;),             narrow: false,">
+<meta name="twitter:image" content="https://i.loli.net/2017/10/16/59e46cc23ad7c.jpg">
   <link rel="alternate" href="/atom.xml" title="柯摩的BLOG" type="application/atom+xml">
   <link rel="canonical" href="http://yoursite.com/2019/08/05/测试博客/">
 
@@ -89,6 +93,15 @@
   
 
 
+  <script pjax>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?43fd6fab7512d8897b8d9cf67c49b600";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
 
 
 
@@ -120,6 +133,8 @@
   </style>
 </noscript>
 
+<link rel="stylesheet" href="\assets\css\APlayer.min.css" class="aplayer-style-marker">
+<script src="\assets\js\APlayer.min.js" class="aplayer-script-marker"></script>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
@@ -214,33 +229,11 @@
       
       
         
-        <li class="menu-item menu-item-schedule">
+        <li class="menu-item menu-item-相册">
       
     
 
-    <a href="/schedule/" rel="section"><i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>日程表</a>
-
-  </li>
-      
-      
-      
-        
-        <li class="menu-item menu-item-sitemap">
-      
-    
-
-    <a href="/sitemap.xml" rel="section"><i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br>站点地图</a>
-
-  </li>
-      
-      
-      
-        
-        <li class="menu-item menu-item-commonweal">
-      
-    
-
-    <a href="/404/" rel="section"><i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>公益 404</a>
+    <a href="/photos/" rel="section"><i class="menu-item-icon fa fa-fw fa-photo"></i> <br>相册</a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -291,6 +284,7 @@
 
   <div id="posts" class="posts-expand">
     
+    <div class="reading-progress-bar"></div>
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
@@ -328,7 +322,7 @@
                 
               
 
-              <time title="创建时间：2019-08-05 01:46:14 / 修改时间：17:38:18" itemprop="dateCreated datePublished" datetime="2019-08-05T01:46:14+08:00">2019-08-05</time>
+              <time title="创建时间：2019-08-05 01:46:14 / 修改时间：22:56:32" itemprop="dateCreated datePublished" datetime="2019-08-05T01:46:14+08:00">2019-08-05</time>
             </span>
           
             
@@ -344,6 +338,24 @@
               <span class="post-meta-item-text">阅读次数：</span>
               <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
             </span>
+            <span class="post-meta-divider">|</span>
+          <span title="post.wordcount"><span class="post-meta-item-icon"><i class="fa fa-file-word-o"></i></span>字数： 238</span>
+          
+            
+  
+  <span class="post-meta-item">
+    
+    <span class="post-meta-item-icon">
+      <i class="fa fa-comment-o"></i>
+    </span>
+    <span class="post-meta-item-text">评论数：</span>
+  
+    <a href="/2019/08/05/测试博客/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/08/05/测试博客/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
           
 
         </div>
@@ -355,8 +367,56 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="我是第一个"><a href="#我是第一个" class="headerlink" title="我是第一个"></a>我是第一个</h1><h2 id="我是小标题"><a href="#我是小标题" class="headerlink" title="我是小标题"></a>我是小标题</h2><p>我是连接![<a href="http://www.baidu.com]" target="_blank" rel="noopener">www.baidu.com]</a></p>
+        <div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
+            <div class="post-gallery-row">
+              <img src="https://i.loli.net/2017/10/16/59e46cc23ad7c.jpg" itemprop="contentUrl">
+            
+          
+
+          </div>
+        </div>
+        <p>我是连接[<a href="http://www.baidu.com]" target="_blank" rel="noopener">www.baidu.com]</a></p>
 <p>😄🙃🙃</p>
+
+        <div id="aplayer-IvYPcdvB" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+            <pre class="aplayer-lrc-content"></pre>
+        </div>
+        <script>
+          var ap = new APlayer({
+            element: document.getElementById("aplayer-IvYPcdvB"),
+            narrow: false,
+            autoplay: false,
+            showlrc: 3,
+            music: {
+              title: "绿色",
+              author: "陈雪凝",
+              url: "http://m7.music.126.net/20190805223210/80ea3cd5b99d9fbb8f877d4a0ec24100/ymusic/76b4/dcbb/0a65/9198b18815ee8ce42ae368ae29276f78.mp3",
+              pic: "https://p3.music.126.net/R4ZP3AJ9xV0vvw8LX7AbMA==/109951163860425334.jpg?param=300y300",
+              lrc: "http://www.22lrc.com/lrc/88470/1980.lrc"
+            }
+          });
+          window.aplayers || (window.aplayers = []);
+          window.aplayers.push(ap);
+        </script>
+
+
+        <div id="aplayer-lqkVtcJg" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;"></div>
+			  <script>
+				  var options = {"narrow":false,"autoplay":false,"showlrc":3,"mutex":true,"music":[{"title":"绿色","author":"陈雪凝","url":"http://m7.music.126.net/20190805223210/80ea3cd5b99d9fbb8f877d4a0ec24100/ymusic/76b4/dcbb/0a65/9198b18815ee8ce42ae368ae29276f78.mp3","pic":"https://p3.music.126.net/R4ZP3AJ9xV0vvw8LX7AbMA==/109951163860425334.jpg?param=300y300","lrc":"http://www.22lrc.com/lrc/88470/1980.lrc"},{"title":"七里香","author":"周杰伦","url":"http://m7.music.126.net/20190805225810/3667e25e32ec1ee8abf12f674167cdbd/ymusic/8282/098a/d744/be1e1d3c2a46b4cbd259aca7ff050cd3.mp3","pic":"https://p3.music.126.net/LiRR__0pJHSivqBHZzbMUw==/109951163816225567.jpg?param=300y300"}]};
+				  options.element = document.getElementById("aplayer-lqkVtcJg");
+				  var ap = new APlayer(options);
+			    window.aplayers || (window.aplayers = []);
+				  window.aplayers.push(ap);
+			  </script>
+
+<iframe src="//player.bilibili.com/player.html?aid=62330385&cid=108333223&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" width="960" height="540"> </iframe>
+
+<div class="note success">
+            <p>我是666，nice to meet you！ (md partial supported) </p>
+          </div>
+
+
+
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -419,7 +479,7 @@
           
         
         <div class="post-tags">
-            <a href="/tags/666/" rel="tag"># 666</a>
+            <a href="/tags/666/" rel="tag"><i class="fa fa-tag"></i> 666</a>
           
         </div>
         <div class="post-widgets">
@@ -435,6 +495,24 @@
 
         
           <div class="social-share">
+            
+              
+
+
+<div class="likely">
+    <div class="twitter">Tweet</div>
+    <div class="facebook">Share</div>
+    <div class="linkedin">Link</div>
+    <div class="gplus">Plus</div>
+    <div class="vkontakte">Share</div>
+    <div class="odnoklassniki">Class</div>
+    <div class="telegram">Send</div>
+    <div class="whatsapp">Send</div>
+    <div class="pinterest">Pin</div>
+</div>
+<script src="//cdn.jsdelivr.net/npm/ilyabirman-likely@2/release/likely.js"></script>
+
+
             
             
               <div id="needsharebutton-postbottom">
@@ -480,6 +558,9 @@
 
           </div>
           
+    
+    <div class="comments" id="comments"></div>
+  
 
 
         </div>
@@ -495,17 +576,8 @@
 
   <aside id="sidebar" class="sidebar">
     <div class="sidebar-inner">
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <div class="site-overview-wrap sidebar-panel">
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
 
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -611,6 +683,17 @@
         <a href="https://twitter.com/Excaliburjp" title="Twitter &rarr; https://twitter.com/Excaliburjp" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
       </span>
     
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://space.bilibili.com/2142109" title="Bilibili &rarr; https://space.bilibili.com/2142109" rel="noopener" target="_blank"><i class="fa fa-fw fa-mobile"></i>Bilibili</a>
+      </span>
+    
   </div>
 
 
@@ -629,23 +712,6 @@
 
         </div>
       </div>
-      <!--noindex-->
-        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-            
-            
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#我是第一个"><span class="nav-number">1.</span> <span class="nav-text">我是第一个</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#我是小标题"><span class="nav-number">1.1.</span> <span class="nav-text">我是小标题</span></a></li></ol></li></ol></div>
-            
-
-          </div>
-        </div>
-      <!--/noindex-->
-      
 
     </div>
   </aside>
@@ -664,10 +730,13 @@
   <span class="author" itemprop="copyrightHolder">柯摩</span>
 </div>
 
-
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">全站共 363 字</span>
+</div>
         
 <div class="busuanzi-count">
-  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <script pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
     <span class="post-meta-item-icon">
       <i class="fa fa-user"></i>
     </span>
@@ -689,7 +758,7 @@
 
 
 
-  <script>
+  <script pjax>
     (function() {
       var hm = document.createElement("script");
       hm.src = "//tajs.qq.com/stats?sId=66458571";
@@ -760,6 +829,10 @@
   <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
   <script size="300" alpha="0.6" zIndex="-1" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
   <script src="/lib/jquery/index.js?v=3.4.1"></script>
+  <script src="/lib/pjax/pjax.min.js?v=0.2.8"></script>
+  <script src="/lib/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script src="/lib/reading_progress/reading_progress.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/valine@1.3.9/dist/Valine.min.js"></script>
   <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
   <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
   <script defer src="/lib/three/three.min.js"></script>
@@ -785,6 +858,14 @@
   
 
 
+  <script src="/lib/bookmark/bookmark.min.js?v=1.0"></script>
+  <script pjax>
+  if (CONFIG.page.isPost) {
+    bookmark.scrollToMark('auto', "#更多");
+  } else {
+    bookmark.loadBookmark();
+  }
+  </script>
 
 
 
@@ -795,7 +876,7 @@
 
 
 
-  <script>
+  <script pjax>
   if (CONFIG.page.isPost) {
     wpac_init = window.wpac_init || [];
     wpac_init.push({
@@ -832,6 +913,9 @@
 
 
 
+    <div id="pjax">
+
+  
 
   
 
@@ -844,6 +928,66 @@
   <script src="/js/scrollspy.js?v=7.3.0"></script>
 <script src="/js/post-details.js?v=7.3.0"></script>
 
+
+    <script>
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#comments',
+    verify: false,
+    notify: true,
+    appId: 'u4vO2zGHJKiMhlMhYbgBgq1E-gzGzoHsz',
+    appKey: 'XRdJWVzmRfYF0uw6oUQztM7B',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: false,
+    lang: 'zh-cn' || 'zh-cn',
+    path: location.pathname
+  });
+</script>
+
+    </div>
+    <script>
+var pjax = new Pjax({
+  selectors: [
+    'title',
+    '#page-configurations',
+    '.content-wrap',
+    '.sidebar-inner',
+    '#pjax'
+  ],
+  switches: {
+    '.sidebar-inner': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo: !CONFIG.save_scroll
+});
+$(document).on('pjax:send', function() {
+  $('.sidebar-inner').stop().fadeTo('fast', 0);
+  CONFIG.save_scroll && clearInterval(NexT.utils.saveScrollTimer);
+});
+$(document).on('pjax:success', function() {
+  $('script[pjax], script#page-configurations, #pjax script').each(function(i, o) {
+    $(o).parent().append($(o).remove());
+  });
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  $('.sidebar-inner .motion-element').css('opacity', 1);
+  $('.sidebar-inner').fadeTo('fast', 1);
+  NexT.utils.updateSidebarPosition();
+});
+</script>
 
   <script type="text/javascript" src="/js/src/image.js"></script>
 

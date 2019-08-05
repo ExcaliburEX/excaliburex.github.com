@@ -24,6 +24,8 @@
     "hexo-server": "^0.3.3",
     "hexo-symbols-count-time": "^0.6.0",
     "hexo-tag-aplayer": "^3.0.4",
+    "hexo-tag-dplayer": "^0.3.3",
+    "hexo-wordcount": "^6.0.1",
     "live2d-widget-model-haru": "^1.0.5",
     "live2d-widget-model-izumi": "^1.0.5"
   }
