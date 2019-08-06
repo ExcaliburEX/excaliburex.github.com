@@ -466,8 +466,8 @@ body {
 }
 pre,
 .highlight {
-  background: #000;
-  color: #eaeaea;
+  background: #1d1f21;
+  color: #c5c8c6;
   line-height: 1.6;
   margin: 20px 0;
 }
@@ -489,12 +489,12 @@ pre {
 }
 pre code {
   background: none;
-  color: #eaeaea;
+  color: #c5c8c6;
   padding: 0;
   text-shadow: none;
 }
 .highlight *::selection {
-  background: #424242;
+  background: #373b41;
 }
 .highlight pre {
   border: none;
@@ -513,7 +513,7 @@ pre code {
 .highlight figcaption {
   background: #eee;
   border-bottom: 1px solid #e9e9e9;
-  color: #eaeaea;
+  color: #c5c8c6;
   line-height: 1em;
   margin: 0;
   padding: 0.5em;
@@ -527,21 +527,21 @@ pre code {
   clear: both;
 }
 .highlight figcaption a {
-  color: #eaeaea;
+  color: #c5c8c6;
   float: right;
 }
 .highlight figcaption a:hover {
-  border-bottom-color: #eaeaea;
+  border-bottom-color: #c5c8c6;
 }
 .highlight .gutter pre {
-  background-color: #292929;
-  color: #666;
+  background-color: #000;
+  color: #888f96;
   padding-left: 10px;
   padding-right: 10px;
   text-align: right;
 }
 .highlight .code pre {
-  background-color: #000;
+  background-color: #1d1f21;
   padding-left: 10px;
   width: 100%;
 }
@@ -564,7 +564,7 @@ pre .addition {
   background: #008000;
 }
 pre .meta {
-  color: #e7c547;
+  color: #f0c674;
   user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -586,7 +586,7 @@ pre .html .doctype,
 pre .css .id,
 pre .css .class,
 pre .css .pseudo {
-  color: #d54e53;
+  color: #c66;
 }
 pre .number,
 pre .preprocessor,
@@ -596,7 +596,7 @@ pre .literal,
 pre .params,
 pre .constant,
 pre .command {
-  color: #e78c45;
+  color: #de935f;
 }
 pre .ruby .class .title,
 pre .css .rules .attribute,
@@ -609,11 +609,11 @@ pre .ruby .symbol,
 pre .xml .cdata,
 pre .special,
 pre .formula {
-  color: #b9ca4a;
+  color: #b5bd68;
 }
 pre .title,
 pre .css .hexcolor {
-  color: #70c0b1;
+  color: #8abeb7;
 }
 pre .function,
 pre .python .decorator,
@@ -623,11 +623,11 @@ pre .ruby .title .keyword,
 pre .perl .sub,
 pre .javascript .title,
 pre .coffeescript .title {
-  color: #7aa6da;
+  color: #81a2be;
 }
 pre .keyword,
 pre .javascript .function {
-  color: #c397d8;
+  color: #b294bb;
 }
 .blockquote-center,
 .page-home .post-type-quote blockquote,
@@ -1958,7 +1958,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #873dff;
+  background: #18ff93;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
