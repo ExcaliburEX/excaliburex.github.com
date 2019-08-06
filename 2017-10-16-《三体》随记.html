@@ -1160,7 +1160,10 @@
 <script src="/js/post-details.js?v=7.3.0"></script>
 
 
-    <script>
+    
+
+<script>
+NexT.utils.getScript('https://cdn.jsdelivr.net/npm/valine@1.3.9/dist/Valine.min.js', function() {
   var GUEST = ['nick', 'mail', 'link'];
   var guest = 'nick,mail,link';
   guest = guest.split(',').filter(function(item) {
@@ -1180,7 +1183,11 @@
     lang: 'zh-cn' || 'zh-cn',
     path: location.pathname
   });
+}, window.Valine);
 </script>
+
+
+
 
     </div>
     <script>
