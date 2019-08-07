@@ -4,20 +4,21 @@
 
 # Site
 title: 柯摩的BLOG
-subtitle: 杂谈
+subtitle: Forget before get.
 description: 真实自有万钧之力
-keywords:
+keywords: 
 author: 柯摩
 language: zh-CN
 timezone:
-
+#keywords: BlockChain, Distributed Database, Pervasive computing, Technical Debt, Security Certificate, Cryptographic protocols, Human-Computer Interaction
 
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://yoursite.com
+url: https://www.kemo.xyz
 root: /
-permalink: :year/:month/:day/:title/
+# permalink: :year/:month/:day/:title/
+permalink: :title.html
 permalink_defaults:
 
 # Directory
@@ -37,7 +38,7 @@ titlecase: false # Transform title into titlecase
 external_link: true # Open external links in new tab
 filename_case: 0
 render_drafts: false
-post_asset_folder: false
+post_asset_folder: true
 relative_link: false
 future: true
 highlight:
@@ -109,8 +110,8 @@ live2d:
     use: live2d-widget-model-izumi
   display:
     position: right
-    width: 200
-    height: 400
+    width: 300
+    height: 500
   mobile:
     show: true
 
@@ -121,3 +122,18 @@ symbols_count_time:
   total_time: true
   exclude_codeblock: false
 
+aplayer:
+  meting: true
+
+# hexo-tag-cloud
+tag_cloud:
+    textFont: Noto Serif SC, Noto Serif SC
+    textColor: '#ff7040'
+    textHeight: 20
+    outlineColor: '#40cfff'
+    maxSpeed: 0.5 
+
+sitemap:
+  path: sitemap.xml
+baidusitemap:
+  path: baidusitemap.xml

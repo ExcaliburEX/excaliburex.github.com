@@ -4,8 +4,7 @@ title: "java_castle"
 date: 2017-11-07 21:52:09 +0800
 categories: Technology
 tags: Learning
-photos: "https://i.loli.net/2019/08/06/FtCpaXw9zc3hGOL.jpg"
-copyright: true
+image: "https://i.loli.net/2019/08/06/FtCpaXw9zc3hGOL.jpg"
 ---
 java类与对象的实例以及可扩展性
 <!-- more -->

@@ -4,8 +4,7 @@ title: "关于引力波新发现的总结"
 date: 2017-10-17 16:17:09 +0800
 categories: Thinking
 tags: Science Uranology
-photos: "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1565035720873&di=4737cf317681662de98664ae1cd49421&imgtype=0&src=http%3A%2F%2Fimg1.gtimg.com%2Fbj%2Fpics%2Fhv1%2F151%2F242%2F2285%2F148643986.jpg"
-copyright: true
+image: "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1565035720873&di=4737cf317681662de98664ae1cd49421&imgtype=0&src=http%3A%2F%2Fimg1.gtimg.com%2Fbj%2Fpics%2Fhv1%2F151%2F242%2F2285%2F148643986.jpg"
 ---
 
 我与科学家的唯一相同点就是我可以跟他们一同喜怒哀乐。

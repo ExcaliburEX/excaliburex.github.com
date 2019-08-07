@@ -4,8 +4,7 @@ title: "《三体》随记"
 date: 2017-10-16 19:39:42 +0800
 categories: Thinking
 tags: Editor
-photos: "https://i.loli.net/2019/08/06/71NgnSEBsXLY2HR.jpg"
-copyright: true
+image: "https://i.loli.net/2019/08/06/71NgnSEBsXLY2HR.jpg"
 ---
 给岁月以文明，而不是给文明以岁月。
 <!-- more -->

@@ -5,8 +5,9 @@ categories: Thinking
 tags: 
 	- Editor
 	- Reading
-photos: "https://i.loli.net/2017/10/16/59e42e0a7fb4c.png"
-copyright: true
+image: "https://i.loli.net/2017/10/16/59e42e0a7fb4c.png"
+keywords: Reading
+description: Thought
 ---
 
 “当你看到克利斯朵夫的面容之时，就是你将死不死的恶死之日。”

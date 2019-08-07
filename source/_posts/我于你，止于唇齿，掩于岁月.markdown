@@ -2,38 +2,20 @@
 title: "我于你，止于唇齿，掩于岁月"
 date: 2017-12-10 13:21:09 +0800
 categories: Life
-tags: diary
-photos: 
-	- "https://i.loli.net/2017/12/09/5a2b73066105e.png"
-copyright: true
+tags: Diary
+image: "https://i.loli.net/2017/12/09/5a2b73066105e.png"
 ---
 痛苦的根源，无能的愤怒。
 
 <!-- more -->
 
+{% note info %}
+此处有美妙的音乐哦~刷新一下即可看到！😁
+{% endnote %}
 
-{% aplayerlist %}
-{
-    "autoplay": false,
-    "showlrc": 3,
-    "mutex": true,
-    "music": [
-        {
-            "title": "绿色",
-            "author": "陈雪凝",
-            "url": "http://music.163.com/song/media/outer/url?id=1345848098.mp3",
-            "pic": "https://p3.music.126.net/R4ZP3AJ9xV0vvw8LX7AbMA==/109951163860425334.jpg?param=300y300",
-            "lrc": "http://www.22lrc.com/lrc/88470/1980.lrc"
-        },
-        {
-            "title": "你的酒馆对我打了烊",
-            "author": "陈雪凝",
-            "url": "http://music.163.com/song/media/outer/url?id=1341964346.mp3",
-            "pic": "https://p3.music.126.net/LiRR__0pJHSivqBHZzbMUw==/109951163816225567.jpg?param=300y300"
-        }
-    ]
-}
-{% endaplayerlist %}
+{% meting "2922026033" "netease" "playlist" "loop:all" "autoplay" "mutex:true" "order:list" "listmaxheight:250px" "preload:auto" "theme:#ad887a" %}
+
+
 
 - 2017.12.5 晴天
 

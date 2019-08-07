@@ -4,8 +4,7 @@ title: "日记"
 date: 2017-11-02 21:52:09 +0800
 categories: Thinking
 tags: Diary
-photos: "https://i.loli.net/2017/10/16/59e46cc23ad7c.jpg"
-copyright: true
+image: "https://i.loli.net/2017/10/16/59e46cc23ad7c.jpg"
 ---
 
 计数要从零开始。

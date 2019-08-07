@@ -7,8 +7,14 @@ image: https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=15102
 ---
  记录跑步日常。
 
+{% note info %}
+此处有美妙的音乐哦~刷新一下即可看到！😁
+{% endnote %}
 
-              
+[//]: #(aplay音频播放https://github.com/MoePlayer/hexo-tag-aplayer)
+{% meting "74041197" "netease" "playlist" "loop:all" "autoplay" "mutex:true" "order:list" "listmaxheight:250px" "preload:auto" "theme:#ad887a" %}
+
+
 # 2017
 - 10.13 8圈。
 - 10.14 7圈。
