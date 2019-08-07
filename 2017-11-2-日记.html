@@ -22,7 +22,6 @@
 
 <link rel="stylesheet" href="https://fonts.loli.net/css?family=Noto Serif SC:300,300italic,400,400italic,700,700italic|consolas:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
 <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
-  <link rel="stylesheet" href="/lib/fancybox/source/jquery.fancybox.css">
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/ilyabirman-likely@2/release/likely.css">
   <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
   <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
@@ -42,7 +41,7 @@
     back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
     save_scroll: false,
     copycode: {"enable":true,"show_result":true,"style":null},
-    fancybox: true,
+    fancybox: false,
     mediumzoom: false,
     lazyload: false,
     pangu: false,
@@ -329,6 +328,8 @@
   <div id="posts" class="posts-expand">
     
     <div class="reading-progress-bar"></div>
+
+
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
@@ -617,14 +618,20 @@
   
   </article>
 <div>
+
   
     <div>
     
-        <div style="text-align:center;color: #ccc;font-size:16px;">-------------本文结束<i class="fa fa-heart"></i>感谢您的阅读-------------</div>
+        <div style="text-align:center;color: #ccc;font-size:16px;">-------------   本 文 结 束 <i class="fa fa-heart"></i> 感 谢 您 的 阅 读    -------------</div>
     
 </div>
   
 </div>
+ 
+
+
+
+
   </div>
 
 
@@ -1007,7 +1014,6 @@
   <script size="300" alpha="0.6" zIndex="-1" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
   <script src="/lib/jquery/index.js?v=3.4.1"></script>
   <script src="/lib/pjax/pjax.min.js?v=0.2.8"></script>
-  <script src="/lib/fancybox/source/jquery.fancybox.pack.js"></script>
   <script src="/lib/reading_progress/reading_progress.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/valine@1.3.9/dist/Valine.min.js"></script>
   <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
@@ -1135,7 +1141,6 @@
 
     
 
-
 <script>
   var GUEST = ['nick', 'mail', 'link'];
   var guest = 'nick,mail,link';
@@ -1157,6 +1162,10 @@
     path: location.pathname
   });
 </script>
+
+
+
+
 
     </div>
     <script>
@@ -1199,6 +1208,8 @@ $(document).on('pjax:success', function() {
   <script type="text/javascript" src="/js/src/image.js"></script>
 
 
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
 
 <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/izumi.model.json"},"display":{"position":"right","width":300,"height":500},"mobile":{"show":true},"log":false,"tagMode":false});</script></body>
 </html>
