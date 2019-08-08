@@ -53,7 +53,7 @@
       hits: {"per_page":10},
       labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
     },
-    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
     path: './public/search.xml',
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -105,7 +105,7 @@
   <title>categories | 柯摩的BLOG</title>
   
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-145155839-1"></script>
-  <script pjax>
+  <script>
     var host = window.location.hostname;
     if (host !== "localhost" || !true) {
       window.dataLayer = window.dataLayer || [];
@@ -116,7 +116,7 @@
   </script>
 
 
-  <script pjax>
+  <script>
     var _hmt = _hmt || [];
     (function() {
       var hm = document.createElement("script");
@@ -289,25 +289,22 @@
 
     <div class="site-search">
       
-  <div class="algolia-popup popup search-popup">
-  <div class="algolia-search">
-    <div class="algolia-search-input-icon">
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
       <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
     </div>
-    <div class="algolia-search-input" id="algolia-search-input"></div>
   </div>
-
-  <div class="algolia-results">
-    <div id="algolia-stats"></div>
-    <div id="algolia-hits"></div>
-    <div id="algolia-pagination" class="algolia-pagination"></div>
-  </div>
-
-  <span class="popup-btn-close">
-    <i class="fa fa-times-circle"></i>
-  </span>
+  <div id="local-search-result"></div>
 </div>
-
 
 
     </div>
@@ -317,7 +314,7 @@
 
     
 
-  <span class="exturl github-corner" data-url="aHR0cHM6Ly9naXRodWIuY29tL0V4Y2FsaWJ1ckVY" title="Follow me on GitHub" aria-label="Follow me on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></span>
+  <a href="https://github.com/ExcaliburEX" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
 
 
     <main id="main" class="main">
@@ -519,7 +516,7 @@
       
         
       
-        <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL0V4Y2FsaWJ1ckVY" title="GitHub &rarr; https://github.com/ExcaliburEX"><i class="fa fa-fw fa-github"></i>GitHub</span>
+        <a href="https://github.com/ExcaliburEX" title="GitHub &rarr; https://github.com/ExcaliburEX" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
       </span>
     
       <span class="links-of-author-item">
@@ -530,7 +527,7 @@
       
         
       
-        <span class="exturl" data-url="bWFpbHRvOjkxMjAxMTcyN0BxcS5jb20=" title="E-Mail &rarr; mailto:912011727@qq.com"><i class="fa fa-fw fa-envelope"></i>E-Mail</span>
+        <a href="mailto:912011727@qq.com" title="E-Mail &rarr; mailto:912011727@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
       </span>
     
       <span class="links-of-author-item">
@@ -541,7 +538,7 @@
       
         
       
-        <span class="exturl" data-url="aHR0cHM6Ly93ZWliby5jb20vdS81MzM5NjE5ODI3" title="Weibo &rarr; https://weibo.com/u/5339619827"><i class="fa fa-fw fa-weibo"></i>Weibo</span>
+        <a href="https://weibo.com/u/5339619827" title="Weibo &rarr; https://weibo.com/u/5339619827" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
       </span>
     
       <span class="links-of-author-item">
@@ -552,7 +549,7 @@
       
         
       
-        <span class="exturl" data-url="aHR0cHM6Ly91c2VyLnF6b25lLnFxLmNvbS85MTIwMTE3Mjc=" title="QQ &rarr; https://user.qzone.qq.com/912011727"><i class="fa fa-fw fa-qq"></i>QQ</span>
+        <a href="https://user.qzone.qq.com/912011727" title="QQ &rarr; https://user.qzone.qq.com/912011727" rel="noopener" target="_blank"><i class="fa fa-fw fa-qq"></i>QQ</a>
       </span>
     
       <span class="links-of-author-item">
@@ -574,7 +571,7 @@
       
         
       
-        <span class="exturl" data-url="aHR0cHM6Ly90d2l0dGVyLmNvbS9FeGNhbGlidXJqcA==" title="Twitter &rarr; https://twitter.com/Excaliburjp"><i class="fa fa-fw fa-twitter"></i>Twitter</span>
+        <a href="https://twitter.com/Excaliburjp" title="Twitter &rarr; https://twitter.com/Excaliburjp" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
       </span>
     
       <span class="links-of-author-item">
@@ -585,14 +582,14 @@
       
         
       
-        <span class="exturl" data-url="aHR0cHM6Ly9zcGFjZS5iaWxpYmlsaS5jb20vMjE0MjEwOQ==" title="Bilibili &rarr; https://space.bilibili.com/2142109"><i class="fa fa-fw fa-mobile"></i>Bilibili</span>
+        <a href="https://space.bilibili.com/2142109" title="Bilibili &rarr; https://space.bilibili.com/2142109" rel="noopener" target="_blank"><i class="fa fa-fw fa-mobile"></i>Bilibili</a>
       </span>
     
   </div>
   <div class="cc-license motion-element" itemprop="license">
     
   
-    <span class="exturl cc-opacity" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC96aC1DTg=="><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></span>
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
   </div>
 
 
@@ -603,23 +600,23 @@
     </div>
     <ul class="links-of-blogroll-list">
         <li class="links-of-blogroll-item">
-          <span class="exturl" data-url="aHR0cHM6Ly91c2VyLnF6b25lLnFxLmNvbS85ODA4NzE4OTM/c291cmNlPW5hbWVjYXJkaG92ZXJxem9uZQ==" title="https://user.qzone.qq.com/980871893?source=namecardhoverqzone">kunlun Yuan</span>
+          <a href="https://user.qzone.qq.com/980871893?source=namecardhoverqzone" title="https://user.qzone.qq.com/980871893?source=namecardhoverqzone" rel="noopener" target="_blank">kunlun Yuan</a>
         </li>
       
         <li class="links-of-blogroll-item">
-          <span class="exturl" data-url="aHR0cHM6Ly91c2VyLnF6b25lLnFxLmNvbS81NjMyNzI3NjE/c291cmNlPWZyaWVuZGxpc3Q=" title="https://user.qzone.qq.com/563272761?source=friendlist">Papa Zheng</span>
+          <a href="https://user.qzone.qq.com/563272761?source=friendlist" title="https://user.qzone.qq.com/563272761?source=friendlist" rel="noopener" target="_blank">Papa Zheng</a>
         </li>
       
         <li class="links-of-blogroll-item">
-          <span class="exturl" data-url="aHR0cHM6Ly91c2VyLnF6b25lLnFxLmNvbS8xOTEzODUzMjA4P3NvdXJjZT1mcmllbmRsaXN0" title="https://user.qzone.qq.com/1913853208?source=friendlist">Papa Zhe</span>
+          <a href="https://user.qzone.qq.com/1913853208?source=friendlist" title="https://user.qzone.qq.com/1913853208?source=friendlist" rel="noopener" target="_blank">Papa Zhe</a>
         </li>
       
         <li class="links-of-blogroll-item">
-          <span class="exturl" data-url="aHR0cHM6Ly91c2VyLnF6b25lLnFxLmNvbS84NTc5MTk3MDI/c291cmNlPWFpb3N0YXI=" title="https://user.qzone.qq.com/857919702?source=aiostar">WangBanCheng</span>
+          <a href="https://user.qzone.qq.com/857919702?source=aiostar" title="https://user.qzone.qq.com/857919702?source=aiostar" rel="noopener" target="_blank">WangBanCheng</a>
         </li>
       
         <li class="links-of-blogroll-item">
-          <span class="exturl" data-url="aHR0cHM6Ly91c2VyLnF6b25lLnFxLmNvbS83MTkwOTU5OTY/c291cmNlPWZyaWVuZGxpc3Q=" title="https://user.qzone.qq.com/719095996?source=friendlist">ErCiYuan Jun</span>
+          <a href="https://user.qzone.qq.com/719095996?source=friendlist" title="https://user.qzone.qq.com/719095996?source=friendlist" rel="noopener" target="_blank">ErCiYuan Jun</a>
         </li>
       
     </ul>
@@ -702,7 +699,7 @@
 
         
 <div class="busuanzi-count">
-  <script pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
     <span class="post-meta-item-icon">
       <i class="fa fa-user"></i>
     </span>
@@ -724,7 +721,7 @@
 
 
 
-  <script pjax>
+  <script>
     (function() {
       var hm = document.createElement("script");
       hm.src = "//tajs.qq.com/stats?sId=66458571";
@@ -786,7 +783,6 @@
   <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
   <script size="300" alpha="0.6" zIndex="-1" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
   <script src="/lib/jquery/index.js?v=3.4.1"></script>
-  <script src="/lib/pjax/pjax.min.js?v=0.2.8"></script>
   <script src="/lib/fancybox/source/jquery.fancybox.pack.js"></script>
   <script src="/lib/reading_progress/reading_progress.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/valine@1.3.9/dist/Valine.min.js"></script>
@@ -804,13 +800,12 @@
 <script src="/js/next-boot.js?v=7.3.0"></script>
 
 
-  <script src="/js/exturl.js?v=7.3.0"></script>
 
 
 
 
   
-  <script pjax>
+  <script>
     (function(){
       var bp = document.createElement('script');
       var curProtocol = window.location.protocol.split(':')[0];
@@ -839,7 +834,7 @@
 
 
   <script src="/lib/bookmark/bookmark.min.js?v=1.0"></script>
-  <script pjax>
+  <script>
   if (CONFIG.page.isPost) {
     bookmark.scrollToMark('auto', "#更多");
   } else {
@@ -856,7 +851,7 @@
 
 
 
-  <script pjax>
+  <script>
   if (CONFIG.page.isPost) {
     wpac_init = window.wpac_init || [];
     wpac_init.push({
@@ -879,12 +874,7 @@
 
 
 
-  
-<link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
-<script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
-
-
-<script src="/js/algolia-search.js?v=7.3.0"></script>
+  <script src="/js/local-search.js?v=7.3.0"></script>
 
 
 
@@ -898,8 +888,6 @@
 
 
 
-
-    <div id="pjax">
 
   
 
@@ -943,44 +931,6 @@
 
 
 
-
-    </div>
-    <script>
-var pjax = new Pjax({
-  selectors: [
-    'title',
-    '#page-configurations',
-    '.content-wrap',
-    '.sidebar-inner',
-    '#pjax'
-  ],
-  switches: {
-    '.sidebar-inner': Pjax.switches.innerHTML
-  },
-  analytics: false,
-  cacheBust: false,
-  scrollTo: !CONFIG.save_scroll
-});
-$(document).on('pjax:send', function() {
-  $('.sidebar-inner').stop().fadeTo('fast', 0);
-  CONFIG.save_scroll && clearInterval(NexT.utils.saveScrollTimer);
-});
-$(document).on('pjax:success', function() {
-  $('script[pjax], script#page-configurations, #pjax script').each(function(i, o) {
-    $(o).parent().append($(o).remove());
-  });
-  // Define Motion Sequence & Bootstrap Motion.
-  if (CONFIG.motion.enable) {
-    NexT.motion.integrator
-      .init()
-      .add(NexT.motion.middleWares.postList)
-      .bootstrap();
-  }
-  $('.sidebar-inner .motion-element').css('opacity', 1);
-  $('.sidebar-inner').fadeTo('fast', 1);
-  NexT.utils.updateSidebarPosition();
-});
-</script>
 
   <script type="text/javascript" src="/js/src/image.js"></script>
 
