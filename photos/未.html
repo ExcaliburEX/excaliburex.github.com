@@ -76,18 +76,19 @@
   daovoice('update');
   </script>
 
-  <meta name="description" content="真实自有万钧之力">
+  <meta name="description" content="function loadXMLDoc(xmlUrl)  {     try //Internet Explorer     {         xmlDoc=new ActiveXObject(&quot;Microsoft.XMLDOM&quot;);     }     catch(e)     {       try //Firefox, Mozilla, Opera, etc.         {">
 <meta property="og:type" content="website">
-<meta property="og:title" content="柯摩的BLOG">
-<meta property="og:url" content="https://www.kemo.xyz/archives/index.html">
+<meta property="og:title" content="相册">
+<meta property="og:url" content="https://www.kemo.xyz/photos/未.html">
 <meta property="og:site_name" content="柯摩的BLOG">
-<meta property="og:description" content="真实自有万钧之力">
+<meta property="og:description" content="function loadXMLDoc(xmlUrl)  {     try //Internet Explorer     {         xmlDoc=new ActiveXObject(&quot;Microsoft.XMLDOM&quot;);     }     catch(e)     {       try //Firefox, Mozilla, Opera, etc.         {">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-08-08T17:46:29.337Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="柯摩的BLOG">
-<meta name="twitter:description" content="真实自有万钧之力">
+<meta name="twitter:title" content="相册">
+<meta name="twitter:description" content="function loadXMLDoc(xmlUrl)  {     try //Internet Explorer     {         xmlDoc=new ActiveXObject(&quot;Microsoft.XMLDOM&quot;);     }     catch(e)     {       try //Firefox, Mozilla, Opera, etc.         {">
   <link rel="alternate" href="/atom.xml" title="柯摩的BLOG" type="application/atom+xml">
-  <link rel="canonical" href="https://www.kemo.xyz/archives/">
+  <link rel="canonical" href="https://www.kemo.xyz/photos/未">
 
 
 <script id="page-configurations">
@@ -96,12 +97,12 @@
     sidebar: "",
     isHome: false,
     isPost: false,
-    isPage: false,
-    isArchive: true
+    isPage: true,
+    isArchive: false
   };
 </script>
 
-  <title>归档 | 柯摩的BLOG</title>
+  <title>相册 | 柯摩的BLOG</title>
   
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-145155839-1"></script>
   <script>
@@ -351,294 +352,193 @@
 
   
 
-          <div id="content" class="content page-archive">
+          <div id="content" class="content page-post-detail">
             
 
+  <div id="posts" class="posts-expand">
+    
+    
+    
+    <div class="post-block page">
+      <header class="post-header">
+
+<h2 class="post-title" itemprop="name headline">相册
+
+</h2>
+
+<div class="post-meta">
   
-  
-  
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
-      <span class="archive-page-counter">
-        
-        
-        
-          
-        
-        嗯..! 目前共计 7 篇日志。 继续努力。
-      </span>
+
+</div>
+
+</header>
+
       
+      
+      
+      <div class="post-body">
+        
+          <div id="box" class="box"></div>
 
-        
-        
-        
 
-        
-          
-          <div class="collection-title">
-            <h2 class="archive-year" id="archive-year-2017">2017</h2>
-          </div>
-        
-        
+<script type="text/javascript">
 
+function loadXMLDoc(xmlUrl) 
+{
+    try //Internet Explorer
+    {
+        xmlDoc=new ActiveXObject("Microsoft.XMLDOM");
+    }
+    catch(e)
+    {
+      try //Firefox, Mozilla, Opera, etc.
+        {
+          xmlDoc=document.implementation.createDocument("","",null);
+        }
+      catch(e) {alert(e.message)}
+    }
+
+    try 
+    {
+          xmlDoc.async=false;
+          xmlDoc.load(xmlUrl);
+    }
+    catch(e) {
+        try //Google Chrome  
+          {  
+            var chromeXml = new XMLHttpRequest();
+            chromeXml.open("GET", xmlUrl, false);
+            chromeXml.send(null);
+            xmlDoc = chromeXml.responseXML.documentElement;                 
+            //alert(xmlDoc.childNodes[0].nodeName);
+            //return xmlDoc;    
+          }  
+          catch(e)  
+          {  
+              alert(e.message)  
+          }                
+    }
+    return xmlDoc; 
+}
+
+var xmllink="https://photos-1259799643.cos.ap-shanghai.myqcloud.com"
+//访问域名链接就是我上面提到的那个访问域名xml链接
+
+xmlDoc=loadXMLDoc(xmllink);
+var urls=xmlDoc.getElementsByTagName('Key');
+var date=xmlDoc.getElementsByTagName('LastModified');
+var wid=250;
+var showNum=12; //每个相册一次展示多少照片
+if ((window.innerWidth)>1200) {wid=(window.innerWidth*3)/18;}
+var box=document.getElementById('box');
+var i=0;
+
+var content=new Array();
+var tmp=0;
+var kkk=-1;
+for (var t = 0; t < urls.length ; t++) {
+    var bucket=urls[t].innerHTML;
+    var length=bucket.indexOf('/');
+    if(length===bucket.length-1){
+        kkk++;
+        content[kkk]=new Array();
+        content[kkk][0]={'url':bucket,'date':date[t].innerHTML.substring(0,10)};
+        tmp=1;
+    }
+    else {
+        content[kkk][tmp++]={'url':bucket.substring(length+1),'date':date[t].innerHTML.substring(0,10)};
+    }
+}
+
+for (var i = 0; i < content.length; i++) {
+    var conBox=document.createElement("div");
+    conBox.id='conBox'+i;
+    box.appendChild(conBox);
+    var item=document.createElement("div");
+    var title=content[i][0].url;
+    item.innerHTML="<button class=title style=background:url("+xmllink+'/'+title+"封面.jpg"+");><span style=display:inline;><strong style=color:#f0f3f6; >"+title.substring(0,title.length-1)+"</strong></span></button>";
+    conBox.appendChild(item);
+
+    for (var j = 1; j < content[i].length && j < showNum+1; j++) {
+        var con=content[i][j].url;
+        var item=document.createElement("li");
+        item.innerHTML="<div class=imgbox id=imgbox style=height:"+wid+"px;><img class=imgitem src="+xmllink+'/'+title+con+" alt="+con+"></div><span>"+con.substring(0,con.length-4)+"</span><p>上传于"+content[i][j].date+"</p>";
+        conBox.appendChild(item);
+    }
+    if(content[i].length > showNum){
+        var moreItem=document.createElement("button");
+        moreItem.className="btn-more-posts";
+        moreItem.id="more"+i;
+        moreItem.value=showNum+1;
+        let cur=i;
+        moreItem.onclick= function (){
+            moreClick(this,cur,content[cur],content[cur][0].url);
+        }
+        moreItem.innerHTML="<span style=display:inline;><strong style=color:#f0f3f6;>加载更多</strong></span>";
+        conBox.appendChild(moreItem);
+    }
+}
+
+function moreClick(obj,cur,cont,title){
+    var parent=obj.parentNode;
+    parent.removeChild(obj);
+    var j=obj.value;
+    var begin=j;
+    for ( ; j < cont.length && j < Number(showNum) + Number(begin); j++) {
+        console.log( Number(showNum) + Number(begin));
+        var con=cont[j].url;
+        var item=document.createElement("li");
+        item.innerHTML="<div class=imgbox id=imgbox style=height:"+wid+"px;><img class=imgitem src="+xmllink+'/'+title+con+" alt="+con+"></div><span>"+con.substring(0,con.length-4)+"</span><p>上传于"+cont[j].date+"</p>";
+        parent.appendChild(item);
+    }
+    if(cont.length > j){
+        obj.value=j;
+        parent.appendChild(obj);
+    }
+}
+
+
+
+</script>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
         
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-          <a class="post-title-link" href="/我于你，止于唇齿，掩于岁月.html" itemprop="url">
-            
-              <span itemprop="name">我于你，止于唇齿，掩于岁月</span>
-            
-          </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-12-10T13:21:09+08:00"
-              content="2017-12-10">
-          12-10
-        </time>
       </div>
-
-    </header>
-  </article>
-
-
-
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-          <a class="post-title-link" href="/java_castle.html" itemprop="url">
-            
-              <span itemprop="name">java_castle</span>
-            
-          </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-11-07T21:52:09+08:00"
-              content="2017-11-07">
-          11-07
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-          <a class="post-title-link" href="/2017-11-2-日记.html" itemprop="url">
-            
-              <span itemprop="name">日记</span>
-            
-          </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-11-02T21:52:09+08:00"
-              content="2017-11-02">
-          11-02
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-          <a class="post-title-link" href="/关于引力波新发现的总结.html" itemprop="url">
-            
-              <span itemprop="name">关于引力波新发现的总结</span>
-            
-          </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-10-17T16:17:09+08:00"
-              content="2017-10-17">
-          10-17
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-          <a class="post-title-link" href="/2017-10-16-《三体》随记.html" itemprop="url">
-            
-              <span itemprop="name">《三体》随记</span>
-            
-          </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-10-16T19:39:42+08:00"
-              content="2017-10-16">
-          10-16
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-          <a class="post-title-link" href="/2017-10-15-读《约翰·克利斯朵夫》.html" itemprop="url">
-            
-              <span itemprop="name">读《约翰·克利斯朵夫》</span>
-            
-          </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-10-15T14:57:06+08:00"
-              content="2017-10-15">
-          10-15
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-          <a class="post-title-link" href="/2017-2-22-Java学习笔记.html" itemprop="url">
-            
-              <span itemprop="name">Java学习笔记</span>
-            
-          </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-02-22T21:52:09+08:00"
-              content="2017-02-22">
-          02-22
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
     </div>
+    
+
+    
+    
+    
   </div>
-  
-  
-  
-
-  
-
 
 
           </div>
           
+    
+    <div class="comments" id="comments"></div>
+  
+
 
         </div>
           
@@ -1118,6 +1018,11 @@
 
 
   
+    <script src="/js/scrollspy.js?v=7.3.0"></script>
+<script src="/js/post-details.js?v=7.3.0"></script>
+
+  
+
     
 
 <script>
