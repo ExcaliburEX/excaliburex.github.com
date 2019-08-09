@@ -1,4 +1,4 @@
-<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script>window.onload=function(){
+window.onload=function(){
     var LinkCards=document.getElementsByClassName('LinkCard');
     if(LinkCards.length != 0){
     var LinkCard=LinkCards[0];
