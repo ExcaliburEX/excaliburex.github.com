@@ -80,7 +80,7 @@
 <meta name="keywords" content="Learning">
 <meta property="og:type" content="article">
 <meta property="og:title" content="java_castle">
-<meta property="og:url" content="https://www.kemo.xyz/java_castle.html">
+<meta property="og:url" content="https://kemo.xyz/java_castle.html">
 <meta property="og:site_name" content="柯摩的BLOG">
 <meta property="og:description" content="java类与对象的实例以及可扩展性">
 <meta property="og:locale" content="zh-CN">
@@ -89,7 +89,7 @@
 <meta name="twitter:title" content="java_castle">
 <meta name="twitter:description" content="java类与对象的实例以及可扩展性">
   <link rel="alternate" href="/atom.xml" title="柯摩的BLOG" type="application/atom+xml">
-  <link rel="canonical" href="https://www.kemo.xyz/java_castle">
+  <link rel="canonical" href="https://kemo.xyz/java_castle">
 
 
 <script id="page-configurations">
@@ -339,7 +339,7 @@
   <!--知乎卡片链接-->
 <script type="text/javascript" src="/js/src/linkcard.js"></script>
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.kemo.xyz/java_castle.html">
+    <link itemprop="mainEntityOfPage" href="https://kemo.xyz/java_castle.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="柯摩">
@@ -552,7 +552,7 @@
     <strong>本文作者： </strong>柯摩</li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://www.kemo.xyz/java_castle.html" title="java_castle">https://www.kemo.xyz/java_castle.html</a>
+    <a href="https://kemo.xyz/java_castle.html" title="java_castle">https://kemo.xyz/java_castle.html</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
@@ -568,6 +568,12 @@
           
         </div>
         <div class="post-widgets">
+        
+        
+          <div class="wp_rating">
+          
+            <div id="wpac-rating"></div>
+          </div>
         
 
         
@@ -606,7 +612,7 @@
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
-              <a href="/2017-11-2-日记.html" rel="next" title="日记">
+              <a href="/日记.html" rel="next" title="日记">
                 <i class="fa fa-chevron-left"></i> 日记
               </a>
             
@@ -1083,6 +1089,26 @@
 
 
 
+  <script>
+  if (CONFIG.page.isPost) {
+    wpac_init = window.wpac_init || [];
+    wpac_init.push({
+      widget: 'Rating',
+      id: 20167,
+      el: 'wpac-rating',
+      color: 'fc6423'
+    });
+    (function() {
+      if ('WIDGETPACK_LOADED' in window) return;
+      WIDGETPACK_LOADED = true;
+      var mc = document.createElement('script');
+      mc.type = 'text/javascript';
+      mc.async = true;
+      mc.src = '//embed.widgetpack.com/widget.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+    })();
+  }
+  </script>
 
 
 

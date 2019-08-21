@@ -80,7 +80,7 @@
 <meta name="keywords" content="Diary">
 <meta property="og:type" content="article">
 <meta property="og:title" content="日记">
-<meta property="og:url" content="https://www.kemo.xyz/2017-11-2-日记.html">
+<meta property="og:url" content="https://kemo.xyz/日记.html">
 <meta property="og:site_name" content="柯摩的BLOG">
 <meta property="og:description" content="计数要从零开始。">
 <meta property="og:locale" content="zh-CN">
@@ -89,7 +89,7 @@
 <meta name="twitter:title" content="日记">
 <meta name="twitter:description" content="计数要从零开始。">
   <link rel="alternate" href="/atom.xml" title="柯摩的BLOG" type="application/atom+xml">
-  <link rel="canonical" href="https://www.kemo.xyz/2017-11-2-日记">
+  <link rel="canonical" href="https://kemo.xyz/日记">
 
 
 <script id="page-configurations">
@@ -339,7 +339,7 @@
   <!--知乎卡片链接-->
 <script type="text/javascript" src="/js/src/linkcard.js"></script>
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.kemo.xyz/2017-11-2-日记.html">
+    <link itemprop="mainEntityOfPage" href="https://kemo.xyz/日记.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="柯摩">
@@ -419,8 +419,8 @@
     </span>
     <span class="post-meta-item-text">评论数：</span>
   
-    <a href="/2017-11-2-日记.html#comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2017-11-2-日记.html" itemprop="commentCount"></span>
+    <a href="/日记.html#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/日记.html" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -539,7 +539,7 @@
     <strong>本文作者： </strong>柯摩</li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://www.kemo.xyz/2017-11-2-日记.html" title="日记">https://www.kemo.xyz/2017-11-2-日记.html</a>
+    <a href="https://kemo.xyz/日记.html" title="日记">https://kemo.xyz/日记.html</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
@@ -555,6 +555,12 @@
           
         </div>
         <div class="post-widgets">
+        
+        
+          <div class="wp_rating">
+          
+            <div id="wpac-rating"></div>
+          </div>
         
 
         
@@ -1070,6 +1076,26 @@
 
 
 
+  <script>
+  if (CONFIG.page.isPost) {
+    wpac_init = window.wpac_init || [];
+    wpac_init.push({
+      widget: 'Rating',
+      id: 20167,
+      el: 'wpac-rating',
+      color: 'fc6423'
+    });
+    (function() {
+      if ('WIDGETPACK_LOADED' in window) return;
+      WIDGETPACK_LOADED = true;
+      var mc = document.createElement('script');
+      mc.type = 'text/javascript';
+      mc.async = true;
+      mc.src = '//embed.widgetpack.com/widget.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+    })();
+  }
+  </script>
 
 
 

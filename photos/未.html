@@ -79,7 +79,7 @@
   <meta name="description" content="function loadXMLDoc(xmlUrl)  {     try //Internet Explorer     {         xmlDoc=new ActiveXObject(&quot;Microsoft.XMLDOM&quot;);     }     catch(e)     {       try //Firefox, Mozilla, Opera, etc.         {">
 <meta property="og:type" content="website">
 <meta property="og:title" content="相册">
-<meta property="og:url" content="https://www.kemo.xyz/photos/未.html">
+<meta property="og:url" content="https://kemo.xyz/photos/未.html">
 <meta property="og:site_name" content="柯摩的BLOG">
 <meta property="og:description" content="function loadXMLDoc(xmlUrl)  {     try //Internet Explorer     {         xmlDoc=new ActiveXObject(&quot;Microsoft.XMLDOM&quot;);     }     catch(e)     {       try //Firefox, Mozilla, Opera, etc.         {">
 <meta property="og:locale" content="zh-CN">
@@ -88,7 +88,7 @@
 <meta name="twitter:title" content="相册">
 <meta name="twitter:description" content="function loadXMLDoc(xmlUrl)  {     try //Internet Explorer     {         xmlDoc=new ActiveXObject(&quot;Microsoft.XMLDOM&quot;);     }     catch(e)     {       try //Firefox, Mozilla, Opera, etc.         {">
   <link rel="alternate" href="/atom.xml" title="柯摩的BLOG" type="application/atom+xml">
-  <link rel="canonical" href="https://www.kemo.xyz/photos/未">
+  <link rel="canonical" href="https://kemo.xyz/photos/未">
 
 
 <script id="page-configurations">
@@ -970,6 +970,26 @@ function moreClick(obj,cur,cont,title){
 
 
 
+  <script>
+  if (CONFIG.page.isPost) {
+    wpac_init = window.wpac_init || [];
+    wpac_init.push({
+      widget: 'Rating',
+      id: 20167,
+      el: 'wpac-rating',
+      color: 'fc6423'
+    });
+    (function() {
+      if ('WIDGETPACK_LOADED' in window) return;
+      WIDGETPACK_LOADED = true;
+      var mc = document.createElement('script');
+      mc.type = 'text/javascript';
+      mc.async = true;
+      mc.src = '//embed.widgetpack.com/widget.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+    })();
+  }
+  </script>
 
 
 
