@@ -1,6 +1,6 @@
 ﻿---
 layout: post
-title: **"[LeetCode] 1.Two Sum"**
+title: "[LeetCode] 1.Two Sum"
 date: 2019-09-26 20:43:14 +0800
 categories: Algorithm
 tags: 
@@ -30,7 +30,7 @@ image: "https://i.loli.net/2019/10/04/k2vUJrIhnQtEOfg.jpg"
 
 # 解法
 一次循环，先将目标值减去第一个数，然后将这个数加入到字典中，如果字典中能找到另外一个数与当前的数加和满足目标，就输出。
-```python
+``` python
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
         dic = {}

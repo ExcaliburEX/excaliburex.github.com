@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[[LeetCode] 1.Two Sum]]></title>
     <url>%2FLeetCode%201.Two%20Sum.html</url>
-    <content type="text"><![CDATA[第一次写，不是很懂。 @[TOC](LeetCode 1.Two Sum) 题目给定一个整数数组 nums 和一个目标值 target，请你在该数组中找出和为目标值的那 两个 整数，并返回他们的数组下标。 你可以假设每种输入只会对应一个答案。但是，你不能重复利用这个数组中同样的元素。 示例 给定 nums = [2, 7, 11, 15], target = 9因为 nums[0] + nums[1] = 2 + 7 = 9所以返回 [0, 1] 解法一次循环，先将目标值减去第一个数，然后将这个数加入到字典中，如果字典中能找到另外一个数与当前的数加和满足目标，就输出。 123456789class Solution: def twoSum(self, nums: List[int], target: int) -> List[int]: dic = {} for index, num in enumerate(nums): another_num = target - num if another_num in dic: return [dic[another_num], index] dic[num] = index return None document.querySelectorAll('.github-emoji') .forEach(el => { if (!el.dataset.src) { return; } const img = document.createElement('img'); img.style = 'display:none !important;'; img.src = el.dataset.src; img.addEventListener('error', () => { img.remove(); el.style.color = 'inherit'; el.style.backgroundImage = 'none'; el.style.background = 'none'; }); img.addEventListener('load', () => { img.remove(); }); document.body.appendChild(img); });]]></content>
+    <content type="text"><![CDATA[第一次写，不是很懂。 题目给定一个整数数组 nums 和一个目标值 target，请你在该数组中找出和为目标值的那 两个 整数，并返回他们的数组下标。 你可以假设每种输入只会对应一个答案。但是，你不能重复利用这个数组中同样的元素。 示例 给定 nums = [2, 7, 11, 15], target = 9因为 nums[0] + nums[1] = 2 + 7 = 9所以返回 [0, 1] 解法一次循环，先将目标值减去第一个数，然后将这个数加入到字典中，如果字典中能找到另外一个数与当前的数加和满足目标，就输出。 123456789class Solution: def twoSum(self, nums: List[int], target: int) -> List[int]: dic = {} for index, num in enumerate(nums): another_num = target - num if another_num in dic: return [dic[another_num], index] dic[num] = index return None document.querySelectorAll('.github-emoji') .forEach(el => { if (!el.dataset.src) { return; } const img = document.createElement('img'); img.style = 'display:none !important;'; img.src = el.dataset.src; img.addEventListener('error', () => { img.remove(); el.style.color = 'inherit'; el.style.backgroundImage = 'none'; el.style.background = 'none'; }); img.addEventListener('load', () => { img.remove(); }); document.body.appendChild(img); });]]></content>
       <categories>
         <category>Algorithm</category>
       </categories>
@@ -22,9 +22,9 @@
         <category>Life</category>
       </categories>
       <tags>
-        <tag>随笔</tag>
-        <tag>Thinking</tag>
         <tag>Diary</tag>
+        <tag>Thinking</tag>
+        <tag>随笔</tag>
       </tags>
   </entry>
   <entry>
@@ -115,9 +115,9 @@
       </categories>
       <tags>
         <tag>Editor</tag>
-        <tag>随笔</tag>
-        <tag>Thinking</tag>
         <tag>Diary</tag>
+        <tag>Thinking</tag>
+        <tag>随笔</tag>
         <tag>日记</tag>
       </tags>
   </entry>
