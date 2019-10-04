@@ -166,7 +166,7 @@ body {
   background: #f5f7f9;
   color: #555;
   font-family: 'Noto Serif SC', -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Heiti SC", "STHeiti", "Source Han Sans SC", "Noto Sans CJK SC", "WenQuanYi Micro Hei", "Droid Sans Fallback", "Microsoft YaHei", sans-serif;
-  font-size: 16px;
+  font-size: 18px;
   line-height: 2;
   position: relative;
 }
@@ -1281,13 +1281,6 @@ pre .javascript .function {
     transform: rotate(10deg);
   }
 }
-.post {
-  margin-top: 60px;
-  margin-bottom: 60px;
-  padding: 25px;
-  -webkit-box-shadow: 0 0 5px rgba(202,203,203,0.5);
-  -moz-box-shadow: 0 0 5px rgba(202,203,204,0.5);
-}
 .post-body p a {
   color: #0593d3;
   border-bottom: none;
@@ -1297,6 +1290,23 @@ pre .javascript .function {
   color: #fc6423;
   border-bottom: none;
   border-bottom: 1px solid #fc6423;
+}
+.post-body ul li a {
+  color: #0593d3;
+  border-bottom: none;
+  border-bottom: 1px solid #0593d3;
+}
+.post-body ul li a:hover {
+  color: #fc6423;
+  border-bottom: none;
+  border-bottom: 1px solid #fc6423;
+}
+.post {
+  margin-top: 60px;
+  margin-bottom: 60px;
+  padding: 25px;
+  -webkit-box-shadow: 0 0 5px rgba(202,203,203,0.5);
+  -moz-box-shadow: 0 0 5px rgba(202,203,204,0.5);
 }
 .post-body {
   overflow-wrap: break-word;
@@ -1961,7 +1971,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #9effd4;
+  background: #ffe0d5;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2733,6 +2743,26 @@ body {
 }
 img.img-topic {
   width: 100%;
+}
+.post-body p a {
+  color: #0593d3;
+  border-bottom: none;
+  border-bottom: 1px solid #0593d3;
+}
+.post-body p a:hover {
+  color: #fc6423;
+  border-bottom: none;
+  border-bottom: 1px solid #fc6423;
+}
+.post-body ul li a {
+  color: #0593d3;
+  border-bottom: none;
+  border-bottom: 1px solid #0593d3;
+}
+.post-body ul li a:hover {
+  color: #fc6423;
+  border-bottom: none;
+  border-bottom: 1px solid #fc6423;
 }
 div#comments.comments.v {
   margin-top: 0px !important;
