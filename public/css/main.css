@@ -181,29 +181,29 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'Noto Serif SC', 'Noto Serif SC', -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Heiti SC", "STHeiti", "Source Han Sans SC", "Noto Sans CJK SC", "WenQuanYi Micro Hei", "Droid Sans Fallback", "Microsoft YaHei", sans-serif;
+  font-family: 'Noto Serif SC Black', 'Noto Serif SC', -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Heiti SC", "STHeiti", "Source Han Sans SC", "Noto Sans CJK SC", "WenQuanYi Micro Hei", "Droid Sans Fallback", "Microsoft YaHei", sans-serif;
   font-weight: bold;
   line-height: 1.5;
   margin: 20px 0 15px;
   padding: 0;
 }
 h1 {
-  font-size: 1.75em;
+  font-size: 2.375em;
 }
 h2 {
-  font-size: 1.625em;
+  font-size: 2.25em;
 }
 h3 {
-  font-size: 1.5em;
+  font-size: 2.125em;
 }
 h4 {
-  font-size: 1.375em;
+  font-size: 2em;
 }
 h5 {
-  font-size: 1.25em;
+  font-size: 1.875em;
 }
 h6 {
-  font-size: 1.125em;
+  font-size: 1.75em;
 }
 p {
   margin: 0 0 20px 0;
@@ -1303,6 +1303,7 @@ pre .javascript .function {
   color: #0593d3;
   border-bottom: none;
   border-bottom: 1px solid #0593d3;
+  color: #0593d3;
 }
 .post-body p a:hover {
   color: #fc6423;
@@ -1329,7 +1330,7 @@ pre .javascript .function {
 .post-body {
   overflow-wrap: break-word;
   word-wrap: break-word;
-  font-family: 'Noto Serif SC', -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Heiti SC", "STHeiti", "Source Han Sans SC", "Noto Sans CJK SC", "WenQuanYi Micro Hei", "Droid Sans Fallback", "Microsoft YaHei", sans-serif;
+  font-family: 'Noto Serif SC', 'Noto Serif SC', -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Heiti SC", "STHeiti", "Source Han Sans SC", "Noto Sans CJK SC", "WenQuanYi Micro Hei", "Droid Sans Fallback", "Microsoft YaHei", sans-serif;
 }
 .post-body span.exturl .fa {
   font-size: 0.875em;
@@ -1573,7 +1574,7 @@ pre .javascript .function {
 }
 .posts-expand .post-meta {
   color: #999;
-  font-family: 'Noto Serif SC', -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Heiti SC", "STHeiti", "Source Han Sans SC", "Noto Sans CJK SC", "WenQuanYi Micro Hei", "Droid Sans Fallback", "Microsoft YaHei", sans-serif;
+  font-family: 'Noto Serif SC', 'Noto Serif SC', -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Heiti SC", "STHeiti", "Source Han Sans SC", "Noto Sans CJK SC", "WenQuanYi Micro Hei", "Droid Sans Fallback", "Microsoft YaHei", sans-serif;
   margin: 3px 0 60px 0;
   text-align: center;
 }
@@ -1989,7 +1990,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #e0a4de;
+  background: #54bb9c;
   border-radius: 50%;
   content: ' ';
   display: inline-block;

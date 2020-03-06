@@ -8,23 +8,26 @@
 <p>Symbols count and time to read of articles.</p>
 <p>Better than <a href="https://github.com/ierhyna/hexo-reading-time"><code>hexo-reading-time</code></a> and faster than <a href="https://github.com/willin/hexo-wordcount"><code>hexo-worcount</code></a>. No external dependencies.</p>
 <h2 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h2><p><a href="../../blob/master/lib/helper.js"><img src="https://img.shields.io/github/size/theme-next/hexo-symbols-count-time/lib/helper.js.svg" alt="size-image"></a> <!--[![rel-image]](../../releases)--><br><a href="https://www.npmjs.com/package/hexo-symbols-count-time"><img src="https://img.shields.io/npm/dm/hexo-symbols-count-time.svg" alt="dm-image"></a><br><a href="https://www.npmjs.com/package/hexo-symbols-count-time"><img src="https://img.shields.io/npm/dt/hexo-symbols-count-time.svg" alt="dt-image"></a></p>
-<pre><code class="bash">$ npm install hexo-symbols-count-time --save</code></pre>
+<pre><code class="lang-bash">$ npm install hexo-symbols-count-time --save
+</code></pre>
 <h2 id="Usage"><a href="#Usage" class="headerlink" title="Usage"></a>Usage</h2><p>Activate this plugin in <strong>hexo’s <code>_config.yml</code></strong> (which locates in the root dir of your blog) by enabled any option:</p>
-<pre><code class="yml"><span class="attr">symbols_count_time:</span>
-<span class="attr">  symbols:</span> <span class="literal">true</span>
-<span class="attr">  time:</span> <span class="literal">true</span>
-<span class="attr">  total_symbols:</span> <span class="literal">true</span>
-<span class="attr">  total_time:</span> <span class="literal">true</span>
-<span class="attr">  exclude_codeblock:</span> <span class="literal">false</span></code></pre>
+<pre><code class="lang-yml">symbols_count_time:
+  symbols: true
+  time: true
+  total_symbols: true
+  total_time: true
+  exclude_codeblock: false
+</code></pre>
 <p>If <code>symbols_count_time</code> not specified (or commented), plugin will totally disabled.</p>
 <h3 id="NexT-theme"><a href="#NexT-theme" class="headerlink" title="NexT theme"></a>NexT theme</h3><p>This plugin integrated in «NexT» and after plugin enabled in main Hexo config, you may adjust options in NexT config:</p>
-<pre><code class="yml"><span class="attr">symbols_count_time:</span>
-<span class="attr">  separated_meta:</span> <span class="literal">true</span>
-<span class="attr">  item_text_post:</span> <span class="literal">true</span>
-<span class="attr">  item_text_total:</span> <span class="literal">false</span>
-<span class="attr">  awl:</span> <span class="number">4</span>
-<span class="attr">  wpm:</span> <span class="number">275</span>
-<span class="attr">  suffix:</span> <span class="string">mins.</span></code></pre>
+<pre><code class="lang-yml">symbols_count_time:
+  separated_meta: true
+  item_text_post: true
+  item_text_total: false
+  awl: 4
+  wpm: 275
+  suffix: mins.
+</code></pre>
 <h4 id="Parameters"><a href="#Parameters" class="headerlink" title="Parameters"></a>Parameters</h4><ul>
 <li><code>awl</code> – Average Word Length (chars count in word). Default: <code>4</code>. You can check this <a href="https://charactercounttool.com">here</a>.<ul>
 <li>CN &asymp; <code>2</code></li>
@@ -38,23 +41,32 @@
 <li>Fast &asymp; <code>350</code></li>
 </ul>
 </li>
-<li><code>suffix</code> – If time to read less then 60 minutes, added suffix as string parameter.<br>If not defined, <code>mins.</code> will be used as default.</li>
-<li><code>exclude_codeblock</code> – Allow to exclude all content inside code blocks for more accurate words counting.<br>If not defined, <code>false</code> will be used as default.</li>
+<li><code>suffix</code> – If time to read less then 60 minutes, added suffix as string parameter.\<br>If not defined, <code>mins.</code> will be used as default.</li>
+<li><code>exclude_codeblock</code> – Allow to exclude all content inside code blocks for more accurate words counting.\<br>If not defined, <code>false</code> will be used as default.</li>
 </ul>
-<p><strong>Note for Chinese users:</strong> because in Chinese language average word length about <code>~1.5</code> and if you at most cases write posts in Chinese (without mixed English), recommended to set <code>awl</code> to <code>2</code> and <code>wpm</code> to <code>300</code>.<br>But if you usualy mix your posts with English, <code>awl</code> to <code>4</code> and <code>wpm</code> to <code>275</code> will be nice.</p>
-<h2 id="Development"><a href="#Development" class="headerlink" title="Development"></a>Development</h2><pre><code class="bash">$ <span class="built_in">cd</span> hexo
-$ git <span class="built_in">clone</span> https://github.com/theme-next/hexo-symbols-count-time.git node_modules/hexo-symbols-count-time
-$ <span class="built_in">cd</span> node_modules/hexo-symbols-count-time</code></pre>
-<h3 id="Tests"><a href="#Tests" class="headerlink" title="Tests"></a>Tests</h3><pre><code class="bash">$ npm install mocha chai --save-dev
-$ npm <span class="built_in">test</span></code></pre>
-<h3 id="Tests-with-coverage"><a href="#Tests-with-coverage" class="headerlink" title="Tests with coverage"></a>Tests with coverage</h3><pre><code class="bash">$ npm install -g istanbul
-$ istanbul cover --<span class="built_in">print</span> both node_modules/.bin/_mocha -- <span class="built_in">test</span>/index.js</code></pre>
-<h3 id="Templates"><a href="#Templates" class="headerlink" title="Templates"></a>Templates</h3><h4 id="Symbols-Count"><a href="#Symbols-Count" class="headerlink" title="Symbols Count"></a>Symbols Count</h4><pre><code class="js">{{ symbolsCount(post) }}</code></pre>
-<h4 id="Symbols-Time"><a href="#Symbols-Time" class="headerlink" title="Symbols Time"></a>Symbols Time</h4><pre><code class="js">{{ symbolsTime(post) }}</code></pre>
+<p><strong>Note for Chinese users:</strong> because in Chinese language average word length about <code>~1.5</code> and if you at most cases write posts in Chinese (without mixed English), recommended to set <code>awl</code> to <code>2</code> and <code>wpm</code> to <code>300</code>.\<br>But if you usualy mix your posts with English, <code>awl</code> to <code>4</code> and <code>wpm</code> to <code>275</code> will be nice.</p>
+<h2 id="Development"><a href="#Development" class="headerlink" title="Development"></a>Development</h2><pre><code class="lang-bash">$ cd hexo
+$ git clone https://github.com/theme-next/hexo-symbols-count-time.git node_modules/hexo-symbols-count-time
+$ cd node_modules/hexo-symbols-count-time
+</code></pre>
+<h3 id="Tests"><a href="#Tests" class="headerlink" title="Tests"></a>Tests</h3><pre><code class="lang-bash">$ npm install mocha chai --save-dev
+$ npm test
+</code></pre>
+<h3 id="Tests-with-coverage"><a href="#Tests-with-coverage" class="headerlink" title="Tests with coverage"></a>Tests with coverage</h3><pre><code class="lang-bash">$ npm install -g istanbul
+$ istanbul cover --print both node_modules/.bin/_mocha -- test/index.js
+</code></pre>
+<h3 id="Templates"><a href="#Templates" class="headerlink" title="Templates"></a>Templates</h3><h4 id="Symbols-Count"><a href="#Symbols-Count" class="headerlink" title="Symbols Count"></a>Symbols Count</h4><pre><code class="lang-js">{{ symbolsCount(post) }}
+</code></pre>
+<h4 id="Symbols-Time"><a href="#Symbols-Time" class="headerlink" title="Symbols Time"></a>Symbols Time</h4><pre><code class="lang-js">{{ symbolsTime(post) }}
+</code></pre>
 <p>Or with predefined parameters:</p>
-<pre><code class="js">{{ symbolsTime(post, awl, wpm, suffix) }}</code></pre>
-<h4 id="Symbols-Count-Total"><a href="#Symbols-Count-Total" class="headerlink" title="Symbols Count Total"></a>Symbols Count Total</h4><pre><code class="js">{{ symbolsCountTotal(site) }}</code></pre>
-<h4 id="Symbols-Time-Total"><a href="#Symbols-Time-Total" class="headerlink" title="Symbols Time Total"></a>Symbols Time Total</h4><pre><code class="js">{{ symbolsTimeTotal(site) }}</code></pre>
+<pre><code class="lang-js">{{ symbolsTime(post, awl, wpm, suffix) }}
+</code></pre>
+<h4 id="Symbols-Count-Total"><a href="#Symbols-Count-Total" class="headerlink" title="Symbols Count Total"></a>Symbols Count Total</h4><pre><code class="lang-js">{{ symbolsCountTotal(site) }}
+</code></pre>
+<h4 id="Symbols-Time-Total"><a href="#Symbols-Time-Total" class="headerlink" title="Symbols Time Total"></a>Symbols Time Total</h4><pre><code class="lang-js">{{ symbolsTimeTotal(site) }}
+</code></pre>
 <p>Or with predefined parameters:</p>
-<pre><code class="js">{{ symbolsTimeTotal(site, awl, wpm, suffix) }}</code></pre>
-<h4 id="Renderers-syntax"><a href="#Renderers-syntax" class="headerlink" title="Renderers syntax"></a>Renderers syntax</h4><p>SWIG / Nunjucks: <code>{{</code> <code>template</code> <code>}}</code><br>EJS: <code>&lt;%-</code> <code>template</code> <code>%&gt;</code><br>Jade: <code>span=</code> <code>template</code></p>
+<pre><code class="lang-js">{{ symbolsTimeTotal(site, awl, wpm, suffix) }}
+</code></pre>
+<h4 id="Renderers-syntax"><a href="#Renderers-syntax" class="headerlink" title="Renderers syntax"></a>Renderers syntax</h4><p>SWIG / Nunjucks: <code>{{</code> <code>template</code> <code>}}</code>\<br>EJS: <code>&lt;%-</code> <code>template</code> <code>%&gt;</code>\<br>Jade: <code>span=</code> <code>template</code></p>

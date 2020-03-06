@@ -1,6 +1,6 @@
 ﻿---
 layout: post
-title: "[LeetCode] 1.Two Sum"
+title: " [LeetCode] 1.Two Sum"
 date: 2019-09-26 20:43:14 +0800
 categories: Algorithm
 tags: 

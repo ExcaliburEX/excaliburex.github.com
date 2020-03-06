@@ -21,13 +21,13 @@
 
 <link rel="stylesheet" href="/css/main.css?v=7.3.0">
 
-<link rel="stylesheet" href="https://fonts.loli.net/css?family=Noto Serif SC:300,300italic,400,400italic,700,700italic|consolas:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noto Serif SC:300,300italic,400,400italic,700,700italic|Noto Serif SC Black:300,300italic,400,400italic,700,700italic|consolas:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
 <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
   <link rel="stylesheet" href="/lib/fancybox/source/jquery.fancybox.css">
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/ilyabirman-likely@2/release/likely.css">
   <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
   <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
-  <link rel="stylesheet" href="/lib/pace/pace-theme-center-atom.min.css?v=1.0.2">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-flash.min.css?v=1.0.2">
 
 
 
@@ -79,14 +79,14 @@
 
   <meta name="description" content="function loadXMLDoc(xmlUrl)  {     try //Internet Explorer     {         xmlDoc=new ActiveXObject(&quot;Microsoft.XMLDOM&quot;);     }     catch(e)     {       try //Firefox, Mozilla, Opera, etc.         {">
 <meta property="og:type" content="website">
-<meta property="og:title" content="相册">
+<meta property="og:title" content="光影流年">
 <meta property="og:url" content="https://kemo.xyz/photos/index.html">
 <meta property="og:site_name" content="柯摩的BLOG">
 <meta property="og:description" content="function loadXMLDoc(xmlUrl)  {     try //Internet Explorer     {         xmlDoc=new ActiveXObject(&quot;Microsoft.XMLDOM&quot;);     }     catch(e)     {       try //Firefox, Mozilla, Opera, etc.         {">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-10-03T16:10:53.507Z">
+<meta property="og:updated_time" content="2019-11-07T16:17:22.481Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="相册">
+<meta name="twitter:title" content="光影流年">
 <meta name="twitter:description" content="function loadXMLDoc(xmlUrl)  {     try //Internet Explorer     {         xmlDoc=new ActiveXObject(&quot;Microsoft.XMLDOM&quot;);     }     catch(e)     {       try //Firefox, Mozilla, Opera, etc.         {">
   <link rel="alternate" href="/atom.xml" title="柯摩的BLOG" type="application/atom+xml">
   <link rel="canonical" href="https://kemo.xyz/photos/">
@@ -103,7 +103,7 @@
   };
 </script>
 
-  <title>相册 | 柯摩的BLOG</title>
+  <title>光影流年 | 柯摩的BLOG</title>
   
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-145155839-1"></script>
   <script>
@@ -273,17 +273,6 @@
       
       
         
-        <li class="menu-item menu-item-相册">
-      
-    
-
-    <a href="/photos/" rel="section"><i class="menu-item-icon fa fa-fw fa-photo"></i> <br>相册</a>
-
-  </li>
-      
-      
-      
-        
         <li class="menu-item menu-item-热门">
       
     
@@ -360,9 +349,6 @@
       
       
     
-      
-      
-    
     
 
   
@@ -377,7 +363,7 @@
     <div class="post-block page">
       <header class="post-header">
 
-<h2 class="post-title" itemprop="name headline">相册
+<h2 class="post-title" itemprop="name headline">光影流年
 
 </h2>
 
@@ -394,7 +380,6 @@
       <div class="post-body">
         
           <div id="box" class="box"></div>
-
 
 <script type="text/javascript">
 
@@ -436,25 +421,23 @@ function loadXMLDoc(xmlUrl)
     return xmlDoc; 
 }
 
-var xmllink="https://photos-1259799643.cos.ap-shanghai.myqcloud.com"
-//访问域名链接就是我上面提到的那个访问域名xml链接
+xmlDoc=loadXMLDoc("https://photos-1259799643.cos.ap-shanghai.myqcloud.com");
 
-xmlDoc=loadXMLDoc(xmllink);
-var urls=xmlDoc.getElementsByTagName('Key');
-var date=xmlDoc.getElementsByTagName('LastModified');
-var wid=250;
-var showNum=12; //每个相册一次展示多少照片
-if ((window.innerWidth)>1200) {wid=(window.innerWidth*3)/18;}
-var box=document.getElementById('box');
-var i=0;
+var urls = xmlDoc.getElementsByTagName('Key');
+var date = xmlDoc.getElementsByTagName('LastModified');
+var wid = 350;
+var showNum = 21; //每个相册一次展示多少照片
+if ((window.innerWidth) > 1200) { wid = (window.innerWidth * 3) / 18;}
+var box = document.getElementById('box');
+var i = 0;
 
-var content=new Array();
+var content = new Array();
 var tmp=0;
 var kkk=-1;
 for (var t = 0; t < urls.length ; t++) {
     var bucket=urls[t].innerHTML;
     var length=bucket.indexOf('/');
-    if(length==bucket.length-1){
+    if(length===bucket.length-1){
         kkk++;
         content[kkk]=new Array();
         content[kkk][0]={'url':bucket,'date':date[t].innerHTML.substring(0,10)};
@@ -471,22 +454,24 @@ for (var i = 0; i < content.length; i++) {
     box.appendChild(conBox);
     var item=document.createElement("div");
     var title=content[i][0].url;
-    item.innerHTML="<button class=title style=background:url("+xmllink+'/'+title+"封面.jpg"+");><span style=display:inline;><strong style=color:#f0f3f6; >"+title.substring(0,title.length-1)+"</strong></span></button>";
+    item.innerHTML="<button class=title style=background:url(https://photos-1259799643.cos.ap-shanghai.myqcloud.com/" + title + "封面.jpg"+");background-repeat:no-repeat;><span style=display:inline;><strong style=color:#f0f3f6; >" + title.substring(0,title.length - 1) + "</strong></span></button>";
     conBox.appendChild(item);
 
-    for (var j = 1; j < content[i].length && j < showNum+1; j++) {
-        var con=content[i][j].url;
+        for (var j = 1; j < content[i].length && j < showNum+1; j++) {
+            var con=content[i][j].url;
         var item=document.createElement("li");
-        item.innerHTML="<div class=imgbox id=imgbox style=height:"+wid+"px;><img class=imgitem src="+xmllink+'/'+title+con+" alt="+con+"></div><span>"+con.substring(0,con.length-4)+"</span><p>上传于"+content[i][j].date+"</p>";
-        conBox.appendChild(item);
+        if(con.substring(0,con.length-4) != "封面"){
+            item.innerHTML="<div class=imgbox id=imgbox style=height:"+wid+"px;><img class=imgitem src=https://photos-1259799643.cos.ap-shanghai.myqcloud.com/" + title + con +" alt=" + con + "></div><span>" + con.substring(0,con.length-4);
+            conBox.appendChild(item);
+        }
     }
     if(content[i].length > showNum){
         var moreItem=document.createElement("button");
-        moreItem.className="btn-more-posts";
-        moreItem.id="more"+i;
-        moreItem.value=showNum+1;
-        let cur=i;
-        moreItem.onclick= function (){
+        moreItem.className = "btn-more-posts";
+        moreItem.id = "more" + i;
+        moreItem.value = showNum + 1;
+        let cur = i;
+        moreItem.onclick = function (){
             moreClick(this,cur,content[cur],content[cur][0].url);
         }
         moreItem.innerHTML="<span style=display:inline;><strong style=color:#f0f3f6;>加载更多</strong></span>";
@@ -495,26 +480,31 @@ for (var i = 0; i < content.length; i++) {
 }
 
 function moreClick(obj,cur,cont,title){
-    var parent=obj.parentNode;
+    var parent = obj.parentNode;
     parent.removeChild(obj);
     var j=obj.value;
     var begin=j;
     for ( ; j < cont.length && j < Number(showNum) + Number(begin); j++) {
-        console.log( Number(showNum) + Number(begin));
         var con=cont[j].url;
         var item=document.createElement("li");
-        item.innerHTML="<div class=imgbox id=imgbox style=height:"+wid+"px;><img class=imgitem src="+xmllink+'/'+title+con+" alt="+con+"></div><span>"+con.substring(0,con.length-4)+"</span><p>上传于"+cont[j].date+"</p>";
+        item.innerHTML="<div class=imgbox id=imgbox style=height:"+wid+"px;><img class=imgitem src=https://photos-1259799643.cos.ap-shanghai.myqcloud.com/"+title+con+" alt="+con+"></div><span>"+con.substring(0,con.length-4);
         parent.appendChild(item);
+        var v=item.getElementsByTagName('img');
+        v[0].id=imgid;
+        imgid++;
     }
     if(cont.length > j){
         obj.value=j;
         parent.appendChild(obj);
     }
 }
-
-
-
 </script>
+
+
+
+
+
+
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -584,7 +574,7 @@ function moreClick(obj,cur,cont,title){
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">10</span>
+          <span class="site-state-item-count">11</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -648,7 +638,15 @@ function moreClick(obj,cur,cont,title){
         
           
         
-        <span class="site-state-item-count">12</span>
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">16</span>
         <span class="site-state-item-name">标签</span>
         </a>
       </div>
@@ -784,7 +782,7 @@ function moreClick(obj,cur,cont,title){
     <h3 class="widget-title">Tag Cloud</h3>
     <div id="myCanvasContainer" class="widget tagcloud">
         <canvas width="250" height="250" id="resCanvas" style="width=100%">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/">Algorithm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Diary/">Diary</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Editor/">Editor</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Job/">Job</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Learning/">Learning</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OJ/">OJ</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Reading/">Reading</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Science-Uranology/">Science Uranology</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Thinking/">Thinking</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/日记/">日记</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随笔/">随笔</a><span class="tag-list-count">2</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/">Algorithm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Diary/">Diary</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Editor/">Editor</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Job/">Job</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Learning/">Learning</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OJ/">OJ</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Reading/">Reading</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Science-Uranology/">Science Uranology</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Thinking/">Thinking</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/回忆/">回忆</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/感情/">感情</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/日记/">日记</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/温馨/">温馨</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/真挚/">真挚</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随笔/">随笔</a><span class="tag-list-count">2</span></li></ul>
         </canvas>
     </div>
 </div>
@@ -801,7 +799,7 @@ function moreClick(obj,cur,cont,title){
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2015 – <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">  <a href="http://www.beian.miit.gov.cn" rel="noopener" target="_blank">皖ICP备19020907号 </a>&copy; 2015 – <span itemprop="copyrightYear">2020</span>
   <span class="with-love" id="animate">
     <i class="fa fa-heart"></i>
   </span>
@@ -812,19 +810,19 @@ function moreClick(obj,cur,cont,title){
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">39k</span>
+    <span title="站点总字数">45k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">35 分钟</span>
+    <span title="站点阅读时长">41 分钟</span>
 </div>
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">全站共 25.9k 字</span>
+  <span class="post-count">全站共 29.9k 字</span>
 </div>
 
 <div class="run_time" style=" text-align:center;">
@@ -846,6 +844,12 @@ function moreClick(obj,cur,cont,title){
     setInterval("createtime()",250);
   </script>
 </div>
+
+    <div style="width:300px;margin:0 auto; padding:20px 0;">
+     <a target="_blank" href=" " style="display:inline-block;text-decoration:none;height:20px;line-height:20px;">
+     <img src="1.png" style="float:left;"/>
+     <p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#939393;">苏公网安备 32050802011200号</p ></ a>
+    </div>
 
 
 
