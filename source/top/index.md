@@ -2,7 +2,9 @@
 title: 热门文章 
 date: 2019-08-06 16:36:32
 comments: false
-keywords: top,文章阅读量排行榜
+keywords: 
+  - top
+  - 文章阅读量排行榜
 description: 博客文章阅读量排行榜
 ---
 

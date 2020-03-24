@@ -1,11 +1,16 @@
 
 ---
-title: 光影流年
+title: 时光残念📷
 date: 2019-04-01 19:10:05
 type: "photos"
 categories: photos
 ---
+
+1
 <style type="text/css">
+	main#main.main{
+		margin-top: -70px
+	}
 	.posts-expand .post-body img{
 		padding: 1px;
 	}
@@ -13,7 +18,16 @@ categories: photos
 	.footer{
 		display: none !important;
 	}
-
+	.p{
+		opacity: 0;
+		display: none !important;
+		 z-index:-1;
+	}
+	.post-block .page{
+		width: 100%;
+		color: #000000;
+		background: #000000
+	}
  	/*不展示底部*/
  	.footer-inner{
  		display: none !important;
@@ -28,10 +42,34 @@ categories: photos
 	}
 
  	/*不展示侧栏*/
- 	.sidebar-toggle{
- 		display: none !important;
+ 	.sidebar{
+ 		display:none !important;
+		 z-index:-1;
  	}
 
+
+    +mobile() {
+        width: 100%;
+    }
+	}
+
+	.container .main-inner {
+    width: 200%;
+	
+    +tablet() {
+        width: 100%;
+    }
+    +mobile() {
+        width: 100%;
+    }
+}
+
+	.posts-block{
+		position:inherit;
+		width: 100%;
+		margin-top: unset;
+
+	}
     /*修改相册页面内容宽度为全屏*/
 	.main-inner{
 		width: 100%;
@@ -117,7 +155,7 @@ categories: photos
     	margin-top: unset;
     	margin-left: unset;
     	margin-right: unset;
-    	width: 60%;
+    	width: 40%!important;
     	padding-top: 50px;
 	}
 
@@ -130,8 +168,14 @@ categories: photos
 	.valine .vlist .vcard .vcomment-body .vhead .vname{
 		color: #fff;
 	}
+	div#comments.comments.v{
+			  width: 50%!important;
+	  overflow: hidden;
+	  border-right: 0px solid #bcbcbc;
+	}
 
 	.valine .vlist .vcard .vcomment-body .text-wrapper .vcomment p{
+		width: 50%!important;
 		color: #fff;
 	}
 
@@ -183,6 +227,10 @@ categories: photos
     	background-color: #121212;
     	/*-webkit-box-sizing: border-box;*/
     	/*box-sizing: border-box;*/
+	}
+	div#comments.comments.valine{
+		margin-left: 8px;
+		width: 98%!important;
 	}
 
 @media (max-width: 767px){
@@ -297,6 +345,7 @@ for (var t = 0; t < urls.length ; t++) {
 }
 
 for (var i = 0; i < content.length; i++) {
+
 	var conBox=document.createElement("div");
 	conBox.id='conBox'+i;
 	box.appendChild(conBox);

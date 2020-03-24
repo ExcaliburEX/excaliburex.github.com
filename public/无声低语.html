@@ -4,7 +4,7 @@
 
 
 
-<html class="theme-next pisces use-motion" lang="zh-CN">
+<html class="theme-next mist use-motion" lang="zh-CN">
  <script type="text/javascript" src="/js/src/linkcard.js"></script>
 <head>
   <meta charset="UTF-8">
@@ -37,11 +37,11 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Pisces',
+    scheme: 'Mist',
     version: '7.3.0',
-    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
-    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
-    save_scroll: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":true},
+    back2top: {"enable":true,"sidebar":true,"scrollpercent":true},
+    save_scroll: true,
     copycode: {"enable":true,"show_result":true,"style":"mac"},
     fancybox: true,
     mediumzoom: false,
@@ -57,7 +57,7 @@
     localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
     path: './public/search.xml',
     tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    motion: {"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     translation: {
       copy_button: '复制',
       copy_success: '复制成功',
@@ -65,7 +65,6 @@
     }
   };
 </script>
-
 
 
 
@@ -200,6 +199,8 @@
         <li class="menu-item menu-item-home">
       
     
+      
+    
 
     <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
 
@@ -209,6 +210,8 @@
       
         
         <li class="menu-item menu-item-about">
+      
+    
       
     
 
@@ -222,8 +225,10 @@
         <li class="menu-item menu-item-tags">
       
     
+      
+    
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">23</span></a>
 
   </li>
       
@@ -233,8 +238,10 @@
         <li class="menu-item menu-item-categories">
       
     
+      
+    
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">5</span></a>
 
   </li>
       
@@ -244,19 +251,10 @@
         <li class="menu-item menu-item-archives">
       
     
-
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
-
-  </li>
-      
-      
-      
-        
-        <li class="menu-item menu-item-sitemap">
       
     
 
-    <a href="/sitemap.xml" rel="section"><i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br>站点地图</a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">12</span></a>
 
   </li>
       
@@ -264,6 +262,8 @@
       
         
         <li class="menu-item menu-item-运动日记">
+      
+    
       
     
 
@@ -274,11 +274,39 @@
       
       
         
+        <li class="menu-item menu-item-相册">
+      
+    
+      
+    
+
+    <a href="/photos/" rel="section"><i class="menu-item-icon fa fa-fw fa-photo"></i> <br>相册</a>
+
+  </li>
+      
+      
+      
+        
         <li class="menu-item menu-item-热门">
+      
+    
       
     
 
     <a href="/top/" rel="section"><i class="menu-item-icon fa fa-fw fa-fire"></i> <br>热门</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-友链">
+      
+    
+      
+    
+
+    <a href="/links/" rel="section"><i class="menu-item-icon fa fa-fw fa-users"></i> <br>友链</a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -288,6 +316,8 @@
       </li>
     
   </ul>
+
+    
 
     <div class="site-search">
       
@@ -311,6 +341,14 @@
 
     </div>
 </nav>
+
+<!-- 打字礼花及震动特效 -->
+<script type="text/javascript" src="https://qianling-1254036047.cos.ap-chengdu.myqcloud.com/js/activate-power-mode.js"></script>
+<script>
+  POWERMODE.colorful = true; // ture 为启用礼花特效
+  POWERMODE.shake = true; // false 为禁用震动特效
+  document.body.addEventListener('input', POWERMODE);
+</script>
 </div>
     </header>
 
@@ -322,8 +360,6 @@
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
-            
-
           <div id="content" class="content page-post-detail">
             
 
@@ -400,6 +436,14 @@
           
 
           
+            <span id="/无声低语.html" class="post-meta-item leancloud_visitors" data-flag-title="无声低语" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+          
             <span class="post-meta-item" title="阅读次数">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
@@ -434,7 +478,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span>1.7k</span>
+              <span>1.1k</span>
             </span>
           
             <span class="post-meta-item" title="阅读时长">
@@ -444,7 +488,7 @@
               
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
               
-              <span>2 分钟</span>
+              <span>1 分钟</span>
             </span>
           
 
@@ -500,14 +544,14 @@
     <li class="popular-posts-item">
       
       
-      <div class="popular-posts-title"><a href="\相识.html" rel="bookmark">相识</a></div>
+      <div class="popular-posts-title"><a href="\我于你，止于唇齿，掩于岁月.html" rel="bookmark">我于你，止于唇齿，掩于岁月</a></div>
       
     </li>
   
     <li class="popular-posts-item">
       
       
-      <div class="popular-posts-title"><a href="\我于你，止于唇齿，掩于岁月.html" rel="bookmark">我于你，止于唇齿，掩于岁月</a></div>
+      <div class="popular-posts-title"><a href="\相识.html" rel="bookmark">相识</a></div>
       
     </li>
   
@@ -696,7 +740,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-count">12</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -768,7 +812,21 @@
         
           
         
-        <span class="site-state-item-count">16</span>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">23</span>
         <span class="site-state-item-name">标签</span>
         </a>
       </div>
@@ -832,7 +890,7 @@
       
         
       
-        <a href="/912011727" title="Wechat &rarr; 912011727"><i class="fa fa-fw fa-weixin"></i>Wechat</a>
+        <a href="https://blog-1259799643.cos.ap-shanghai.myqcloud.com/wechat-qcode.jpg" title="Wechat &rarr; https://blog-1259799643.cos.ap-shanghai.myqcloud.com/wechat-qcode.jpg" rel="noopener" target="_blank"><i class="fa fa-fw fa-weixin"></i>Wechat</a>
       </span>
     
       <span class="links-of-author-item">
@@ -896,6 +954,13 @@
 
         </div>
       </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
 
   
 <script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
@@ -904,7 +969,7 @@
     <h3 class="widget-title">Tag Cloud</h3>
     <div id="myCanvasContainer" class="widget tagcloud">
         <canvas width="250" height="250" id="resCanvas" style="width=100%">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/">Algorithm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Diary/">Diary</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Editor/">Editor</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Job/">Job</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Learning/">Learning</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OJ/">OJ</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Reading/">Reading</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Science-Uranology/">Science Uranology</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Thinking/">Thinking</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/回忆/">回忆</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/感情/">感情</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/日记/">日记</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/温馨/">温馨</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/真挚/">真挚</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随笔/">随笔</a><span class="tag-list-count">2</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/">Algorithm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DataMining/">DataMining</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Diary/">Diary</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Editor/">Editor</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Job/">Job</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jupyter/">Jupyter</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Learning/">Learning</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OJ/">OJ</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Reading/">Reading</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Science-Uranology/">Science Uranology</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Study/">Study</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Thinking/">Thinking</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tianchi/">Tianchi</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pandas/">pandas</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/seaborn/">seaborn</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/回忆/">回忆</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/感情/">感情</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/日记/">日记</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/正态分布/">正态分布</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/温馨/">温馨</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/真挚/">真挚</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随笔/">随笔</a><span class="tag-list-count">2</span></li></ul>
         </canvas>
     </div>
 </div>
@@ -932,19 +997,19 @@
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">45k</span>
+    <span title="站点总字数">59k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">41 分钟</span>
+    <span title="站点阅读时长">54 分钟</span>
 </div>
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">全站共 29.9k 字</span>
+  <span class="post-count">全站共 34.5k 字</span>
 </div>
 
 <div class="run_time" style=" text-align:center;">
@@ -965,13 +1030,12 @@
     } 
     setInterval("createtime()",250);
   </script>
-</div>
 
-    <div style="width:300px;margin:0 auto; padding:20px 0;">
-     <a target="_blank" href=" " style="display:inline-block;text-decoration:none;height:20px;line-height:20px;">
-     <img src="1.png" style="float:left;"/>
-     <p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#939393;">苏公网安备 32050802011200号</p ></ a>
-    </div>
+<div class="BbeiAn-info">
+  皖ICP备 -
+    <a target="_blank" href="http://www.miitbeian.gov.cn/" style="color:#f0d784"  rel="nofollow">19020907</a> <!--a标签中增加nofollow属性，避免爬虫出站。-->| 
+	<a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=32050802011200" style="color:#f0d784;text-decoration:none;padding-left:30px;background:url(https://s1.ax1x.com/2018/09/29/ilmwIH.png) no-repeat left center" rel="nofollow">苏公网安备 32050802011200号</a>	  <!--这里将图标作为了背景，以使得能和后面的文字在同一行-->
+</div>
 
 
 
@@ -982,7 +1046,7 @@
       <i class="fa fa-user"></i>
     </span>
     <span class="site-uv" title="总访客量">
-      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      总访客量 <span class="busuanzi-value" id="busuanzi_value_site_uv"></span> 人
     </span>
   
     <span class="post-meta-divider">|</span>
@@ -991,7 +1055,7 @@
       <i class="fa fa-eye"></i>
     </span>
     <span class="site-pv" title="总访问量">
-      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      总访客数 <span class="busuanzi-value" id="busuanzi_value_site_pv"></span> 数
     </span>
   
 </div>
@@ -1014,11 +1078,6 @@
         
       </div>
     </footer>
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-          <span id="scrollpercent"><span>0</span>%</span>
-        
-      </div>
 
     
   
@@ -1059,7 +1118,6 @@
     
   
   <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
-  <script size="300" alpha="0.6" zIndex="-1" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
   <script src="/lib/jquery/index.js?v=3.4.1"></script>
   <script src="/lib/fancybox/source/jquery.fancybox.pack.js"></script>
   <script src="/lib/reading_progress/reading_progress.js"></script>
@@ -1071,8 +1129,8 @@
   <script src="/js/motion.js?v=7.3.0"></script>
 
 
-  <script src="/js/affix.js?v=7.3.0"></script>
-  <script src="/js/schemes/pisces.js?v=7.3.0"></script>
+  <script src="/js/schemes/muse.js?v=7.3.0"></script>
+
 
 
 <script src="/js/next-boot.js?v=7.3.0"></script>
@@ -1161,6 +1219,26 @@
 
 
 
+<script>
+function embedPDF() {
+  $('body').find('div.pdf').each(function(i, o) {
+    PDFObject.embed($(o).attr('target'), $(o), {
+      pdfOpenParams: {
+        navpanes: 0,
+        toolbar: 0,
+        statusbar: 0,
+        pagemode: 'thumbs',
+        view: 'FitH'
+      },
+      PDFJS_URL: '/lib/pdf/web/viewer.html',
+      height: $(o).attr('height') || '500px'
+    });
+  });
+}
+if ($('body').find('div.pdf').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/pdfobject@2/pdfobject.min.js', embedPDF, window.PDFObject);
+}
+</script>
 
 
 
@@ -1183,38 +1261,40 @@
   <script type="text/javascript" src="/js/src/linkcard.js"></script>
 
     
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="https://site-1258928558.cos.ap-guangzhou.myqcloud.com/js/Valine.min.js"></script>
 
-<script>
-  var GUEST = ['nick', 'mail', 'link'];
-  var guest = 'nick,mail,link';
-  guest = guest.split(',').filter(function(item) {
-    return GUEST.indexOf(item) > -1;
+  <!--<script src="//unpkg.com/valine/dist/Valine.min.js"></script>-->
+  <!-- https://deserts.io/diy-a-comment-system/ -->
+  <script type="text/javascript">
+    new Valine({
+        lang: 'zh-cn',
+        admin_email: '912011727@qq.com', //博主邮箱
+        el: '#comments' ,
+        appId: 'u4vO2zGHJKiMhlMhYbgBgq1E-gzGzoHsz',
+        appKey: 'XRdJWVzmRfYF0uw6oUQztM7B',
+        emoticon_url: 'https://bestzuo.cn/emoji',
+        emoticon_list: ["弹肚皮.gif","动次打次.gif","抖脚脚.gif","慌张.gif","夹住.gif","开车.gif","抖眼镜.gif","吃东西.gif","动耳朵.gif","哭唧唧.gif","小花花.gif","眨眼.gif","跳舞.gif","风吹秀发.gif","摇头.gif","眼睛转.gif","跳着走.gif","抖眼.gif","绿色的.gif","我走了.gif","浪起来.gif","浪起来-1.gif","打篮球.gif","都是小心心.gif","比心心.gif","吹风.gif","吐.png","喷血.png","狂汗.png","不说话.png","汗.png","坐等.png","献花.png","不高兴.png","中刀.png","害羞.png","皱眉.png","小眼睛.png","中指.png","尴尬.png","瞅你.png","想一想.png","中枪.png","得意.png","肿包.png","扇耳光.png","亲亲.png","惊喜.png","脸红.png","无所谓.png","便便.png","愤怒.png","蜡烛.png","献黄瓜.png","内伤.png","投降.png","观察.png","看不见.png","击掌.png","抠鼻.png","邪恶.png","看热闹.png","口水.png","抽烟.png","锁眉.png","装大款.png","吐舌.png","无奈.png","长草.png","赞一个.png","呲牙.png","无语.png","阴暗.png","不出所料.png","咽气.png","期待.png","高兴.png","吐血倒地.png","哭泣.png","欢呼.png","黑线.png","喜极而泣.png","喷水.png","深思.png","鼓掌.png","暗地观察.png"],
+        placeholder: 'Just go go',
   });
-  new Valine({
-    el: '#comments',
-    verify: false,
-    notify: true,
-    appId: 'u4vO2zGHJKiMhlMhYbgBgq1E-gzGzoHsz',
-    appKey: 'XRdJWVzmRfYF0uw6oUQztM7B',
-    placeholder: 'Just go go',
-    avatar: 'mm',
-    meta: guest,
-    pageSize: '10' || 10,
-    visitor: false,
-    lang: 'zh-cn' || 'zh-cn',
-    path: location.pathname
-  });
-</script>
 
-
-
-
+  <!--点击邮件中的链接跳转至相应评论-->
+  if(window.location.hash){
+      var checkExist = setInterval(function() {
+         if ($(window.location.hash).length) {
+            $('html, body').animate({scrollTop: $(window.location.hash).offset().top-90}, 1000);
+            clearInterval(checkExist);
+         }
+      }, 100);
+   }
+  </script>
 
   <script type="text/javascript" src="/js/src/image.js"></script>
+
 
 
 <!-- 页面点击小红心 -->
 <script type="text/javascript" src="/js/src/clicklove.js"></script>
 
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/izumi.model.json"},"display":{"position":"right","width":300,"height":500},"mobile":{"show":true},"log":false,"tagMode":false});</script></body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/izumi.model.json"},"display":{"position":"right","width":200,"height":300},"mobile":{"show":false},"log":false,"tagMode":false});</script></body>
 </html>

@@ -111,17 +111,17 @@ live2d:
     use: live2d-widget-model-izumi
   display:
     position: right
-    width: 300
-    height: 500
+    width: 200
+    height: 300
   mobile:
-    show: true
+    show: false
 
 symbols_count_time:
   symbols: true
   time: true
   total_symbols: true
   total_time: true
-  exclude_codeblock: false
+  exclude_codeblock: true
 
 aplayer:
   meting: true
