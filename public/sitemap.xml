@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://kemo.xyz/top/index.html</loc>
+    
+    <lastmod>2020-03-25T16:51:42.758Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://kemo.xyz/sports/index.html</loc>
     
     <lastmod>2020-03-25T08:57:12.055Z</lastmod>
@@ -26,13 +33,6 @@
     <loc>https://kemo.xyz/LeetCode%201.Two%20Sum.html</loc>
     
     <lastmod>2020-03-25T06:16:32.581Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://kemo.xyz/top/index.html</loc>
-    
-    <lastmod>2020-03-25T03:23:15.070Z</lastmod>
     
   </url>
   

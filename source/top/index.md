@@ -9,9 +9,10 @@ description: 博客文章阅读量排行榜
 ---
 &ensp;
 <style>
+
 div#top{
-   margin-top: 0px;
-   margin-bottom: 150px;
+   margin-top: 80px;
+   margin-bottom: 100px;
    padding: 25px;
    border: 1px solid #fff;
    /*-webkit-border-radius: 8px;*/

@@ -166,7 +166,7 @@ body {
   background: #fff;
   color: #555;
   font-family: 'Noto Serif SC', -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Heiti SC", "STHeiti", "Source Han Sans SC", "Noto Sans CJK SC", "WenQuanYi Micro Hei", "Droid Sans Fallback", "Microsoft YaHei", sans-serif;
-  font-size: 1.1em;
+  font-size: 1em;
   line-height: 2;
   position: relative;
 }
@@ -1522,7 +1522,7 @@ div.popular-posts-title::before {
   background: #222;
 }
 .posts-collapse .post-title {
-  font-size: 1em;
+  font-size: 0.75em;
   font-weight: normal;
   line-height: inherit;
   margin-bottom: 0;
@@ -3317,10 +3317,6 @@ div#top {
 div.vsmile-icons {
   height: 500px !important;
 }
-.posts-expand .post-body .fancybox img {
-  width: 1080px;
-  margin: 0 auto 25px;
-}
 .sidebar {
   background: #222;
   bottom: 0;
@@ -3391,7 +3387,7 @@ div.vsmile-icons {
 }
 .site-description {
   color: #999;
-  font-size: 1em;
+  font-size: 0.75em;
   margin-top: 5px;
   text-align: center;
 }
@@ -3409,7 +3405,7 @@ div.vsmile-icons {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #ffe37d;
+  background: #ad2e3c;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -3636,7 +3632,7 @@ div.vsmile-icons {
 .site-state-item-count {
   color: inherit;
   display: block;
-  font-size: 1.25em;
+  font-size: 1em;
   font-weight: 600;
   text-align: center;
 }
@@ -3855,7 +3851,7 @@ div.vsmile-icons {
 .popular-posts-header {
   border-bottom: 1px solid #eee;
   display: block;
-  font-size: 1.125em;
+  font-size: 1em;
   margin-bottom: 10px;
   margin-top: 60px;
 }
@@ -3887,7 +3883,7 @@ ul.popular-posts .popular-posts-item .popular-posts-title {
   width: 10px;
 }
 .page-archive .posts-collapse .archive-page-counter {
-  font-size: 1.125em;
+  font-size: 1em;
   left: 20px;
   position: relative;
   top: 3px;
@@ -4598,4 +4594,30 @@ hr {
 }
 .valine .vinputs-area .vextra-area .vsmile-icons {
   max-height: 140px !important;
+}
+.valine .vpage .more {
+  width: 20% !important;
+  margin-left: 40% !important;
+  background-color: #971212 !important;
+  color: #fff !important;
+}
+ul.popular-posts .popular-posts-item .popular-posts-title {
+  margin-left: 0px !important;
+}
+post-height {
+  text-align: center;
+}
+.posts-expand .post-title,
+.posts-expand .post-meta {
+  text-align: center !important;
+}
+div#top {
+  text-align: left;
+}
+div.vsmile-icons {
+  height: 500px !important;
+}
+img.img-topic {
+  width: 1080px;
+  margin: 0 auto 25px;
 }
