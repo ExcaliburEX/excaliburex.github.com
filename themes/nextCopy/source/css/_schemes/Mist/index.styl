@@ -1,0 +1,114 @@
+// 
+// Mist scheme
+// =================================================
+@import '_base';
+@import 'outline/outline';
+@import '_header';
+@import '_logo';
+@import '_menu';
+@import '_posts-expanded';
+@import '../Muse/sidebar/_sidebar';
+@import '../Muse/sidebar/sidebar-blogroll';
+
+// Components
+// --------------------------------------------------
+.btn {
+  border-radius: 0;
+  border-width: 2px;
+  padding: 0 10px;
+}
+
+.headband {
+  display: none;
+}
+
+// Page - Container
+// --------------------------------------------------
+.container .main-inner {
+  +mobile() {
+    width: auto;
+  }
+}
+
+// Page - Post details
+// --------------------------------------------------
+.page-post-detail {
+  .post-title, .post-meta {
+    text-align: center;
+  }
+
+  .post-title::before {
+    display: none;
+  }
+
+  .post-meta {
+    margin-bottom: 60px;
+  }
+}
+
+// Pagination
+// --------------------------------------------------
+.pagination {
+  margin: 120px 0 0;
+  text-align: left;
+
+  +mobile() {
+    margin: 80px 10px 0;
+    text-align: center;
+  }
+}
+
+// Footer
+// --------------------------------------------------
+.footer {
+  background: $whitesmoke;
+  color: $grey-dim;
+  margin-top: 80px;
+  padding: 10px 0;
+}
+
+.footer-inner {
+  margin: 0 auto;
+  text-align: left;
+
+  +mobile() {
+    text-align: center;
+    width: auto;
+  }
+}
+
+.valine .vinputs-area .vextra-area .vsmile-icons {
+    max-height: 140px!important;
+}
+
+.valine .vpage .more{
+  width: 20% !important;
+  margin-left: 40% !important;
+  background-color: #971212 !important;
+  color: #fff !important;
+}
+
+ul.popular-posts .popular-posts-item .popular-posts-title {
+    margin-left: 0px  !important;
+}
+post-height{
+  text-align: center;
+}
+.posts-expand .post-title,
+.posts-expand .post-meta {
+  text-align: center !important;
+}
+
+
+div#top{
+  text-align: left;
+}
+
+div.vsmile-icons{
+  height: 500px  !important;
+}
+
+img.img-topic{
+    width: 1080px;
+     margin: 0 auto 25px; 
+}

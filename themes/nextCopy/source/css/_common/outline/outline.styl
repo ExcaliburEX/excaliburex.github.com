@@ -1,0 +1,94 @@
+// 
+// Layout
+// Note: Must name this file "outline" instead of "layout"
+// Or Hexo will use it as template layout.
+// =================================================
+html, body {
+  height: 100%;
+}
+
+
+
+body {
+ 	background:url(/images/background.jpg);// 设定背景图片,images同处于source文件夹下
+ 	background-repeat: no-repeat;// 设定背景图片非重复填充
+    background-attachment:fixed;// 设置背景图片不随页面滚动
+    background-position:50% 50%;// 设置背景图片位置
+	background-size: cover// 设置保持图像的纵横比并将图像缩放成将完全覆盖背景定位区域的最小大小
+}
+
+.container {
+  position: relative;
+}
+
+// Header Section
+// --------------------------------------------------
+.header-inner {
+  margin: 0 auto;
+  padding: 100px 0 70px;
+  width: $content-desktop;
+
+  +desktop-large() {
+    .container & {
+      width: $content-desktop-large;
+    }
+  }
+
+  +desktop-largest() {
+    .container & {
+      width: $content-desktop-largest;
+    }
+  }
+}
+
+// Main Section
+// --------------------------------------------------
+.main-inner {
+  margin: 0 auto;
+  width: $content-desktop;
+
+  +desktop-large() {
+    .container & {
+      width: $content-desktop-large;
+    }
+  }
+
+  +desktop-largest() {
+    .container & {
+      width: $content-desktop-largest;
+    }
+  }
+}
+
+// Footer Section
+// --------------------------------------------------
+.footer {
+  padding: 20px 0;
+}
+
+.footer-inner {
+  box-sizing: border-box;
+  margin: 0 auto;
+  width: $content-desktop;
+
+  +desktop-large() {
+    .container & {
+      width: $content-desktop-large;
+    }
+  }
+
+  +desktop-largest() {
+    .container & {
+      width: $content-desktop-largest;
+    }
+  }
+}
+
+.posts-expand .post-title,
+.posts-expand .post-meta {
+  text-align: center;
+}
+
+
+
+
