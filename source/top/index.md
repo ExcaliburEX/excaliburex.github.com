@@ -7,6 +7,30 @@ keywords:
   - 文章阅读量排行榜
 description: 博客文章阅读量排行榜
 ---
+&ensp;
+<style>
+div#top{
+   margin-top: 0px;
+   margin-bottom: 150px;
+   padding: 25px;
+   border: 1px solid #fff;
+   /*-webkit-border-radius: 8px;*/
+   /*-moz-border-radius: 8px;*/
+   border-radius: 3px;
+   -webkit-box-shadow: #666 0px 0px 10px;
+   -moz-box-shadow: #666 0px 0px 10px;
+   box-shadow: #666 0px 0px 10px;
+   background: rgba(243, 242, 238, 1);
+   /*background: #fff;*/
+   behavior: url(/images/PIE.htc);
+   /*border: 1px solid rgba(128, 128, 128, 0.4);*/
+/*   border-left: 1px solid darkgray;
+   border-right: 1px solid darkgray;*/
+   /*rgba(128, 128, 128, 0.4)*/
+     
+</style>
+
+
 
 <div id="top"></div>
 <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>

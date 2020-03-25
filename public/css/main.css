@@ -188,22 +188,22 @@ h6 {
   padding: 0;
 }
 h1 {
-  font-size: 1.675em;
+  font-size: 1.375em;
 }
 h2 {
-  font-size: 1.55em;
+  font-size: 1.25em;
 }
 h3 {
-  font-size: 1.425em;
+  font-size: 1.125em;
 }
 h4 {
-  font-size: 1.3em;
+  font-size: 1em;
 }
 h5 {
-  font-size: 1.175em;
+  font-size: 0.875em;
 }
 h6 {
-  font-size: 1.05em;
+  font-size: 0.75em;
 }
 p {
   margin: 0 0 20px 0;
@@ -1140,7 +1140,7 @@ pre .javascript .function {
   border-bottom: none;
   color: #222;
   display: inline-block;
-  line-height: 2em;
+  line-height: 0.5em;
   padding: 0 40px;
   position: relative;
 }
@@ -1156,7 +1156,7 @@ pre .javascript .function {
 .site-title {
   display: inline-block;
   font-family: 'Noto Serif SC', -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Heiti SC", "STHeiti", "Source Han Sans SC", "Noto Sans CJK SC", "WenQuanYi Micro Hei", "Droid Sans Fallback", "Microsoft YaHei", sans-serif;
-  font-size: 2em;
+  font-size: 0.5em;
   font-weight: normal;
   line-height: 1.5;
   vertical-align: top;
@@ -2050,6 +2050,9 @@ a:hover {
 .post-button {
   text-align: center;
 }
+span#/LeetCode 1.Two Sum.html.post-meta-item.leancloud_visitors {
+  display: none !important;
+}
 .post {
   margin-top: 0px;
   margin-bottom: 60px;
@@ -2726,22 +2729,47 @@ span.site-title {
 .site-meta .site-title {
   font-size: 30px;
 }
-.sidebar {
+.sidebar.sidebar-active {
   display: block;
   width: 320px;
-  background-size: 320px 659px;
+  background-size: 320px 500px;
+  background-top: 500px;
   background-repeat: no-repeat;
   box-shadow: inset 2px 2px 40px #bdb2b2;
-  background-image: url("source/images/bk.jpg");
+  background-image: url("/images/bk.jpg");
   position: fixed;
   right: 0;
-  top: 200px;
-  bottom: 100px;
   width: 0;
   z-index: 1040;
   box-shadow: inset 0 2px 6px #000;
   -webkit-transform: translateZ(0);
   background-color: #f5f5f5 !important;
+}
+.busuanzi-value {
+  background-image: linear-gradient(92deg, #f35626 0, #feab3a 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: hue 10s infinite linear;
+  animation-duration: 10s;
+  animation-timing-function: linear;
+  animation-delay: 0s;
+  animation-iteration-count: infinite;
+  animation-direction: normal;
+  animation-fill-mode: none;
+  animation-play-state: running;
+  animation-name: hue;
+  font-size: 15px;
+  font-weight: 700;
+  vertical-align: -1px;
+}
+@-webkit-keyframes hue {
+  from {
+    -webkit-filter: hue-rotate(0deg);
+  }
+  to {
+    -webkit-filter: hue-rotate(-360deg);
+  }
 }
 .site-author-name {
   color: #555 !important;
@@ -3265,7 +3293,7 @@ a.at {
   border: none !important;
 }
 .valine .vlist .vcard .vcomment-body .vat {
-  margin-right: 10px;
+  margin-right: 10px !important;
 }
 .valine .vpage .more {
   width: 20% !important;
@@ -3274,58 +3302,24 @@ a.at {
   color: #fff !important;
 }
 ul.popular-posts .popular-posts-item .popular-posts-title {
-  margin-left: 0px;
+  margin-left: 0px !important;
 }
 post-height {
   text-align: center;
 }
 .posts-expand .post-title,
 .posts-expand .post-meta {
-  text-align: center;
+  text-align: center !important;
 }
 div#top {
   text-align: left;
 }
 div.vsmile-icons {
-  height: 500px;
-}
-.valine .vinputs-area .vextra-area .vsmile-icons {
-  padding: 5em 0;
-  border-top: 1px solid #ededed;
-  border-radius: 0;
-  margin: 0.3em 0;
-  max-height: 500px;
-  overflow: auto;
-}
-.posts-expand .post-title {
-  position: relative !important;
-  text-align: center !important;
-}
-.posts-expand .post-meta {
-  text-align: center !important;
-}
-.posts-expand .post-body img {
-  text-align: center !important;
-}
-div.post-button.text-center {
-  text-align: center !important;
-}
-div.out-img-topic {
-  text-align: center !important;
-}
-a.fancybox.fancybox.image {
-  text-align: center !important;
+  height: 500px !important;
 }
 .posts-expand .post-body .fancybox img {
+  width: 1080px;
   margin: 0 auto 25px;
-}
-article.post.post-type-normal {
-  margin-left: -120px;
-  width: 120%;
-}
-div#comments.comments.valine {
-  margin-left: -100px;
-  width: 120%;
 }
 .sidebar {
   background: #222;
@@ -3415,7 +3409,7 @@ div#comments.comments.valine {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #d5ff60;
+  background: #ffe37d;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -4162,6 +4156,50 @@ ul.breadcrumb li+li:last-child {
 }
 .tag-cloud a:hover {
   color: #222 !important;
+}
+div#top {
+  text-align: left;
+}
+div.vsmile-icons {
+  height: 500px;
+}
+.valine .vinputs-area .vextra-area .vsmile-icons {
+  padding: 5em 0;
+  border-top: 1px solid #ededed;
+  border-radius: 0;
+  margin: 0.3em 0;
+  max-height: 500px;
+  overflow: auto;
+}
+.posts-expand .post-title {
+  position: relative !important;
+  text-align: center !important;
+}
+.posts-expand .post-meta {
+  text-align: center !important;
+}
+.posts-expand .post-body img {
+  text-align: center !important;
+}
+div.post-button.text-center {
+  text-align: center !important;
+}
+div.out-img-topic {
+  text-align: center !important;
+}
+a.fancybox.fancybox.image {
+  text-align: center !important;
+}
+.posts-expand .post-body .fancybox img {
+  margin: 0 auto 25px;
+}
+article.post.post-type-normal {
+  margin-left: -120px;
+  width: 120%;
+}
+div#comments.comments.valine {
+  margin-left: -100px;
+  width: 120%;
 }
 body {
   overscroll-behavior: none;

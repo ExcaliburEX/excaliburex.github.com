@@ -5,11 +5,11 @@ date: 2019-04-01 19:10:05
 type: "photos"
 categories: photos
 ---
+&ensp;
 
-1
 <style type="text/css">
 	main#main.main{
-		margin-top: -70px
+		margin-top: -95px
 	}
 	.posts-expand .post-body img{
 		padding: 1px;
@@ -18,11 +18,7 @@ categories: photos
 	.footer{
 		display: none !important;
 	}
-	.p{
-		opacity: 0;
-		display: none !important;
-		 z-index:-1;
-	}
+
 	.post-block .page{
 		width: 100%;
 		color: #000000;
@@ -210,7 +206,7 @@ categories: photos
     	width: 100%;
     	text-align: center;
     	border: unset;
-    	height: 580px;
+    	height: 1000px;
     	cursor: unset !important;
     	-webkit-box-sizing: border-box;
     	/*box-sizing: border-box;*/
@@ -383,8 +379,8 @@ function moreClick(obj,cur,cont,title){
 	var begin=j;
 	for ( ; j < cont.length && j < Number(showNum) + Number(begin); j++) {
 		var con=cont[j].url;
-		var item=document.createElement("li");
-		item.innerHTML="<div class=imgbox id=imgbox style=height:"+wid+"px;><img class=imgitem src=https://photos-1259799643.cos.ap-shanghai.myqcloud.com/"+title+con+" alt="+con+"></div><span>"+con.substring(0,con.length-4);
+		var item=document.createElement("li");	
+		item.innerHTML="<div class=imgbox id=imgbox style=height:"+wid+"px;><img class=imgitem src="+xmllink+'/'+title+con+" alt="+con+"></div><span>"+con.substring(0,con.length-4)+"</span><p>上传于"+cont[j].date+"</p>";
 		parent.appendChild(item);
 		var v=item.getElementsByTagName('img');
 		v[0].id=imgid;
@@ -397,7 +393,7 @@ function moreClick(obj,cur,cont,title){
 }
 </script>
 
-
+{% meting "74041197" "netease" "playlist" "loop:all" "autoplay" "mutex:true" "order:list" "listmaxheight:250px" "preload:auto" "theme:#ad887a" %}
 
 
 
