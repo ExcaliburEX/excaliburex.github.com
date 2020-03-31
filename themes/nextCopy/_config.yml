@@ -17,11 +17,12 @@ cache:
   enable: true
 
 # Remove unnecessary files after hexo generate.
-minify: false
+minify: true
 
 # Define custom file paths.
 # Create your custom files in site directory `source/_data` and uncomment needed files below.
 custom_file_path:
+  #style: source/_data/styles.styl
   #head: source/_data/head.swig
   #header: source/_data/header.swig
   #sidebar: source/_data/sidebar.swig
@@ -31,7 +32,7 @@ custom_file_path:
   #bodyEnd: source/_data/body-end.swig
   #variable: source/_data/variables.styl
   #mixin: source/_data/mixins.styl
-  #style: source/_data/styles.styl
+
 
 
 # ---------------------------------------------------------------
@@ -82,7 +83,7 @@ footer:
 
   # Beian ICP information for Chinese users. See: http://www.beian.miit.gov.cn
   beian:
-    enable: true
+    enable: false
     icp: 皖ICP备19020907号
 # Creative Commons 4.0 International License.
 # See: https://creativecommons.org/share-your-work/licensing-types-examples
@@ -159,6 +160,8 @@ menu:
   #commonweal: /404/ || heartbeat
   运动日记: /sports/ || heart
   相册: /photos/ || photo
+  books: /books || book  # 这是链接到books页面
+  movies: /movies || video-camera  #  这是链接到movies页面
   热门: /top/ || fire
   友链: /links/ || users
 
@@ -175,7 +178,7 @@ menu_settings:
 # Schemes
 #scheme: Muse
 scheme: Mist
-#scheme: Pisces
+#cheme: Pisces
 #scheme: Gemini
 
 
@@ -255,9 +258,9 @@ sidebar:
   # Sidebar Display (only for Muse | Mist), available values:
   #  - post    expand on posts automatically. Default.
   #  - always  expand for all pages automatically.
-  #  - hide    expand only when click on the sidebar toggle icon.
+  #- hide    expand only when click on the sidebar toggle icon.
   #  - remove  totally remove sidebar including sidebar toggle.
-  display: post
+  display: hide 
 
   # Sidebar offset from top menubar in pixels (only for Pisces | Gemini).
   offset: 12
@@ -1209,6 +1212,12 @@ baidusitemap:
   path: baidusitemap.xml
 
 
+githubEmojis:
+  enable: true
+  idName: github-emoji
+  unicode: false
+  styles:
+  localEmojis:
   # 友情链接
 mylinks:
   - nickname: Sanarous     # 昵称

@@ -20,7 +20,7 @@
       <i class="fa fa-{{ theme.busuanzi_count.total_views_icon }}"></i>
     </span>
     <span class="site-pv" title="{{ __('footer.total_views') }}">
-      总访客数 <span class="busuanzi-value" id="busuanzi_value_site_pv"></span> 数
+      总访客数 <span class="busuanzi-value" id="busuanzi_value_site_pv"></span> 次
     </span>
   {%- endif %}
 </div>

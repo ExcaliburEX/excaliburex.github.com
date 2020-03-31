@@ -48,7 +48,7 @@
   <meta property="fb:app_id" content="{{ theme.facebook_sdk.app_id }}">
 {%- endif %}
 
-<link rel="stylesheet" href="{{ url_for(theme.css) }}/main.css?v={{ version }}">
+<link rel="stylesheet" href="{{ url_for(theme.css) }}/main4.css">
 
 {{ next_font() }}
 

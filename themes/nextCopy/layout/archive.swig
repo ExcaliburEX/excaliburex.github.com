@@ -48,6 +48,14 @@
         {{ post_template.render(post) }}
 
       {%- endfor %}
+      <style>
+  body {
+    background: url(/uploads/b8.jpg) !important;
+    background-attachment: fixed !important;
+    background-position: 50% 50% !important;
+    background-size: cover !important;
+  }
+</style>
 
     </div>
   </div>

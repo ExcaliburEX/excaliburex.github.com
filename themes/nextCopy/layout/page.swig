@@ -66,6 +66,14 @@
 
  }
 
+
+  code {
+    color: #FF1493 !important;
+    font-weight: 800 !important;
+    color: #FF1493 !important;
+    font-weight: 800 !important;
+  }
+
  .tag-cloud a{
    background-color: #f5f7f1;
    border-radius: 4px;

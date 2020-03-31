@@ -15,8 +15,6 @@ tags:
 mathjax: true
 image: "https://i.loli.net/2020/03/22/HreoPIJqzkbXYfi.jpg"
 ---
-
-
 惊闻4.13日江苏省高校将要启动开学模式，我自岿然不动。山中何事？松花酿酒，春水煎茶，如是而已。
 <!-- more -->
 

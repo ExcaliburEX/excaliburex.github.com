@@ -50,6 +50,33 @@
 </script>
 
 <style type="text/css">
+
+  body {
+    background: url(/uploads/b7.jpg) !important;
+    background-attachment: fixed !important;
+    background-position: 50% 50% !important;
+    background-size: cover !important;
+  }
+  div#posts.posts-expand {
+    margin-top: 0px;
+    margin-bottom: 60px;
+    padding: 25px;
+    border: 1px solid #fff;
+    /*-webkit-border-radius: 8px;*/
+    /*-moz-border-radius: 8px;*/
+    border-radius: 3px;
+    -webkit-box-shadow: #666 0px 0px 10px !important;
+    -moz-box-shadow: #666 0px 0px 10px !important;
+    box-shadow: #666 0px 0px 10px !important;
+    background: rgba(	255,250,205, 1) !important;
+    /*background: #fff;*/
+    behavior: url(/images/PIE.htc);
+    /*border: 1px solid rgba(128, 128, 128, 0.4);*/
+    /*   border-left: 1px solid darkgray;
+   border-right: 1px solid darkgray;*/
+    /*rgba(128, 128, 128, 0.4)*/
+  }
+
     div#posts.posts-expand .tag-cloud a{
    background-color: #f5f7f1;
    border-radius: 6px;
