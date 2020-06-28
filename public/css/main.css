@@ -2079,7 +2079,7 @@ div.post-meta {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #b055ff;
+  background: #cff;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -5318,10 +5318,6 @@ div.vedit {
 div.vcontrol {
   margin-top: 30px;
 }
-.v .veditor {
-  min-height: 70px !important;
-  height: 100px !important;
-}
 .v .vlist .vcard {
   border: 1px solid #ccc !important;
   width: 98%;
@@ -6219,18 +6215,23 @@ div.vcomment p {
     background-position: -100% 0;
   }
 }
-code {
-  overflow-wrap: break-word;
-  overflow-wrap: break-word;
-  word-wrap: break-word;
-  background: #eee;
-  border-radius: 3px;
-  color: #555;
-  padding: 2px 4px;
-  background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%) !important;
-  font-weight: 800 !important;
-}
 span#busuanzi_value_site_uv.busuanzi-value {
   font-weight: 1000 !important;
   font-size: 25px !important;
+}
+textarea.veditor {
+  background-image: url("https://cdn.jsdelivr.net/gh/drew233/cdn/20200409110727.webp") !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  background-position: right !important;
+  background-color: rgba(255,255,255,0) !important;
+  resize: vertical !important;
+}
+div.comment_trigger {
+  background-image: url("https://cdn.jsdelivr.net/gh/drew233/cdn/20200409110727.webp") !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  background-position: right !important;
+  background-color: rgba(255,255,255,0) !important;
+  resize: vertical !important;
 }

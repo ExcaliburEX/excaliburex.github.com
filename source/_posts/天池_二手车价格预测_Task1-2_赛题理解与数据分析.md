@@ -12,6 +12,7 @@ tags:
     - seaborn
     - pandas
     - 正态分布
+    - python
 mathjax: true
 image: "https://i.loli.net/2020/03/22/HreoPIJqzkbXYfi.jpg"
 ---

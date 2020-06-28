@@ -5,7 +5,7 @@ date: 2017-1-25 21:00:06 +0800
 photos: "https://i.loli.net/2017/10/15/59e37eaa1e1a0.jpg"
 lastupdate: 2017-10-11 12:24:49 +0800
 ---
-![](https://i.loli.net/2017/10/15/59e37eaa1e1a0.jpg)
+![](https://blog-1259799643.cos.ap-shanghai.myqcloud.com/2020-06-28-%E9%95%BF%E8%B7%AF%E6%85%A2%E8%B5%B0.jpg)
 
 <style>
 div.container.sidebar-position-left {
@@ -31,7 +31,7 @@ div#posts.posts-expand{
    /*border: 1px solid rgba(128, 128, 128, 0.4);*/
 /*   border-left: 1px solid darkgray;
    border-right: 1px solid darkgray;*/
-   /*rgba(128, 128, 128, 0.4)*/
+   /*rgba(128, 128, 128, 0.4)*/ 
 }
 
   span#busuanzi_value_site_uv.busuanzi-value{
@@ -41,25 +41,18 @@ div#posts.posts-expand{
 </style>
 
 
-<div align="center" style="margin-top:-20px">================&gt; 来访的第&nbsp;<font color="red"><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></font>位小伙伴，你好呀~ &lt;================</div>
+<div align="center" style="margin-top:-20px">================&gt; 看了&nbsp;<font color="red"><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></font>次，我还是没等到你。 &lt;================</div>
 
 
-这是柯摩的生活与学习的博客，如果你想联系我可以关注我的微博(虽然不怎么常用)。
+
+{% cq %}
+吾独怅惘，
+爱若星辉。
+圣洁抚光，
+楠歌俘心。
+{% endcq %}
 
 
-新浪微博：[柯摩SH](http://weibo.com/u/5339619827/home)
 
 
-此外你也可以关注我的[Twitter@Excaliburjp](https://twitter.com/Excaliburjp)
-
-
-邮箱：
-
-912011727@qq.com
-
-yedongdong83@gmail.com
-
-a912011727@gmail.com
-
-希望能遇见更多的朋友，当然没有未来的未来不是我想要的未来！
 

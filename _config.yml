@@ -148,13 +148,13 @@ githubEmojis:
     vertical-align: middle 
   localEmojis:
 
-douban:
-  user: 166950703
-  builtin: false
-  book:
-    title: '书海宙引'
-    quote: '所有我未曾看过的，都是我最向往的。'
-  movie:
-    title: '影中万象'
-    quote: 'Three Thousand Times and One Punch.'
-  timeout: 10000
+# douban:
+#   user: 166950703
+#   builtin: false
+#   book:
+#     title: '书海宙引'
+#     quote: '所有我未曾看过的，都是我最向往的。'
+#   movie:
+#     title: '影中万象'
+#     quote: 'Three Thousand Times and One Punch.'
+#   timeout: 10000

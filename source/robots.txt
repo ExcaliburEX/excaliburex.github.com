@@ -7,6 +7,11 @@ Allow: /tags/
 Allow: /about/
 Allow: /top/
 Allow: /photos/
+Allow: /sports/
+Allow: /books
+Allow: /movies
+Allow: /top/
+Allow: /links/
 
 Disallow: /vendors/
 Disallow: /js/
@@ -14,5 +19,5 @@ Disallow: /css/
 Disallow: /fonts/
 Disallow: /vendors/
 Disallow: /fancybox/
-Sitemap: https://www.kemo.xyz/sitemap.xml
-Sitemap: https://www.kemo.xyz/baidusitemap.xml
+Sitemap: https://kemo.xyz/sitemap.xml
+Sitemap: https://kemo.xyz/baidusitemap.xml

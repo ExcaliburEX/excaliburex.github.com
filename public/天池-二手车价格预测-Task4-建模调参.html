@@ -1,0 +1,2475 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+ <script type="text/javascript" src="/js/src/linkcard.js"></script>
+<head>
+  <meta charset="UTF-8">
+<meta name="generator" content="Hexo 3.9.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/head.jpg?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/head.jpg?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/head.jpg?v=7.3.0">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.3.0" color="#222">
+  <meta name="google-site-verification" content="ELbK6WK_Oi8CisIxzYbp86oWSo2__-8MbVOmWyGpgRI">
+  <meta name="baidu-site-verification" content="xwPujxAXwa">
+
+<link rel="stylesheet" href="/css/main9.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noto Serif SC:300,300italic,400,400italic,700,700italic|Noto Serif SC Black:300,300italic,400,400italic,700,700italic|consolas:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+  <link rel="stylesheet" href="/lib/fancybox/source/jquery.fancybox.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/ilyabirman-likely@2/release/likely.css">
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link rel="stylesheet" href="/lib/pace/pace-theme-flash.min.css?v=1.0.2">
+
+
+
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.3.0',
+    sidebar: {"position":"left","display":"hide","offset":12,"onmobile":true},
+    back2top: {"enable":true,"sidebar":true,"scrollpercent":true},
+    save_scroll: true,
+    copycode: {"enable":true,"show_result":true,"style":"mac"},
+    fancybox: true,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: './public/search.xml',
+    tabs: true,
+    motion: {"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    }
+  };
+</script>
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/0f81ff2f.js","daovoice")
+  daovoice('init', {
+      app_id: "be6d4aef"
+    });
+  daovoice('update');
+  </script>
+
+  <meta name="description" content="天池数据挖掘，组对学习系列，系统地各种算法的杂糅。">
+<meta name="keywords" content="pandas,Editor,DataMining,Tianchi,Study,Jupyter,seaborn,内存优化,五折交叉验证,cross validation,Linear Regression,Ridge正则化,Lasso正则化,svm,决策树,随机森林,梯度提升树(GBDT),多层感知机(MLP),XGBoost,LightGBM,贪心调参,网格调参,贝叶斯调参">
+<meta property="og:type" content="article">
+<meta property="og:title" content="天池_二手车价格预测_Task4_建模调参">
+<meta property="og:url" content="https://kemo.xyz/天池-二手车价格预测-Task4-建模调参.html">
+<meta property="og:site_name" content="柯摩的BLOG">
+<meta property="og:description" content="天池数据挖掘，组对学习系列，系统地各种算法的杂糅。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200505184801159.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0V4Y2FsaWJ1clVsaW1pdGVk,size_16,color_FFFFFF,t_70#pic_center">
+<meta property="og:image" content="https://imgconvert.csdnimg.cn/aHR0cHM6Ly93aWtpLm1iYWxpYi5jb20vdy9pbWFnZXMvNC80Yi8lRTklOTUlQkYlRTUlQjAlQkUlRTclOTAlODYlRTglQUUlQkEuZ2lm">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200505184904716.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0V4Y2FsaWJ1clVsaW1pdGVk,size_16,color_FFFFFF,t_70#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200505184913297.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0V4Y2FsaWJ1clVsaW1pdGVk,size_16,color_FFFFFF,t_70#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200505184922666.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0V4Y2FsaWJ1clVsaW1pdGVk,size_16,color_FFFFFF,t_70#pic_center">
+<meta property="og:image" content="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy85NjM3NzQyLWMzMzNmMWFkNDhhMDgxMWEucG5n?x-oss-process=image/format,png">
+<meta property="og:image" content="https://img-blog.csdn.net/20180205102310918?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvQ2hlblZhc3Q=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="https://img-blog.csdn.net/20180205102314995?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvQ2hlblZhc3Q=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200505184932891.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0V4Y2FsaWJ1clVsaW1pdGVk,size_16,color_FFFFFF,t_70#pic_center">
+<meta property="og:image" content="https://img-blog.csdn.net/20180909113753737?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM2NTIzODM5/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
+<meta property="og:image" content="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9waWMyLnpoaW1nLmNvbS84MC9hZmEwMzRkNTI5NjI2ODFkYjA5YjRkYzEwNjBmODA3NV83MjB3LmpwZw?x-oss-process=image/format,png">
+<meta property="og:image" content="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9waWMyLnpoaW1nLmNvbS84MC9iZTBkNGQ0MzhjNGU0ODc1ZDUyYmEzZWFkZWFkNjhmM183MjB3LmpwZw?x-oss-process=image/format,png">
+<meta property="og:image" content="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9waWMzLnpoaW1nLmNvbS84MC9hMDkzNzEwZjk5MzY0MTg1NjYyYTRkZTFlZWFhMTU3M183MjB3LmpwZw?x-oss-process=image/format,png">
+<meta property="og:image" content="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9waWM0LnpoaW1nLmNvbS84MC9hNDY1YTk4NjE3ODczMmI1YjdlMTc0YjAxODM2Zjg0Yl83MjB3LmpwZw?x-oss-process=image/format,png">
+<meta property="og:image" content="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9waWM0LnpoaW1nLmNvbS84MC9mMmNiOWZkNzY4M2QzNWJmMjkwZDU3ZTJhZGMwMGYzMV83MjB3LmpwZw?x-oss-process=image/format,png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200505184953854.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0V4Y2FsaWJ1clVsaW1pdGVk,size_16,color_FFFFFF,t_70#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200505185004284.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0V4Y2FsaWJ1clVsaW1pdGVk,size_16,color_FFFFFF,t_70#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200505185010853.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0V4Y2FsaWJ1clVsaW1pdGVk,size_16,color_FFFFFF,t_70#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200505185018549.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0V4Y2FsaWJ1clVsaW1pdGVk,size_16,color_FFFFFF,t_70#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200505185026643.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0V4Y2FsaWJ1clVsaW1pdGVk,size_16,color_FFFFFF,t_70#pic_center">
+<meta property="og:updated_time" content="2020-05-12T19:27:12.861Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="天池_二手车价格预测_Task4_建模调参">
+<meta name="twitter:description" content="天池数据挖掘，组对学习系列，系统地各种算法的杂糅。">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20200505184801159.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0V4Y2FsaWJ1clVsaW1pdGVk,size_16,color_FFFFFF,t_70#pic_center">
+  <link rel="alternate" href="/atom.xml" title="柯摩的BLOG" type="application/atom+xml">
+  <link rel="canonical" href="https://kemo.xyz/天池-二手车价格预测-Task4-建模调参">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>天池_二手车价格预测_Task4_建模调参 | 柯摩的BLOG</title>
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-145155839-1"></script>
+  <script>
+    var host = window.location.hostname;
+    if (host !== "localhost" || !true) {
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-145155839-1');
+    }
+  </script>
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?43fd6fab7512d8897b8d9cf67c49b600";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  <div class="container sidebar-position-left">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">柯摩的BLOG</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <h1 class="site-subtitle" itemprop="description">Forget before get.</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+      
+      
+      
+        
+        <li class="menu-item menu-item-home">
+      
+    
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-about">
+      
+    
+      
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-tags">
+      
+    
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">84</span></a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-categories">
+      
+    
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">8</span></a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-archives">
+      
+    
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">23</span></a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-运动日记">
+      
+    
+      
+    
+
+    <a href="/sports/" rel="section"><i class="menu-item-icon fa fa-fw fa-heart"></i> <br>运动日记</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-相册">
+      
+    
+      
+    
+
+    <a href="/photos/" rel="section"><i class="menu-item-icon fa fa-fw fa-photo"></i> <br>相册</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-books">
+      
+    
+      
+    
+
+    <a href="/books" rel="section"><i class="menu-item-icon fa fa-fw fa-book"></i> <br>阅读</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-movies">
+      
+    
+      
+    
+
+    <a href="/movies" rel="section"><i class="menu-item-icon fa fa-fw fa-video-camera"></i> <br>电影</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-热门">
+      
+    
+      
+    
+
+    <a href="/top/" rel="section"><i class="menu-item-icon fa fa-fw fa-fire"></i> <br>热门</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-友链">
+      
+    
+      
+    
+
+    <a href="/links/" rel="section"><i class="menu-item-icon fa fa-fw fa-users"></i> <br>友链</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a href="javascript:;" class="popup-trigger">
+        
+          <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+      </li>
+    
+  </ul>
+
+    
+
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+    </div>
+</nav>
+
+<!-- 打字礼花及震动特效 -->
+<script type="text/javascript" src="https://blog-1259799643.cos.ap-shanghai.myqcloud.com/fire.js"></script>
+<script>
+  POWERMODE.colorful = true; // ture 为启用礼花特效
+  POWERMODE.shake = true; // false 为禁用震动特效
+  document.body.addEventListener('input', POWERMODE);
+</script>
+</div>
+    </header>
+
+    
+
+  <a href="https://github.com/ExcaliburEX" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content page-post-detail">
+            
+
+  <div id="posts" class="posts-expand">
+    
+    <div class="reading-progress-bar"></div>
+
+
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://kemo.xyz/天池-二手车价格预测-Task4-建模调参.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="柯摩">
+      <meta itemprop="description" content="真实自有万钧之力">
+      <meta itemprop="image" content="/images/head.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="柯摩的BLOG">
+    </span>
+      <header class="post-header">
+
+        
+          <h2 class="post-title" itemprop="name headline">天池_二手车价格预测_Task4_建模调参
+
+            
+          </h2>
+        
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2020-05-13 02:53:38 / 修改时间：03:27:12" itemprop="dateCreated datePublished" datetime="2020-05-13T02:53:38+08:00">2020-05-13</time>
+            </span>
+          
+            
+
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Algorithm/" itemprop="url" rel="index"><span itemprop="name">Algorithm</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            <span id="/天池-二手车价格预测-Task4-建模调参.html" class="post-meta-item leancloud_visitors" data-flag-title="天池_二手车价格预测_Task4_建模调参" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+          
+            <span class="post-meta-item" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+            <span class="post-meta-divider">|</span>
+          <span title="post.wordcount"><span class="post-meta-item-icon"><i class="fa fa-file-word-o"></i></span>字数： 7.5k</span>
+          
+            
+  
+  <span class="post-meta-item">
+    
+    <span class="post-meta-item-icon">
+      <i class="fa fa-comment-o"></i>
+    </span>
+    <span class="post-meta-item-text">评论数：</span>
+  
+    <a href="/天池-二手车价格预测-Task4-建模调参.html#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/天池-二手车价格预测-Task4-建模调参.html" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+          
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">本文字数：</span>
+              
+              <span>23k</span>
+            </span>
+          
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              
+              <span>21 分钟</span>
+            </span>
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>天池数据挖掘，组对学习系列，系统地各种算法的杂糅。<br><a id="more"></a></p>
+<h1 id="0️⃣-前言"><a href="#0️⃣-前言" class="headerlink" title="0️⃣ 前言"></a>0️⃣ 前言</h1><p>  本章思维导图：</p>
+<p><img src="https://img-blog.csdnimg.cn/20200505184801159.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0V4Y2FsaWJ1clVsaW1pdGVk,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
+<h3 id="0️⃣-1️⃣-赛题重述"><a href="#0️⃣-1️⃣-赛题重述" class="headerlink" title="0️⃣.1️⃣ 赛题重述"></a>0️⃣.1️⃣ 赛题重述</h3><p>  这是一道来自于天池的新手练习题目，用<code>数据分析</code>、<code>机器学习</code>等手段进行 <a href="https://tianchi.aliyun.com/competition/entrance/231784/information" target="_blank" rel="noopener">二手车售卖价格预测</a> 的回归问题。赛题本身的思路清晰明了，即对给定的数据集进行分析探讨，然后设计模型运用数据进行训练，测试模型，最终给出选手的预测结果。前面我们已经进行过EDA分析在这里<a href="https://blog.csdn.net/ExcaliburUlimited/article/details/105021630" target="_blank" rel="noopener">天池_二手车价格预测_Task1-2_赛题理解与数据分析
+</a>以及<a href="https://editor.csdn.net/md/?articleId=105170015" target="_blank" rel="noopener">天池_二手车价格预测_Task3_特征工程</a></p>
+<h3 id="0️⃣-2️⃣-数据集概述"><a href="#0️⃣-2️⃣-数据集概述" class="headerlink" title="0️⃣.2️⃣ 数据集概述"></a>0️⃣.2️⃣ 数据集概述</h3><p>  赛题官方给出了来自Ebay Kleinanzeigen的二手车交易记录，总数据量超过<strong>40w</strong>，包含<strong>31列</strong>变量信息，其中<strong>15列</strong>为匿名变量，即<code>v0</code>至<code>v15</code>。并从中抽取<strong>15万条</strong>作为训练集，<strong>5万</strong>条作为测试集A，<strong>5万</strong>条作为测试集B，同时对<code>name</code>、<code>model</code>、<code>brand</code>和<code>regionCode</code>等信息进行脱敏。具体的数据表如下图：</p>
+<div class="table-wrapper" style="center"><table style="center">
+<thead>
+<tr style="center">
+<th><strong>Field</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody style="center">
+<tr style="center">
+<td>SaleID</td>
+<td>交易ID，唯一编码</td>
+</tr>
+<tr>
+<td>name</td>
+<td>汽车交易名称，已脱敏</td>
+</tr>
+<tr>
+<td>regDate</td>
+<td>汽车注册日期，例如20160101，2016年01月01日</td>
+</tr>
+<tr>
+<td>model</td>
+<td>车型编码，已脱敏</td>
+</tr>
+<tr>
+<td>brand</td>
+<td>汽车品牌，已脱敏</td>
+</tr>
+<tr>
+<td>bodyType</td>
+<td>车身类型：豪华轿车：0，微型车：1，厢型车：2，大巴车：3，敞篷车：4，双门汽车：5，商务车：6，搅拌车：7</td>
+</tr>
+<tr>
+<td>fuelType</td>
+<td>燃油类型：汽油：0，柴油：1，液化石油气：2，天然气：3，混合动力：4，其他：5，电动：6</td>
+</tr>
+<tr>
+<td>gearbox</td>
+<td>变速箱：手动：0，自动：1</td>
+</tr>
+<tr>
+<td>power</td>
+<td>发动机功率：范围 [ 0,  600 ]</td>
+</tr>
+<tr>
+<td>kilometer</td>
+<td>汽车已行驶公里，单位万km</td>
+</tr>
+<tr>
+<td>notRepairedDamage</td>
+<td>汽车有尚未修复的损坏：是：0，否：1</td>
+</tr>
+<tr>
+<td>regionCode</td>
+<td>地区编码，已脱敏</td>
+</tr>
+<tr>
+<td>seller</td>
+<td>销售方：个体：0，非个体：1</td>
+</tr>
+<tr>
+<td>offerType</td>
+<td>报价类型：提供：0，请求：1</td>
+</tr>
+<tr>
+<td>creatDate</td>
+<td>汽车上线时间，即开始售卖时间</td>
+</tr>
+<tr>
+<td>price</td>
+<td>二手车交易价格（预测目标）</td>
+</tr>
+<tr>
+<td>v系列特征</td>
+<td>匿名特征，包含v0-14在内15个匿名特征</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+<h1 id="1️⃣-数据处理"><a href="#1️⃣-数据处理" class="headerlink" title="1️⃣ 数据处理"></a>1️⃣ 数据处理</h1><p>  为了后面处理数据提高性能，所以需要对其进行内存优化。</p>
+<ul>
+<li>导入相关的库</li>
+</ul>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> warnings</span><br><span class="line">warnings.filterwarnings(<span class="string">'ignore'</span>)</span><br></pre></td></tr></tbody></table></figure>
+<ul>
+<li>通过调整数据类型，帮助我们减少数据在内存中占用的空间</li>
+</ul>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">reduce_mem_usage</span><span class="params">(df)</span>:</span></span><br><span class="line">    <span class="string">""" 迭代dataframe的所有列，修改数据类型来减少内存的占用        </span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    start_mem = df.memory_usage().sum() </span><br><span class="line">    print(<span class="string">'Memory usage of dataframe is {:.2f} MB'</span>.format(start_mem))</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> col <span class="keyword">in</span> df.columns:</span><br><span class="line">        col_type = df[col].dtype</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> col_type != object:</span><br><span class="line">            c_min = df[col].min()</span><br><span class="line">            c_max = df[col].max()</span><br><span class="line">            <span class="keyword">if</span> str(col_type)[:<span class="number">3</span>] == <span class="string">'int'</span>: <span class="comment"># 判断可以用哪种整型就可以表示，就转换到那个整型去</span></span><br><span class="line">                <span class="keyword">if</span> c_min > np.iinfo(np.int8).min <span class="keyword">and</span> c_max < np.iinfo(np.int8).max:</span><br><span class="line">                    df[col] = df[col].astype(np.int8)</span><br><span class="line">                <span class="keyword">elif</span> c_min > np.iinfo(np.int16).min <span class="keyword">and</span> c_max < np.iinfo(np.int16).max:</span><br><span class="line">                    df[col] = df[col].astype(np.int16)</span><br><span class="line">                <span class="keyword">elif</span> c_min > np.iinfo(np.int32).min <span class="keyword">and</span> c_max < np.iinfo(np.int32).max:</span><br><span class="line">                    df[col] = df[col].astype(np.int32)</span><br><span class="line">                <span class="keyword">elif</span> c_min > np.iinfo(np.int64).min <span class="keyword">and</span> c_max < np.iinfo(np.int64).max:</span><br><span class="line">                    df[col] = df[col].astype(np.int64)  </span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">if</span> c_min > np.finfo(np.float16).min <span class="keyword">and</span> c_max < np.finfo(np.float16).max:</span><br><span class="line">                    df[col] = df[col].astype(np.float16)</span><br><span class="line">                <span class="keyword">elif</span> c_min > np.finfo(np.float32).min <span class="keyword">and</span> c_max < np.finfo(np.float32).max:</span><br><span class="line">                    df[col] = df[col].astype(np.float32)</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    df[col] = df[col].astype(np.float64)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            df[col] = df[col].astype(<span class="string">'category'</span>)</span><br><span class="line"></span><br><span class="line">    end_mem = df.memory_usage().sum() </span><br><span class="line">    print(<span class="string">'Memory usage after optimization is: {:.2f} MB'</span>.format(end_mem))</span><br><span class="line">    print(<span class="string">'Decreased by {:.1f}%'</span>.format(<span class="number">100</span> * (start_mem - end_mem) / start_mem))</span><br><span class="line">    <span class="keyword">return</span> df</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sample_feature = reduce_mem_usage(pd.read_csv(<span class="string">'../excel/data_for_tree.csv'</span>))</span><br></pre></td></tr></tbody></table></figure>
+<pre><code>Memory usage of dataframe is 35249888.00 MB
+Memory usage after optimization is: 8925652.00 MB
+Decreased by 74.7%
+</code></pre><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">continuous_feature_names = [x <span class="keyword">for</span> x <span class="keyword">in</span> sample_feature.columns <span class="keyword">if</span> x <span class="keyword">not</span> <span class="keyword">in</span> [<span class="string">'price'</span>,<span class="string">'brand'</span>,<span class="string">'model'</span>]]</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sample_feature.head()</span><br></pre></td></tr></tbody></table></figure>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>SaleID</th>
+      <th>name</th>
+      <th>model</th>
+      <th>brand</th>
+      <th>bodyType</th>
+      <th>fuelType</th>
+      <th>gearbox</th>
+      <th>power</th>
+      <th>kilometer</th>
+      <th>notRepairedDamage</th>
+      <th>...</th>
+      <th>used_time</th>
+      <th>city</th>
+      <th>brand_amount</th>
+      <th>brand_price_max</th>
+      <th>brand_price_median</th>
+      <th>brand_price_min</th>
+      <th>brand_price_sum</th>
+      <th>brand_price_std</th>
+      <th>brand_price_average</th>
+      <th>power_bin</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>1</td>
+      <td>2262</td>
+      <td>40.0</td>
+      <td>1</td>
+      <td>2.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0</td>
+      <td>15.0</td>
+      <td>-</td>
+      <td>...</td>
+      <td>4756.0</td>
+      <td>4.0</td>
+      <td>4940.0</td>
+      <td>9504.0</td>
+      <td>3000.0</td>
+      <td>149.0</td>
+      <td>17934852.0</td>
+      <td>2538.0</td>
+      <td>3630.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>5</td>
+      <td>137642</td>
+      <td>24.0</td>
+      <td>10</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>109</td>
+      <td>10.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>2482.0</td>
+      <td>3.0</td>
+      <td>3556.0</td>
+      <td>9504.0</td>
+      <td>2490.0</td>
+      <td>200.0</td>
+      <td>10936962.0</td>
+      <td>2180.0</td>
+      <td>3074.0</td>
+      <td>10.0</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>7</td>
+      <td>165346</td>
+      <td>26.0</td>
+      <td>14</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>101</td>
+      <td>15.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>6108.0</td>
+      <td>4.0</td>
+      <td>8784.0</td>
+      <td>9504.0</td>
+      <td>1350.0</td>
+      <td>13.0</td>
+      <td>17445064.0</td>
+      <td>1798.0</td>
+      <td>1986.0</td>
+      <td>10.0</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>10</td>
+      <td>18961</td>
+      <td>19.0</td>
+      <td>9</td>
+      <td>3.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>101</td>
+      <td>15.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>3874.0</td>
+      <td>1.0</td>
+      <td>4488.0</td>
+      <td>9504.0</td>
+      <td>1250.0</td>
+      <td>55.0</td>
+      <td>7867901.0</td>
+      <td>1557.0</td>
+      <td>1753.0</td>
+      <td>10.0</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>13</td>
+      <td>8129</td>
+      <td>65.0</td>
+      <td>1</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>150</td>
+      <td>15.0</td>
+      <td>1.0</td>
+      <td>...</td>
+      <td>4152.0</td>
+      <td>3.0</td>
+      <td>4940.0</td>
+      <td>9504.0</td>
+      <td>3000.0</td>
+      <td>149.0</td>
+      <td>17934852.0</td>
+      <td>2538.0</td>
+      <td>3630.0</td>
+      <td>14.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 39 columns</p>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">continuous_feature_names</span><br></pre></td></tr></tbody></table></figure>
+<pre><code>['SaleID',
+ 'name',
+ 'bodyType',
+ 'fuelType',
+ 'gearbox',
+ 'power',
+ 'kilometer',
+ 'notRepairedDamage',
+ 'seller',
+ 'offerType',
+ 'v_0',
+ 'v_1',
+ 'v_2',
+ 'v_3',
+ 'v_4',
+ 'v_5',
+ 'v_6',
+ 'v_7',
+ 'v_8',
+ 'v_9',
+ 'v_10',
+ 'v_11',
+ 'v_12',
+ 'v_13',
+ 'v_14',
+ 'train',
+ 'used_time',
+ 'city',
+ 'brand_amount',
+ 'brand_price_max',
+ 'brand_price_median',
+ 'brand_price_min',
+ 'brand_price_sum',
+ 'brand_price_std',
+ 'brand_price_average',
+ 'power_bin']
+</code></pre><h1 id="2️⃣-线性回归"><a href="#2️⃣-线性回归" class="headerlink" title="2️⃣ 线性回归"></a>2️⃣ 线性回归</h1><h2 id="2️⃣-1️⃣-简单建模"><a href="#2️⃣-1️⃣-简单建模" class="headerlink" title="2️⃣.1️⃣ 简单建模"></a>2️⃣.1️⃣ 简单建模</h2><p>  设置训练集的自变量<code>train_X</code>与因变量<code>train_y</code></p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sample_feature = sample_feature.dropna().replace(<span class="string">'-'</span>, <span class="number">0</span>).reset_index(drop=<span class="literal">True</span>)</span><br><span class="line">sample_feature[<span class="string">'notRepairedDamage'</span>] = sample_feature[<span class="string">'notRepairedDamage'</span>].astype(np.float32)</span><br><span class="line"></span><br><span class="line">train = sample_feature[continuous_feature_names + [<span class="string">'price'</span>]]</span><br><span class="line">train_X = train[continuous_feature_names]</span><br><span class="line">train_y = train[<span class="string">'price'</span>]</span><br></pre></td></tr></tbody></table></figure>
+<ul>
+<li>从<code>sklearn.linear_model</code>库调用线性回归函数</li>
+</ul>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LinearRegression</span><br></pre></td></tr></tbody></table></figure>
+<p>训练模型，<code>normalize</code>设置为<code>True</code>则输入的样本数据将<script type="math/tex">\frac{(X-X_{ave})}{||X||}</script></p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">model = LinearRegression(normalize=<span class="literal">True</span>)</span><br><span class="line">model = model.fit(train_X, train_y)</span><br></pre></td></tr></tbody></table></figure>
+<p>查看训练的线性回归模型的截距（intercept）与权重(coef)，其中<code>zip</code>先将特征与权重拼成元组，再用<code>dict.items()</code>将元组变成列表，<code>lambda</code>里面取元组的第2个元素，也就是按照权重排序。</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">print(<span class="string">'intercept:'</span>+ str(model.intercept_))</span><br><span class="line"></span><br><span class="line">sorted(dict(zip(continuous_feature_names, model.coef_)).items(), key=<span class="keyword">lambda</span> x:x[<span class="number">1</span>], reverse=<span class="literal">True</span>)</span><br></pre></td></tr></tbody></table></figure>
+<pre><code>intercept:-74792.9734982533
+
+
+
+
+
+[('v_6', 1409712.605060366),
+ ('v_8', 610234.5713666412),
+ ('v_2', 14000.150601494915),
+ ('v_10', 11566.15879987477),
+ ('v_7', 4359.400479384727),
+ ('v_3', 734.1594753553514),
+ ('v_13', 429.31597053081543),
+ ('v_14', 113.51097451363385),
+ ('bodyType', 53.59225499923475),
+ ('fuelType', 28.70033988480179),
+ ('power', 14.063521207625223),
+ ('city', 11.214497244626225),
+ ('brand_price_std', 0.26064581249034796),
+ ('brand_price_median', 0.2236946027016186),
+ ('brand_price_min', 0.14223892840381142),
+ ('brand_price_max', 0.06288317241689621),
+ ('brand_amount', 0.031481415743174694),
+ ('name', 2.866003063271253e-05),
+ ('SaleID', 1.5357186544049832e-05),
+ ('gearbox', 8.527422323822975e-07),
+ ('train', -3.026798367500305e-08),
+ ('offerType', -2.0873267203569412e-07),
+ ('seller', -8.426140993833542e-07),
+ ('brand_price_sum', -4.1644253886318015e-06),
+ ('brand_price_average', -0.10601622599106471),
+ ('used_time', -0.11019174518618283),
+ ('power_bin', -64.74445582883024),
+ ('kilometer', -122.96508938774225),
+ ('v_0', -317.8572907738245),
+ ('notRepairedDamage', -412.1984812088826),
+ ('v_4', -1239.4804712396635),
+ ('v_1', -2389.3641453624136),
+ ('v_12', -12326.513672033445),
+ ('v_11', -16921.982011390297),
+ ('v_5', -25554.951071390704),
+ ('v_9', -26077.95662717417)]
+</code></pre><h2 id="2️⃣-2️⃣-处理长尾分布"><a href="#2️⃣-2️⃣-处理长尾分布" class="headerlink" title="2️⃣.2️⃣ 处理长尾分布"></a>2️⃣.2️⃣ 处理长尾分布</h2><p>  长尾分布是尾巴很长的分布。那么尾巴很长很厚的分布有什么特殊的呢？有两方面：一方面，这种分布会使得你的采样不准，估值不准，因为尾部占了很大部分。另一方面，尾部的数据少，人们对它的了解就少，那么如果它是有害的，那么它的破坏力就非常大，因为人们对它的预防措施和经验比较少。实际上，在稳定分布家族中，除了正态分布，其他均为长尾分布。</p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly93aWtpLm1iYWxpYi5jb20vdy9pbWFnZXMvNC80Yi8lRTklOTUlQkYlRTUlQjAlQkUlRTclOTAlODYlRTglQUUlQkEuZ2lm" alt></p>
+<p>随机找个特征，用随机下标选取一定的数观测预测值与真实值之间的差别</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> matplotlib <span class="keyword">import</span> pyplot <span class="keyword">as</span> plt</span><br><span class="line">subsample_index = np.random.randint(low=<span class="number">0</span>, high=len(train_y), size=<span class="number">50</span>)</span><br><span class="line"></span><br><span class="line">plt.scatter(train_X[<span class="string">'v_6'</span>][subsample_index], train_y[subsample_index], color=<span class="string">'black'</span>)</span><br><span class="line">plt.scatter(train_X[<span class="string">'v_6'</span>][subsample_index], model.predict(train_X.loc[subsample_index]), color=<span class="string">'red'</span>)</span><br><span class="line">plt.xlabel(<span class="string">'v_6'</span>)</span><br><span class="line">plt.ylabel(<span class="string">'price'</span>)</span><br><span class="line">plt.legend([<span class="string">'True Price'</span>,<span class="string">'Predicted Price'</span>],loc=<span class="string">'upper right'</span>)</span><br><span class="line">print(<span class="string">'真实价格与预测价格差距过大！'</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></tbody></table></figure>
+<pre><code>真实价格与预测价格差距过大！
+
+
+
+<Figure size 640x480 with 1 Axes>
+</code></pre><p>绘制特征<code>v_6</code>的值与标签的散点图，图片发现模型的预测结果（红色点）与真实标签（黑色点）的分布差异较大，且部分预测值出现了小于0的情况，说明我们的模型存在一些问题。<br>下面可以通过作图我们看看数据的标签（<code>price</code>）的分布情况</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> seaborn <span class="keyword">as</span> sns</span><br><span class="line">plt.figure(figsize=(<span class="number">15</span>,<span class="number">5</span>))</span><br><span class="line">plt.subplot(<span class="number">1</span>,<span class="number">2</span>,<span class="number">1</span>)</span><br><span class="line">sns.distplot(train_y)</span><br><span class="line">plt.subplot(<span class="number">1</span>,<span class="number">2</span>,<span class="number">2</span>)</span><br><span class="line">sns.distplot(train_y[train_y < np.quantile(train_y, <span class="number">0.9</span>)])<span class="comment"># 去掉尾部10%的数再画一次，依然是呈现长尾分布</span></span><br></pre></td></tr></tbody></table></figure>
+<pre><code><matplotlib.axes._subplots.AxesSubplot at 0x210469a20f0>
+</code></pre><p><img src="https://img-blog.csdnimg.cn/20200505184904716.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0V4Y2FsaWJ1clVsaW1pdGVk,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
+<p>从这两个频率分布直方图来看，<code>price</code>呈现长尾分布，不利于我们的建模预测，原因是很多模型都假设数据误差项符合正态分布，而长尾分布的数据违背了这一假设。</p>
+<p>在这里我们对<code>train_y</code>进行了$log(x+1)$变换，使标签贴近于正态分布</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">train_y_ln = np.log(train_y + <span class="number">1</span>)</span><br><span class="line">plt.figure(figsize=(<span class="number">15</span>,<span class="number">5</span>))</span><br><span class="line">plt.subplot(<span class="number">1</span>,<span class="number">2</span>,<span class="number">1</span>)</span><br><span class="line">sns.distplot(train_y_ln)</span><br><span class="line">plt.subplot(<span class="number">1</span>,<span class="number">2</span>,<span class="number">2</span>)</span><br><span class="line">sns.distplot(train_y_ln[train_y_ln < np.quantile(train_y_ln, <span class="number">0.9</span>)])</span><br></pre></td></tr></tbody></table></figure>
+<pre><code><matplotlib.axes._subplots.AxesSubplot at 0x21046aa7588>
+</code></pre><p><img src="https://img-blog.csdnimg.cn/20200505184913297.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0V4Y2FsaWJ1clVsaW1pdGVk,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
+<p>可以看出经过对数处理后，长尾分布的效果减弱了。再进行一次线性回归：</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">model = model.fit(train_X, train_y_ln)</span><br><span class="line"></span><br><span class="line">print(<span class="string">'intercept:'</span>+ str(model.intercept_))</span><br><span class="line">sorted(dict(zip(continuous_feature_names, model.coef_)).items(), key=<span class="keyword">lambda</span> x:x[<span class="number">1</span>], reverse=<span class="literal">True</span>)</span><br></pre></td></tr></tbody></table></figure>
+<pre><code>intercept:22.237755141260187
+
+
+
+
+
+[('v_1', 5.669305855573455),
+ ('v_5', 4.244663233260515),
+ ('v_12', 1.2018270333465797),
+ ('v_13', 1.1021805892566767),
+ ('v_10', 0.9251453991435046),
+ ('v_2', 0.8276319426702504),
+ ('v_9', 0.6011701859510072),
+ ('v_3', 0.4096252333799574),
+ ('v_0', 0.08579322268709569),
+ ('power_bin', 0.013581489882378468),
+ ('bodyType', 0.007405158753814581),
+ ('power', 0.0003639122482301998),
+ ('brand_price_median', 0.0001295023112073966),
+ ('brand_price_max', 5.681812615719255e-05),
+ ('brand_price_std', 4.2637652140444604e-05),
+ ('brand_price_sum', 2.215129563552113e-09),
+ ('gearbox', 7.094911325111752e-10),
+ ('seller', 2.715054847612919e-10),
+ ('offerType', 1.0291500984749291e-10),
+ ('train', -2.2282620193436742e-11),
+ ('SaleID', -3.7349069125800904e-09),
+ ('name', -6.100613320903764e-08),
+ ('brand_amount', -1.63362003323235e-07),
+ ('used_time', -2.9274637535648837e-05),
+ ('brand_price_min', -2.97497751376125e-05),
+ ('brand_price_average', -0.0001181124521449396),
+ ('fuelType', -0.0018817210167693563),
+ ('city', -0.003633315365347111),
+ ('v_14', -0.02594698320698149),
+ ('kilometer', -0.03327227857575015),
+ ('notRepairedDamage', -0.27571086049472),
+ ('v_4', -0.6724689959780609),
+ ('v_7', -1.178076244244115),
+ ('v_11', -1.3234586342526309),
+ ('v_8', -83.08615946716786),
+ ('v_6', -315.0380673447196)]
+</code></pre><p>再一次画出预测与真实值的散点对比图：</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">plt.scatter(train_X[<span class="string">'v_6'</span>][subsample_index], train_y[subsample_index], color=<span class="string">'black'</span>)</span><br><span class="line">plt.scatter(train_X[<span class="string">'v_6'</span>][subsample_index], np.exp(model.predict(train_X.loc[subsample_index])), color=<span class="string">'blue'</span>)</span><br><span class="line">plt.xlabel(<span class="string">'v_6'</span>)</span><br><span class="line">plt.ylabel(<span class="string">'price'</span>)</span><br><span class="line">plt.legend([<span class="string">'True Price'</span>,<span class="string">'Predicted Price'</span>],loc=<span class="string">'upper right'</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/20200505184922666.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0V4Y2FsaWJ1clVsaW1pdGVk,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
+<p>效果稍微好了一点，但毕竟是线性回归，拟合得还是不够好。</p>
+<h1 id="3️⃣-五折交叉验证¶（cross-val-score）"><a href="#3️⃣-五折交叉验证¶（cross-val-score）" class="headerlink" title="3️⃣ 五折交叉验证¶（cross_val_score）"></a>3️⃣ 五折交叉验证¶（<code>cross_val_score</code>）</h1><p>  在使用训练集对参数进行训练的时候，经常会发现人们通常会将一整个训练集分为三个部分（比如mnist手写训练集）。一般分为：训练集（<code>train_set</code>），评估集（<code>valid_set</code>），测试集（<code>test_set</code>）这三个部分。这其实是为了保证训练效果而特意设置的。其中测试集很好理解，其实就是完全不参与训练的数据，仅仅用来观测测试效果的数据。而训练集和评估集则牵涉到下面的知识了。</p>
+<p>  因为在实际的训练中，训练的结果对于训练集的拟合程度通常还是挺好的（初始条件敏感），但是对于训练集之外的数据的拟合程度通常就不那么令人满意了。因此我们通常并不会把所有的数据集都拿来训练，而是分出一部分来（这一部分不参加训练）对训练集生成的参数进行测试，相对客观的判断这些参数对训练集之外的数据的符合程度。这种思想就称为交叉验证（<code>Cross Validation</code>）。</p>
+<p>  直观的类比就是训练集是上课，评估集是平时的作业，而测试集是最后的期末考试。😏</p>
+<p><code>Cross Validation</code>：简言之，就是进行多次<code>train_test_split</code>划分；每次划分时，在不同的数据集上进行训练、测试评估，从而得出一个评价结果；如果是5折交叉验证，意思就是在原始数据集上，进行5次划分，每次划分进行一次训练、评估，最后得到5次划分后的评估结果，一般在这几次评估结果上取平均得到最后的评分。<code>k-fold cross-validation</code> ，其中，<code>k</code>一般取5或10。</p>
+<p>一般情况将K折交叉验证用于模型调优，找到使得模型泛化性能最优的超参值。找到后，在全部训练集上重新训练模型，并使用独立测试集对模型性能做出最终评价。K折交叉验证使用了无重复抽样技术的好处：每次迭代过程中每个样本点只有一次被划入训练集或测试集的机会。</p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy85NjM3NzQyLWMzMzNmMWFkNDhhMDgxMWEucG5n?x-oss-process=image/format,png" alt><br><img src="https://img-blog.csdn.net/20180205102310918?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvQ2hlblZhc3Q=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt><br><img src="https://img-blog.csdn.net/20180205102314995?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvQ2hlblZhc3Q=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt></p>
+<p>更多参考资料：<a href="https://www.cnblogs.com/ysugyl/p/8707887.html" target="_blank" rel="noopener">几种交叉验证（cross validation）方式的比较
+</a>、<a href="https://blog.csdn.net/tianguiyuyu/article/details/80697223" target="_blank" rel="noopener">k折交叉验证</a></p>
+<ul>
+<li>下面调用<code>sklearn.model_selection</code>的<code>cross_val_score</code>进行交叉验证</li>
+</ul>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> cross_val_score</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> mean_absolute_error,  make_scorer</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="3️⃣-1️⃣-cross-val-score相应函数的应用"><a href="#3️⃣-1️⃣-cross-val-score相应函数的应用" class="headerlink" title="3️⃣.1️⃣ cross_val_score相应函数的应用"></a>3️⃣.1️⃣ <code>cross_val_score</code>相应函数的应用</h2><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">log_transfer</span><span class="params">(func)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">wrapper</span><span class="params">(y, yhat)</span>:</span></span><br><span class="line">        result = func(np.log(y), np.nan_to_num(np.log(yhat)))</span><br><span class="line">        <span class="keyword">return</span> result</span><br><span class="line">    <span class="keyword">return</span> wrapper</span><br></pre></td></tr></tbody></table></figure>
+<ul>
+<li>上面的<code>log_transfer</code>是提供装饰器功能，是为了将下面的<code>cross_val_score</code>的<code>make_scorer</code>的<code>mean_absolute_error</code>（它的公式在下面）的输入参数做对数处理，其中<code>np.nan_to_num</code>顺便将<code>nan</code>转变为0。<script type="math/tex; mode=display">
+MAE=\frac{\sum\limits_{i=1}^{n}\left|y_{i}-\hat{y}_{i}\right|}{n}</script></li>
+<li><p><code>cross_val_score</code>是<code>sklearn</code>用于交叉验证评估分数的函数，前面几个参数很明朗，后面几个参数需要解释一下。</p>
+<ul>
+<li><code>verbose</code>：详细程度，也就是是否输出进度信息</li>
+<li><code>cv</code>：交叉验证生成器或可迭代的次数</li>
+<li><code>scoring</code>：调用用来评价的方法，是score越大约好，还是loss越小越好，默认是loss。这里调用了<code>mean_absolute_error</code>，只是在调用之前先进行了<code>log_transfer</code>的装饰，然后调用的<code>y</code>和<code>yhat</code>，会自动将<code>cross_val_score</code>得到的<code>X</code>和<code>y</code>代入。<ul>
+<li><code>make_scorer</code>：构建一个完整的定制scorer函数，可选参数<code>greater_is_better</code>，默认为<code>False</code>，也就是loss越小越好</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>下面是对未进行对数处理的原特征数据进行五折交叉验证</p>
+</li>
+</ul>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scores = cross_val_score(model, X=train_X, y=train_y, verbose=<span class="number">1</span>, cv = <span class="number">5</span>, scoring=make_scorer(log_transfer(mean_absolute_error)))</span><br></pre></td></tr></tbody></table></figure>
+<pre><code>[Parallel(n_jobs=1)]: Using backend SequentialBackend with 1 concurrent workers.
+[Parallel(n_jobs=1)]: Done   5 out of   5 | elapsed:    0.2s finished
+</code></pre><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(<span class="string">'AVG:'</span>, np.mean(scores))</span><br></pre></td></tr></tbody></table></figure>
+<pre><code>AVG: 0.7533845471636889
+</code></pre><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">scores = pd.DataFrame(scores.reshape(<span class="number">1</span>,<span class="number">-1</span>)) <span class="comment"># 转化成一行，(-1,1)为一列</span></span><br><span class="line">scores.columns = [<span class="string">'cv'</span> + str(x) <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">1</span>, <span class="number">6</span>)]</span><br><span class="line">scores.index = [<span class="string">'MAE'</span>]</span><br><span class="line">scores</span><br></pre></td></tr></tbody></table></figure>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>cv1</th>
+      <th>cv2</th>
+      <th>cv3</th>
+      <th>cv4</th>
+      <th>cv5</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>MAE</td>
+      <td>0.727867</td>
+      <td>0.759451</td>
+      <td>0.781238</td>
+      <td>0.750681</td>
+      <td>0.747686</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+<p>使用线性回归模型，对进行过对数处理的原特征数据进行五折交叉验证</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scores = cross_val_score(model, X=train_X, y=train_y_ln, verbose=<span class="number">1</span>, cv = <span class="number">5</span>, scoring=make_scorer(mean_absolute_error))</span><br></pre></td></tr></tbody></table></figure>
+<pre><code>[Parallel(n_jobs=1)]: Using backend SequentialBackend with 1 concurrent workers.
+[Parallel(n_jobs=1)]: Done   5 out of   5 | elapsed:    0.1s finished
+</code></pre><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(<span class="string">'AVG:'</span>, np.mean(scores))</span><br></pre></td></tr></tbody></table></figure>
+<pre><code>AVG: 0.2124134663602803
+</code></pre><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">scores = pd.DataFrame(scores.reshape(<span class="number">1</span>,<span class="number">-1</span>))</span><br><span class="line">scores.columns = [<span class="string">'cv'</span> + str(x) <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">1</span>, <span class="number">6</span>)]</span><br><span class="line">scores.index = [<span class="string">'MAE'</span>]</span><br><span class="line">scores</span><br></pre></td></tr></tbody></table></figure>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>cv1</th>
+      <th>cv2</th>
+      <th>cv3</th>
+      <th>cv4</th>
+      <th>cv5</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>MAE</td>
+      <td>0.208238</td>
+      <td>0.212408</td>
+      <td>0.215933</td>
+      <td>0.210742</td>
+      <td>0.214747</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+<p>可以看出进行对数处理后，五折交叉验证的loss显著降低。</p>
+<h2 id="3️⃣-2️⃣-考虑真实世界限制"><a href="#3️⃣-2️⃣-考虑真实世界限制" class="headerlink" title="3️⃣.2️⃣ 考虑真实世界限制"></a>3️⃣.2️⃣ 考虑真实世界限制</h2><p>  例如：通过2018年的二手车价格预测2017年的二手车价格，这显然是不合理的，因此我们还可以采用时间顺序对数据集进行分隔。在本例中，我们选用靠前时间的4/5样本当作训练集，靠后时间的1/5当作验证集，最终结果与五折交叉验证差距不大。</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> datetime</span><br><span class="line">sample_feature = sample_feature.reset_index(drop=<span class="literal">True</span>)</span><br><span class="line">split_point = len(sample_feature) // <span class="number">5</span> * <span class="number">4</span></span><br><span class="line"></span><br><span class="line">train = sample_feature.loc[:split_point].dropna()</span><br><span class="line">val = sample_feature.loc[split_point:].dropna()</span><br><span class="line"></span><br><span class="line">train_X = train[continuous_feature_names]</span><br><span class="line">train_y_ln = np.log(train[<span class="string">'price'</span>])</span><br><span class="line">val_X = val[continuous_feature_names]</span><br><span class="line">val_y_ln = np.log(val[<span class="string">'price'</span>])</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">model = model.fit(train_X, train_y_ln)</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mean_absolute_error(val_y_ln, model.predict(val_X))</span><br></pre></td></tr></tbody></table></figure>
+<pre><code>0.21498301182417004
+</code></pre><h2 id="3️⃣-3️⃣-绘制学习率曲线与验证曲线¶"><a href="#3️⃣-3️⃣-绘制学习率曲线与验证曲线¶" class="headerlink" title="3️⃣.3️⃣ 绘制学习率曲线与验证曲线¶"></a>3️⃣.3️⃣ 绘制学习率曲线与验证曲线¶</h2><p>  学习曲线是一种用来判断训练模型的一种方法，它会自动把训练样本的数量按照预定的规则逐渐增加，然后画出不同训练样本数量时的模型准确度。</p>
+<p>  我们可以把$J_{train}(\theta)$和$J_{test}(\theta)$作为纵坐标，画出与训练集数据集$m$的大小关系，这就是学习曲线。通过学习曲线，可以直观地观察到模型的准确性和训练数据大小的关系。 我们可以比较直观的了解到我们的模型处于一个什么样的状态，如：过拟合（overfitting）或欠拟合（underfitting）</p>
+<p>  如果数据集的大小为$m$，则通过下面的流程即可画出学习曲线：</p>
+<ul>
+<li><p>1.把数据集分成训练数据集和交叉验证集（可以看作测试集）；</p>
+</li>
+<li><p>2.取训练数据集的20%作为训练样本，训练出模型参数；</p>
+</li>
+<li><p>3.使用交叉验证集来计算训练出来的模型的准确性；</p>
+</li>
+<li><p>4.以训练集的score和交叉验证集score为纵坐标(这里的score取决于你使用的<code>make_score</code>方法，例如MAE)，训练集的个数作为横坐标，在坐标轴上画出上述步骤计算出来的模型准确性；</p>
+</li>
+<li><p>5.训练数据集增加10%，调到步骤2，继续执行，知道训练数据集大小为100%。</p>
+</li>
+</ul>
+<p><code>learning_curve()</code>：这个函数主要是用来判断（可视化）模型是否过拟合的。下面是一些参数的解释：</p>
+<ul>
+<li><code>X</code>：是一个m*n的矩阵，m:数据数量，n:特征数量；</li>
+<li><code>y</code>：是一个m*1的矩阵，m:数据数量，相对于<code>X</code>的目标进行分类或回归；</li>
+<li><code>groups</code>：将数据集拆分为训练/测试集时使用的样本的标签分组。<strong>[可选]</strong>；</li>
+<li><code>train_sizes</code>：指定训练样品数量的变化规则。比如：np.linspace(0.1, 1.0, 5)表示把训练样品数量从0.1-1分成5等分，生成[0.1, 0.325,0.55,0.75,1]的序列，从序列中取出训练样品数量百分比，逐个计算在当前训练样本数量情况下训练出来的模型准确性。</li>
+<li><code>cv</code>：<code>None</code>，要使用默认的三折交叉验证（v0.22版本中将改为五折）；</li>
+<li><code>n_jobs</code>：要并行运行的作业数。None表示1。 -1表示使用所有处理器；</li>
+<li><code>pre_dispatch</code>：并行执行的预调度作业数（默认为全部）。该选项可以减少分配的内存。该字符串可以是“ 2 * n_jobs”之类的表达式；</li>
+<li><code>shuffle</code>：<code>bool</code>，是否在基于<code>train_sizes</code>为前缀之前对训练数据进行洗牌；</li>
+</ul>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> learning_curve, validation_curve</span><br></pre></td></tr></tbody></table></figure>
+<p><code>plt.fill_between()</code>用来填充两条线间区域，其他好像没什么好解释的了。</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">plot_learning_curve</span><span class="params">(estimator, title, X, y, ylim=None, cv=None,n_jobs=<span class="number">1</span>, train_size=np.linspace<span class="params">(<span class="number">.1</span>, <span class="number">1.0</span>, <span class="number">5</span> )</span>)</span>:</span>  </span><br><span class="line">    plt.figure()  </span><br><span class="line">    plt.title(title)  </span><br><span class="line">    <span class="keyword">if</span> ylim <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:  </span><br><span class="line">        plt.ylim(*ylim)  </span><br><span class="line">    plt.xlabel(<span class="string">'Training example'</span>)  </span><br><span class="line">    plt.ylabel(<span class="string">'score'</span>)  </span><br><span class="line">    train_sizes, train_scores, test_scores = learning_curve(estimator, X, y, cv=cv, n_jobs=n_jobs, train_sizes=train_size, scoring = make_scorer(mean_absolute_error))  </span><br><span class="line">    train_scores_mean = np.mean(train_scores, axis=<span class="number">1</span>)  </span><br><span class="line">    train_scores_std = np.std(train_scores, axis=<span class="number">1</span>)  </span><br><span class="line">    test_scores_mean = np.mean(test_scores, axis=<span class="number">1</span>)  </span><br><span class="line">    test_scores_std = np.std(test_scores, axis=<span class="number">1</span>)  </span><br><span class="line">    plt.grid()<span class="comment">#区域  </span></span><br><span class="line">    plt.fill_between(train_sizes, train_scores_mean - train_scores_std,  </span><br><span class="line">                     train_scores_mean + train_scores_std, alpha=<span class="number">0.1</span>,  </span><br><span class="line">                     color=<span class="string">"r"</span>)  </span><br><span class="line">    plt.fill_between(train_sizes, test_scores_mean - test_scores_std,  </span><br><span class="line">                     test_scores_mean + test_scores_std, alpha=<span class="number">0.1</span>,  </span><br><span class="line">                     color=<span class="string">"g"</span>)  </span><br><span class="line">    plt.plot(train_sizes, train_scores_mean, <span class="string">'o-'</span>, color=<span class="string">'r'</span>,  </span><br><span class="line">             label=<span class="string">"Training score"</span>)  </span><br><span class="line">    plt.plot(train_sizes, test_scores_mean,<span class="string">'o-'</span>,color=<span class="string">"g"</span>,  </span><br><span class="line">             label=<span class="string">"Cross-validation score"</span>)  </span><br><span class="line">    plt.legend(loc=<span class="string">"best"</span>)  </span><br><span class="line">    <span class="keyword">return</span> plt</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plot_learning_curve(LinearRegression(), <span class="string">'Liner_model'</span>, train_X[:], train_y_ln[:], ylim=(<span class="number">0.0</span>, <span class="number">0.5</span>), cv=<span class="number">5</span>, n_jobs=<span class="number">-1</span>)</span><br></pre></td></tr></tbody></table></figure>
+<pre><code><module 'matplotlib.pyplot' from 'D:\\Software\\Anaconda\\lib\\site-packages\\matplotlib\\pyplot.py'>
+</code></pre><p><img src="https://img-blog.csdnimg.cn/20200505184932891.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0V4Y2FsaWJ1clVsaW1pdGVk,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
+<p>训练误差与验证误差逐渐一致，准确率也挺高（这里的score是MAE，所以是loss趋近于0.2，准确率趋近于0.8），但是训练误差几乎没变过，所以属于过拟合。这里给出一下高偏差欠拟合(bias)以及高方差过拟合(variance)的模样：</p>
+<p><img src="https://img-blog.csdn.net/20180909113753737?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM2NTIzODM5/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt></p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9waWMyLnpoaW1nLmNvbS84MC9hZmEwMzRkNTI5NjI2ODFkYjA5YjRkYzEwNjBmODA3NV83MjB3LmpwZw?x-oss-process=image/format,png" alt></p>
+<p>更形象一点：</p>
+<p>Data：</p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9waWMyLnpoaW1nLmNvbS84MC9iZTBkNGQ0MzhjNGU0ODc1ZDUyYmEzZWFkZWFkNjhmM183MjB3LmpwZw?x-oss-process=image/format,png" alt></p>
+<p>Normal fitting:</p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9waWMzLnpoaW1nLmNvbS84MC9hMDkzNzEwZjk5MzY0MTg1NjYyYTRkZTFlZWFhMTU3M183MjB3LmpwZw?x-oss-process=image/format,png" alt></p>
+<p>overfitting:</p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9waWM0LnpoaW1nLmNvbS84MC9hNDY1YTk4NjE3ODczMmI1YjdlMTc0YjAxODM2Zjg0Yl83MjB3LmpwZw?x-oss-process=image/format,png" alt></p>
+<p>serious overfitting:</p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9waWM0LnpoaW1nLmNvbS84MC9mMmNiOWZkNzY4M2QzNWJmMjkwZDU3ZTJhZGMwMGYzMV83MjB3LmpwZw?x-oss-process=image/format,png" alt></p>
+<h1 id="4️⃣-多种模型对比"><a href="#4️⃣-多种模型对比" class="headerlink" title="4️⃣ 多种模型对比"></a>4️⃣ 多种模型对比</h1><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">train = sample_feature[continuous_feature_names + [<span class="string">'price'</span>]].dropna()</span><br><span class="line"></span><br><span class="line">train_X = train[continuous_feature_names]</span><br><span class="line">train_y = train[<span class="string">'price'</span>]</span><br><span class="line">train_y_ln = np.log(train_y + <span class="number">1</span>)</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="4️⃣-1️⃣-线性模型-amp-嵌入式特征选择"><a href="#4️⃣-1️⃣-线性模型-amp-嵌入式特征选择" class="headerlink" title="4️⃣.1️⃣ 线性模型 & 嵌入式特征选择"></a>4️⃣.1️⃣ 线性模型 & 嵌入式特征选择</h2><p>  有一些前叙知识需要补全。其中关于正则化的知识：</p>
+<ul>
+<li>分别为L1正则化与L2正则化；</li>
+<li>L1正则化的模型建叫做Lasso回归，使用L2正则化的模型叫做Ridge回归（岭回归）；</li>
+<li>L1正则化是指权值向量w中各个元素的绝对值之和，通常表示为$\left | w \right | _{1} $；</li>
+<li>L2正则化是指权值向量w中各个元素的平方和然后再求平方根（可以看到Ridge回归的L2正则化项有平方符号），通常表示为$\left | w \right | _{2} $</li>
+<li>L1正则化可以产生稀疏权值矩阵，即产生一个稀疏模型，可以用于特征选择；</li>
+<li>L2正则化可以防止模型过拟合（overfitting），一定程度上，L1也可以防止过拟合；</li>
+</ul>
+<p>更多其他知识可以看这篇文章：<a href="https://blog.csdn.net/jinping_shi/article/details/52433975" target="_blank" rel="noopener">机器学习中正则化项L1和L2的直观理解</a></p>
+<p>  在过滤式和包裹式特征选择方法中，特征选择过程与学习器训练过程有明显的分别。而嵌入式特征选择在学习器训练过程中自动地进行特征选择。嵌入式选择最常用的是L1正则化与L2正则化。在对线性回归模型加入两种正则化方法后，他们分别变成了岭回归与Lasso回归。</p>
+<h3 id="4️⃣-1️⃣-1️⃣-LinearRegression，Ridge，Lasso方法的运行"><a href="#4️⃣-1️⃣-1️⃣-LinearRegression，Ridge，Lasso方法的运行" class="headerlink" title="4️⃣.1️⃣.1️⃣ LinearRegression，Ridge，Lasso方法的运行"></a>4️⃣.1️⃣.1️⃣ <code>LinearRegression</code>，<code>Ridge</code>，<code>Lasso</code>方法的运行</h3><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LinearRegression</span><br><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> Ridge</span><br><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> Lasso</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">models = [LinearRegression(),</span><br><span class="line">          Ridge(),</span><br><span class="line">          Lasso()]</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">result = dict()</span><br><span class="line"><span class="keyword">for</span> model <span class="keyword">in</span> models:</span><br><span class="line">    model_name = str(model).split(<span class="string">'('</span>)[<span class="number">0</span>]</span><br><span class="line">    scores = cross_val_score(model, X=train_X, y=train_y_ln, verbose=<span class="number">0</span>, cv = <span class="number">5</span>, scoring=make_scorer(mean_absolute_error))</span><br><span class="line">    result[model_name] = scores</span><br><span class="line">    print(model_name + <span class="string">' is finished'</span>)</span><br></pre></td></tr></tbody></table></figure>
+<pre><code>LinearRegression is finished
+Ridge is finished
+
+
+D:\Software\Anaconda\lib\site-packages\sklearn\linear_model\coordinate_descent.py:492: ConvergenceWarning: Objective did not converge. You might want to increase the number of iterations. Fitting data with very small alpha may cause precision problems.
+  ConvergenceWarning)
+D:\Software\Anaconda\lib\site-packages\sklearn\linear_model\coordinate_descent.py:492: ConvergenceWarning: Objective did not converge. You might want to increase the number of iterations. Fitting data with very small alpha may cause precision problems.
+  ConvergenceWarning)
+D:\Software\Anaconda\lib\site-packages\sklearn\linear_model\coordinate_descent.py:492: ConvergenceWarning: Objective did not converge. You might want to increase the number of iterations. Fitting data with very small alpha may cause precision problems.
+  ConvergenceWarning)
+D:\Software\Anaconda\lib\site-packages\sklearn\linear_model\coordinate_descent.py:492: ConvergenceWarning: Objective did not converge. You might want to increase the number of iterations. Fitting data with very small alpha may cause precision problems.
+  ConvergenceWarning)
+
+
+Lasso is finished
+
+
+D:\Software\Anaconda\lib\site-packages\sklearn\linear_model\coordinate_descent.py:492: ConvergenceWarning: Objective did not converge. You might want to increase the number of iterations. Fitting data with very small alpha may cause precision problems.
+  ConvergenceWarning)
+</code></pre><h3 id="4️⃣-1️⃣-2️⃣-三种方法的对比"><a href="#4️⃣-1️⃣-2️⃣-三种方法的对比" class="headerlink" title="4️⃣.1️⃣.2️⃣ 三种方法的对比"></a>4️⃣.1️⃣.2️⃣ 三种方法的对比</h3><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">result = pd.DataFrame(result)</span><br><span class="line">result.index = [<span class="string">'cv'</span> + str(x) <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">1</span>, <span class="number">6</span>)]</span><br><span class="line">result</span><br></pre></td></tr></tbody></table></figure>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>LinearRegression</th>
+      <th>Ridge</th>
+      <th>Lasso</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>cv1</td>
+      <td>0.208238</td>
+      <td>0.213319</td>
+      <td>0.394868</td>
+    </tr>
+    <tr>
+      <td>cv2</td>
+      <td>0.212408</td>
+      <td>0.216857</td>
+      <td>0.387564</td>
+    </tr>
+    <tr>
+      <td>cv3</td>
+      <td>0.215933</td>
+      <td>0.220840</td>
+      <td>0.402278</td>
+    </tr>
+    <tr>
+      <td>cv4</td>
+      <td>0.210742</td>
+      <td>0.215001</td>
+      <td>0.396664</td>
+    </tr>
+    <tr>
+      <td>cv5</td>
+      <td>0.214747</td>
+      <td>0.220031</td>
+      <td>0.397400</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+<p>1.纯<code>LinearRegression</code>方法的情况：<code>.intercept_</code>是截距（与y轴的交点）即$\theta_0$，<code>.coef_</code>是模型的斜率即$\theta_1 - \theta_n$</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">model = LinearRegression().fit(train_X, train_y_ln)</span><br><span class="line">print(<span class="string">'intercept:'</span>+ str(model.intercept_)) <span class="comment"># 截距（与y轴的交点）</span></span><br><span class="line">sns.barplot(abs(model.coef_), continuous_feature_names)</span><br></pre></td></tr></tbody></table></figure>
+<pre><code>intercept:22.23769348625359
+
+
+
+
+
+<matplotlib.axes._subplots.AxesSubplot at 0x210418e4d68>
+</code></pre><p><img src="https://img-blog.csdnimg.cn/20200505184953854.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0V4Y2FsaWJ1clVsaW1pdGVk,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
+<p>纯<code>LinearRegression</code>回归可以发现，得到的参数列表是比较稀疏的。</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">model.coef_</span><br></pre></td></tr></tbody></table></figure>
+<pre><code>array([-3.73489972e-09, -6.10060860e-08,  7.40515349e-03, -1.88182450e-03,
+       -1.24570527e-04,  3.63911807e-04, -3.32722751e-02, -2.75710825e-01,
+       -1.43048695e-03, -3.28514719e-03,  8.57926933e-02,  5.66930260e+00,
+        8.27635812e-01,  4.09620867e-01, -6.72467882e-01,  4.24497013e+00,
+       -3.15038152e+02, -1.17801777e+00, -8.30861129e+01,  6.01215351e-01,
+        9.25141289e-01, -1.32345773e+00,  1.20182089e+00,  1.10218030e+00,
+       -2.59470516e-02,  8.88178420e-13, -2.92746484e-05, -3.63331132e-03,
+       -1.63354329e-07,  5.68181101e-05,  1.29502381e-04, -2.97497182e-05,
+        2.21512681e-09,  4.26377388e-05, -1.18112552e-04,  1.35814944e-02])
+</code></pre><p>2.<code>Lasso</code>方法即L1正则化的情况：</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">model = Lasso().fit(train_X, train_y_ln)</span><br><span class="line">print(<span class="string">'intercept:'</span>+ str(model.intercept_))</span><br><span class="line">sns.barplot(abs(model.coef_), continuous_feature_names)</span><br></pre></td></tr></tbody></table></figure>
+<pre><code>intercept:7.946156528722565
+
+
+D:\Software\Anaconda\lib\site-packages\sklearn\linear_model\coordinate_descent.py:492: ConvergenceWarning: Objective did not converge. You might want to increase the number of iterations. Fitting data with very small alpha may cause precision problems.
+  ConvergenceWarning)
+
+
+
+
+
+<matplotlib.axes._subplots.AxesSubplot at 0x210405debe0>
+</code></pre><p><img src="https://img-blog.csdnimg.cn/20200505185004284.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0V4Y2FsaWJ1clVsaW1pdGVk,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
+<p>L1正则化有助于生成一个稀疏权值矩阵，进而可以用于特征选择。如上图，我们发现power与userd_time特征非常重要。</p>
+<p>3.<code>Ridge</code>方法即L2正则化的情况：</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">model = Ridge().fit(train_X, train_y_ln)</span><br><span class="line">print(<span class="string">'intercept:'</span>+ str(model.intercept_))</span><br><span class="line">sns.barplot(abs(model.coef_), continuous_feature_names)</span><br></pre></td></tr></tbody></table></figure>
+<pre><code>intercept:2.7820015512913994
+
+
+
+
+
+<matplotlib.axes._subplots.AxesSubplot at 0x2103fdd99b0>
+</code></pre><p><img src="https://img-blog.csdnimg.cn/20200505185010853.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0V4Y2FsaWJ1clVsaW1pdGVk,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
+<p>从上图可以看到有很多参数离0较远，很多为0。</p>
+<p>原因在于L2正则化在拟合过程中通常都倾向于让权值尽可能小，最后构造一个所有参数都比较小的模型。因为一般认为参数值小的模型比较简单，能适应不同的数据集，也在一定程度上避免了过拟合现象。</p>
+<p>可以设想一下对于一个线性回归方程，若参数很大，那么只要数据偏移一点点，就会对结果造成很大的影响；但如果参数足够小，数据偏移得多一点也不会对结果造成什么影响，专业一点的说法是『抗扰动能力强』</p>
+<p>除此之外，决策树通过信息熵或GINI指数选择分裂节点时，优先选择的分裂特征也更加重要，这同样是一种特征选择的方法。XGBoost与LightGBM模型中的model_importance指标正是基于此计算的</p>
+<h2 id="4️⃣-2️⃣-非线性模型"><a href="#4️⃣-2️⃣-非线性模型" class="headerlink" title="4️⃣.2️⃣ 非线性模型"></a>4️⃣.2️⃣ 非线性模型</h2><p>  支持向量机，决策树，随机森林，梯度提升树(GBDT)，多层感知机(MLP)，XGBoost，LightGBM等</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LinearRegression</span><br><span class="line"><span class="keyword">from</span> sklearn.svm <span class="keyword">import</span> SVC</span><br><span class="line"><span class="keyword">from</span> sklearn.tree <span class="keyword">import</span> DecisionTreeRegressor</span><br><span class="line"><span class="keyword">from</span> sklearn.ensemble <span class="keyword">import</span> RandomForestRegressor</span><br><span class="line"><span class="keyword">from</span> sklearn.ensemble <span class="keyword">import</span> GradientBoostingRegressor</span><br><span class="line"><span class="keyword">from</span> sklearn.neural_network <span class="keyword">import</span> MLPRegressor</span><br><span class="line"><span class="keyword">from</span> xgboost.sklearn <span class="keyword">import</span> XGBRegressor</span><br><span class="line"><span class="keyword">from</span> lightgbm.sklearn <span class="keyword">import</span> LGBMRegressor</span><br></pre></td></tr></tbody></table></figure>
+<p>定义模型集合</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">models = [LinearRegression(),</span><br><span class="line">          DecisionTreeRegressor(),</span><br><span class="line">          RandomForestRegressor(),</span><br><span class="line">          GradientBoostingRegressor(),</span><br><span class="line">          MLPRegressor(solver=<span class="string">'lbfgs'</span>, max_iter=<span class="number">100</span>), </span><br><span class="line">          XGBRegressor(n_estimators = <span class="number">100</span>, objective=<span class="string">'reg:squarederror'</span>), </span><br><span class="line">          LGBMRegressor(n_estimators = <span class="number">100</span>)]</span><br></pre></td></tr></tbody></table></figure>
+<p>用数据一一对模型进行训练</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">result = dict()</span><br><span class="line"><span class="keyword">for</span> model <span class="keyword">in</span> models:</span><br><span class="line">    model_name = str(model).split(<span class="string">'('</span>)[<span class="number">0</span>]</span><br><span class="line">    scores = cross_val_score(model, X=train_X, y=train_y_ln, verbose=<span class="number">0</span>, cv = <span class="number">5</span>, scoring=make_scorer(mean_absolute_error))</span><br><span class="line">    result[model_name] = scores</span><br><span class="line">    print(model_name + <span class="string">' is finished'</span>)</span><br></pre></td></tr></tbody></table></figure>
+<pre><code>LinearRegression is finished
+DecisionTreeRegressor is finished
+RandomForestRegressor is finished
+GradientBoostingRegressor is finished
+MLPRegressor is finished
+XGBRegressor is finished
+LGBMRegressor is finished
+</code></pre><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">result = pd.DataFrame(result)</span><br><span class="line">result.index = [<span class="string">'cv'</span> + str(x) <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">1</span>, <span class="number">6</span>)]</span><br><span class="line">result</span><br></pre></td></tr></tbody></table></figure>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>LinearRegression</th>
+      <th>DecisionTreeRegressor</th>
+      <th>RandomForestRegressor</th>
+      <th>GradientBoostingRegressor</th>
+      <th>MLPRegressor</th>
+      <th>XGBRegressor</th>
+      <th>LGBMRegressor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>cv1</td>
+      <td>0.208238</td>
+      <td>0.224863</td>
+      <td>0.163196</td>
+      <td>0.179385</td>
+      <td>581.596878</td>
+      <td>0.155881</td>
+      <td>0.153942</td>
+    </tr>
+    <tr>
+      <td>cv2</td>
+      <td>0.212408</td>
+      <td>0.218795</td>
+      <td>0.164292</td>
+      <td>0.183759</td>
+      <td>182.180288</td>
+      <td>0.158566</td>
+      <td>0.160262</td>
+    </tr>
+    <tr>
+      <td>cv3</td>
+      <td>0.215933</td>
+      <td>0.216482</td>
+      <td>0.164849</td>
+      <td>0.185005</td>
+      <td>250.668763</td>
+      <td>0.158520</td>
+      <td>0.159943</td>
+    </tr>
+    <tr>
+      <td>cv4</td>
+      <td>0.210742</td>
+      <td>0.220903</td>
+      <td>0.160878</td>
+      <td>0.181660</td>
+      <td>139.101476</td>
+      <td>0.156608</td>
+      <td>0.157528</td>
+    </tr>
+    <tr>
+      <td>cv5</td>
+      <td>0.214747</td>
+      <td>0.226087</td>
+      <td>0.164713</td>
+      <td>0.183704</td>
+      <td>108.664261</td>
+      <td>0.173250</td>
+      <td>0.157149</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+<p>可以看到随机森林模型在每一个fold中均取得了更好的效果</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.mean(result[<span class="string">'RandomForestRegressor'</span>])</span><br></pre></td></tr></tbody></table></figure>
+<pre><code>0.16358568277026037
+</code></pre><h2 id="4️⃣-3️⃣-模型调参"><a href="#4️⃣-3️⃣-模型调参" class="headerlink" title="4️⃣.3️⃣ 模型调参"></a>4️⃣.3️⃣ 模型调参</h2><p>  三种常用的调参方法如下：</p>
+<p>贪心算法 <a href="https://www.jianshu.com/p/ab89df9759c8" target="_blank" rel="noopener">https://www.jianshu.com/p/ab89df9759c8</a><br><br>网格调参 <a href="https://blog.csdn.net/weixin_43172660/article/details/83032029" target="_blank" rel="noopener">https://blog.csdn.net/weixin_43172660/article/details/83032029</a><br><br>贝叶斯调参 <a href="https://blog.csdn.net/linxid/article/details/81189154" target="_blank" rel="noopener">https://blog.csdn.net/linxid/article/details/81189154</a><br></p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## LGB的参数集合：</span></span><br><span class="line"></span><br><span class="line">objective = [<span class="string">'regression'</span>, <span class="string">'regression_l1'</span>, <span class="string">'mape'</span>, <span class="string">'huber'</span>, <span class="string">'fair'</span>]</span><br><span class="line"></span><br><span class="line">num_leaves = [<span class="number">3</span>,<span class="number">5</span>,<span class="number">10</span>,<span class="number">15</span>,<span class="number">20</span>,<span class="number">40</span>, <span class="number">55</span>]</span><br><span class="line">max_depth = [<span class="number">3</span>,<span class="number">5</span>,<span class="number">10</span>,<span class="number">15</span>,<span class="number">20</span>,<span class="number">40</span>, <span class="number">55</span>]</span><br><span class="line">bagging_fraction = []</span><br><span class="line">feature_fraction = []</span><br><span class="line">drop_rate = []</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="4️⃣-3️⃣-1️⃣-贪心调参"><a href="#4️⃣-3️⃣-1️⃣-贪心调参" class="headerlink" title="4️⃣.3️⃣.1️⃣ 贪心调参"></a>4️⃣.3️⃣.1️⃣ 贪心调参</h3><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">best_obj = dict()</span><br><span class="line"><span class="keyword">for</span> obj <span class="keyword">in</span> objective:</span><br><span class="line">    model = LGBMRegressor(objective=obj)</span><br><span class="line">    score = np.mean(cross_val_score(model, X=train_X, y=train_y_ln, verbose=<span class="number">0</span>, cv = <span class="number">5</span>, scoring=make_scorer(mean_absolute_error)))</span><br><span class="line">    best_obj[obj] = score</span><br><span class="line">    </span><br><span class="line">best_leaves = dict()</span><br><span class="line"><span class="keyword">for</span> leaves <span class="keyword">in</span> num_leaves:</span><br><span class="line">    model = LGBMRegressor(objective=min(best_obj.items(), key=<span class="keyword">lambda</span> x:x[<span class="number">1</span>])[<span class="number">0</span>], num_leaves=leaves)</span><br><span class="line">    score = np.mean(cross_val_score(model, X=train_X, y=train_y_ln, verbose=<span class="number">0</span>, cv = <span class="number">5</span>, scoring=make_scorer(mean_absolute_error)))</span><br><span class="line">    best_leaves[leaves] = score</span><br><span class="line">    </span><br><span class="line">best_depth = dict()</span><br><span class="line"><span class="keyword">for</span> depth <span class="keyword">in</span> max_depth:</span><br><span class="line">    model = LGBMRegressor(objective=min(best_obj.items(), key=<span class="keyword">lambda</span> x:x[<span class="number">1</span>])[<span class="number">0</span>],</span><br><span class="line">                          num_leaves=min(best_leaves.items(), key=<span class="keyword">lambda</span> x:x[<span class="number">1</span>])[<span class="number">0</span>],</span><br><span class="line">                          max_depth=depth)</span><br><span class="line">    score = np.mean(cross_val_score(model, X=train_X, y=train_y_ln, verbose=<span class="number">0</span>, cv = <span class="number">5</span>, scoring=make_scorer(mean_absolute_error)))</span><br><span class="line">    best_depth[depth] = score</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sns.lineplot(x=[<span class="string">'0_initial'</span>,<span class="string">'1_turning_obj'</span>,<span class="string">'2_turning_leaves'</span>,<span class="string">'3_turning_depth'</span>], y=[<span class="number">0.143</span> ,min(best_obj.values()), min(best_leaves.values()), min(best_depth.values())])</span><br></pre></td></tr></tbody></table></figure>
+<pre><code><matplotlib.axes._subplots.AxesSubplot at 0x21041776128>
+</code></pre><p><img src="https://img-blog.csdnimg.cn/20200505185018549.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0V4Y2FsaWJ1clVsaW1pdGVk,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
+<h3 id="4️⃣-3️⃣-2️⃣-Grid-Search-网格调参"><a href="#4️⃣-3️⃣-2️⃣-Grid-Search-网格调参" class="headerlink" title="4️⃣.3️⃣.2️⃣ Grid Search 网格调参"></a>4️⃣.3️⃣.2️⃣ Grid Search 网格调参</h3><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> GridSearchCV</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">parameters = {<span class="string">'objective'</span>: objective , <span class="string">'num_leaves'</span>: num_leaves, <span class="string">'max_depth'</span>: max_depth}</span><br><span class="line">model = LGBMRegressor()</span><br><span class="line">clf = GridSearchCV(model, parameters, cv=<span class="number">5</span>)</span><br><span class="line">clf = clf.fit(train_X, train_y)</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">clf.best_params_</span><br></pre></td></tr></tbody></table></figure>
+<pre><code>{'max_depth': 10, 'num_leaves': 55, 'objective': 'regression'}
+</code></pre><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">model = LGBMRegressor(objective=<span class="string">'regression'</span>,</span><br><span class="line">                          num_leaves=<span class="number">55</span>,</span><br><span class="line">                          max_depth=<span class="number">10</span>)</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.mean(cross_val_score(model, X=train_X, y=train_y_ln, verbose=<span class="number">0</span>, cv = <span class="number">5</span>, scoring=make_scorer(mean_absolute_error)))</span><br></pre></td></tr></tbody></table></figure>
+<pre><code>0.1526351038235066
+</code></pre><h3 id="4️⃣-3️⃣-3️⃣-贝叶斯调参"><a href="#4️⃣-3️⃣-3️⃣-贝叶斯调参" class="headerlink" title="4️⃣.3️⃣.3️⃣ 贝叶斯调参"></a>4️⃣.3️⃣.3️⃣ 贝叶斯调参</h3><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">!pip install -i https://pypi.tuna.tsinghua.edu.cn/simple bayesian-optimization</span><br><span class="line"><span class="keyword">from</span> bayes_opt <span class="keyword">import</span> BayesianOptimization</span><br></pre></td></tr></tbody></table></figure>
+<pre><code>Looking in indexes: https://pypi.tuna.tsinghua.edu.cn/simple
+Collecting bayesian-optimization
+  Downloading https://pypi.tuna.tsinghua.edu.cn/packages/b5/26/9842333adbb8f17bcb3d699400a8b1ccde0af0b6de8d07224e183728acdf/bayesian_optimization-1.1.0-py3-none-any.whl
+Requirement already satisfied: scikit-learn>=0.18.0 in d:\software\anaconda\lib\site-packages (from bayesian-optimization) (0.20.3)
+Requirement already satisfied: scipy>=0.14.0 in d:\software\anaconda\lib\site-packages (from bayesian-optimization) (1.2.1)
+Requirement already satisfied: numpy>=1.9.0 in d:\software\anaconda\lib\site-packages (from bayesian-optimization) (1.16.2)
+Installing collected packages: bayesian-optimization
+Successfully installed bayesian-optimization-1.1.0
+</code></pre><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">rf_cv</span><span class="params">(num_leaves, max_depth, subsample, min_child_samples)</span>:</span></span><br><span class="line">    val = cross_val_score(</span><br><span class="line">        LGBMRegressor(objective = <span class="string">'regression_l1'</span>,</span><br><span class="line">            num_leaves=int(num_leaves),</span><br><span class="line">            max_depth=int(max_depth),</span><br><span class="line">            subsample = subsample,</span><br><span class="line">            min_child_samples = int(min_child_samples)</span><br><span class="line">        ),</span><br><span class="line">        X=train_X, y=train_y_ln, verbose=<span class="number">0</span>, cv = <span class="number">5</span>, scoring=make_scorer(mean_absolute_error)</span><br><span class="line">    ).mean()</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span> - val <span class="comment"># 贝叶斯调参目标是求最大值，所以用1减去误差</span></span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">rf_bo = BayesianOptimization(</span><br><span class="line">    rf_cv,</span><br><span class="line">    {</span><br><span class="line">    <span class="string">'num_leaves'</span>: (<span class="number">2</span>, <span class="number">100</span>),</span><br><span class="line">    <span class="string">'max_depth'</span>: (<span class="number">2</span>, <span class="number">100</span>),</span><br><span class="line">    <span class="string">'subsample'</span>: (<span class="number">0.1</span>, <span class="number">1</span>),</span><br><span class="line">    <span class="string">'min_child_samples'</span> : (<span class="number">2</span>, <span class="number">100</span>)</span><br><span class="line">    }</span><br><span class="line">)</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rf_bo.maximize()</span><br></pre></td></tr></tbody></table></figure>
+<pre><code>|   iter    |  target   | max_depth | min_ch... | num_le... | subsample |
+-------------------------------------------------------------------------
+| [0m 1       [0m | [0m 0.8493  [0m | [0m 80.61   [0m | [0m 97.58   [0m | [0m 44.92   [0m | [0m 0.881   [0m |
+| [95m 2       [0m | [95m 0.8514  [0m | [95m 35.87   [0m | [95m 66.92   [0m | [95m 57.68   [0m | [95m 0.7878  [0m |
+| [95m 3       [0m | [95m 0.8522  [0m | [95m 49.75   [0m | [95m 68.95   [0m | [95m 64.99   [0m | [95m 0.1726  [0m |
+| [0m 4       [0m | [0m 0.8504  [0m | [0m 35.58   [0m | [0m 10.83   [0m | [0m 53.8    [0m | [0m 0.1306  [0m |
+| [0m 5       [0m | [0m 0.7942  [0m | [0m 63.37   [0m | [0m 32.21   [0m | [0m 3.143   [0m | [0m 0.4555  [0m |
+| [0m 6       [0m | [0m 0.7997  [0m | [0m 2.437   [0m | [0m 4.362   [0m | [0m 97.26   [0m | [0m 0.9957  [0m |
+| [95m 7       [0m | [95m 0.8526  [0m | [95m 47.85   [0m | [95m 69.39   [0m | [95m 68.02   [0m | [95m 0.8833  [0m |
+| [95m 8       [0m | [95m 0.8537  [0m | [95m 96.87   [0m | [95m 4.285   [0m | [95m 99.53   [0m | [95m 0.9389  [0m |
+| [95m 9       [0m | [95m 0.8546  [0m | [95m 96.06   [0m | [95m 97.85   [0m | [95m 98.82   [0m | [95m 0.8874  [0m |
+| [0m 10      [0m | [0m 0.7942  [0m | [0m 8.165   [0m | [0m 99.06   [0m | [0m 3.93    [0m | [0m 0.2049  [0m |
+| [0m 11      [0m | [0m 0.7993  [0m | [0m 2.77    [0m | [0m 99.47   [0m | [0m 91.16   [0m | [0m 0.2523  [0m |
+| [0m 12      [0m | [0m 0.852   [0m | [0m 99.3    [0m | [0m 43.04   [0m | [0m 62.67   [0m | [0m 0.9897  [0m |
+| [0m 13      [0m | [0m 0.8507  [0m | [0m 96.57   [0m | [0m 2.749   [0m | [0m 55.2    [0m | [0m 0.6727  [0m |
+| [0m 14      [0m | [0m 0.8168  [0m | [0m 3.076   [0m | [0m 3.269   [0m | [0m 33.78   [0m | [0m 0.5982  [0m |
+| [0m 15      [0m | [0m 0.8527  [0m | [0m 71.88   [0m | [0m 7.624   [0m | [0m 76.49   [0m | [0m 0.9536  [0m |
+| [0m 16      [0m | [0m 0.8528  [0m | [0m 99.44   [0m | [0m 99.28   [0m | [0m 69.58   [0m | [0m 0.7682  [0m |
+| [0m 17      [0m | [0m 0.8543  [0m | [0m 99.93   [0m | [0m 45.95   [0m | [0m 97.54   [0m | [0m 0.5095  [0m |
+| [0m 18      [0m | [0m 0.8518  [0m | [0m 60.87   [0m | [0m 99.67   [0m | [0m 61.3    [0m | [0m 0.7369  [0m |
+| [0m 19      [0m | [0m 0.8535  [0m | [0m 99.69   [0m | [0m 16.58   [0m | [0m 84.31   [0m | [0m 0.1025  [0m |
+| [0m 20      [0m | [0m 0.8507  [0m | [0m 54.68   [0m | [0m 38.11   [0m | [0m 54.65   [0m | [0m 0.9796  [0m |
+| [0m 21      [0m | [0m 0.8538  [0m | [0m 99.1    [0m | [0m 81.79   [0m | [0m 84.03   [0m | [0m 0.9823  [0m |
+| [0m 22      [0m | [0m 0.8529  [0m | [0m 99.28   [0m | [0m 3.373   [0m | [0m 83.48   [0m | [0m 0.7243  [0m |
+| [0m 23      [0m | [0m 0.8512  [0m | [0m 52.67   [0m | [0m 2.614   [0m | [0m 59.65   [0m | [0m 0.5286  [0m |
+| [95m 24      [0m | [95m 0.8546  [0m | [95m 75.81   [0m | [95m 61.62   [0m | [95m 99.78   [0m | [95m 0.9956  [0m |
+| [0m 25      [0m | [0m 0.853   [0m | [0m 45.9    [0m | [0m 33.68   [0m | [0m 74.59   [0m | [0m 0.73    [0m |
+| [0m 26      [0m | [0m 0.8532  [0m | [0m 82.58   [0m | [0m 63.9    [0m | [0m 78.61   [0m | [0m 0.1014  [0m |
+| [0m 27      [0m | [0m 0.8544  [0m | [0m 76.15   [0m | [0m 97.58   [0m | [0m 95.07   [0m | [0m 0.9995  [0m |
+| [0m 28      [0m | [0m 0.8545  [0m | [0m 95.75   [0m | [0m 74.96   [0m | [0m 99.45   [0m | [0m 0.7263  [0m |
+| [0m 29      [0m | [0m 0.8532  [0m | [0m 80.84   [0m | [0m 89.28   [0m | [0m 77.31   [0m | [0m 0.9389  [0m |
+| [0m 30      [0m | [0m 0.8545  [0m | [0m 82.92   [0m | [0m 35.46   [0m | [0m 96.66   [0m | [0m 0.969   [0m |
+=========================================================================
+</code></pre><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rf_bo.max</span><br></pre></td></tr></tbody></table></figure>
+<pre><code>{'target': 0.8545792238909576,
+ 'params': {'max_depth': 75.80893509302794,
+  'min_child_samples': 61.62267920507557,
+  'num_leaves': 99.77501502667806,
+  'subsample': 0.9955706357612557}}
+</code></pre><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span> - rf_bo.max[<span class="string">'target'</span>]</span><br></pre></td></tr></tbody></table></figure>
+<pre><code>0.14542077610904236
+</code></pre><h1 id="5️⃣-总结"><a href="#5️⃣-总结" class="headerlink" title="5️⃣ 总结"></a>5️⃣ 总结</h1><p>  在本章中，我们完成了建模与调参的工作，并对我们的模型进行了验证。此外，我们还采用了一些基本方法来提高预测的精度，提升如下图所示。</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">plt.figure(figsize=(<span class="number">13</span>,<span class="number">5</span>))</span><br><span class="line">sns.lineplot(x=[<span class="string">'0_origin'</span>,<span class="string">'1_log_transfer'</span>,<span class="string">'2_L1_&_L2'</span>,<span class="string">'3_change_model'</span>,<span class="string">'4_parameter_turning'</span>], y=[<span class="number">1.36</span> ,<span class="number">0.19</span>, <span class="number">0.19</span>, <span class="number">0.16</span>, <span class="number">0.15</span>])</span><br></pre></td></tr></tbody></table></figure>
+<pre><code><matplotlib.axes._subplots.AxesSubplot at 0x21041688208>
+</code></pre><p><img src="https://img-blog.csdnimg.cn/20200505185026643.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0V4Y2FsaWJ1clVsaW1pdGVk,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
+    </div>
+      
+  <div class="popular-posts-header">相关文章推荐</div>
+  <ul class="popular-posts">
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="\天池-二手车价格预测-Task-3-特征工程.html" rel="bookmark">天池_二手车价格预测_Task_3_特征工程</a></div>
+      
+    </li>
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="\天池-二手车价格预测-Task1-2-赛题理解与数据分析.html" rel="bookmark">天池二手车价格预测Task1-2—赛题理解与数据分析</a></div>
+      
+    </li>
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="\简单地打造一个搜索工具-爬取所有网页并创造单词的反向索引.html" rel="bookmark">简单地打造一个搜索工具--爬取所有网页并创造单词的反向索引</a></div>
+      
+    </li>
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="\从零实现朴素贝叶斯分类器-离散情况-以学生分班为例.html" rel="bookmark">从零实现朴素贝叶斯分类器(离散情况)--以学生分班为例</a></div>
+      
+    </li>
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="\利用Selenium秒填朋友圈各种问卷星调查问卷.html" rel="bookmark">利用Selenium秒填朋友圈各种问卷星调查问卷</a></div>
+      
+    </li>
+  
+  </ul>
+
+
+    
+    
+    
+     
+     
+  
+
+
+
+    
+      <div>
+        <div id="reward-container">
+  <div>喜欢就支持一下吧~</div>
+  <button id="reward-button" disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/微信.jpg" alt="柯摩 微信支付">
+        <p>微信支付</p>
+      </div>
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/支付宝.jpg" alt="柯摩 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+      </div>
+      <div>
+        
+
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>柯摩</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://kemo.xyz/天池-二手车价格预测-Task4-建模调参.html" title="天池_二手车价格预测_Task4_建模调参">https://kemo.xyz/天池-二手车价格预测-Task4-建模调参.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
+
+    <footer class="post-footer">
+          
+        
+        <div class="post-tags">
+            <a href="/tags/pandas/" rel="tag"><i class="fa fa-tag"></i> pandas</a>
+          
+            <a href="/tags/Editor/" rel="tag"><i class="fa fa-tag"></i> Editor</a>
+          
+            <a href="/tags/DataMining/" rel="tag"><i class="fa fa-tag"></i> DataMining</a>
+          
+            <a href="/tags/Tianchi/" rel="tag"><i class="fa fa-tag"></i> Tianchi</a>
+          
+            <a href="/tags/Study/" rel="tag"><i class="fa fa-tag"></i> Study</a>
+          
+            <a href="/tags/Jupyter/" rel="tag"><i class="fa fa-tag"></i> Jupyter</a>
+          
+            <a href="/tags/seaborn/" rel="tag"><i class="fa fa-tag"></i> seaborn</a>
+          
+            <a href="/tags/内存优化/" rel="tag"><i class="fa fa-tag"></i> 内存优化</a>
+          
+            <a href="/tags/五折交叉验证/" rel="tag"><i class="fa fa-tag"></i> 五折交叉验证</a>
+          
+            <a href="/tags/cross-validation/" rel="tag"><i class="fa fa-tag"></i> cross validation</a>
+          
+            <a href="/tags/Linear-Regression/" rel="tag"><i class="fa fa-tag"></i> Linear Regression</a>
+          
+            <a href="/tags/Ridge正则化/" rel="tag"><i class="fa fa-tag"></i> Ridge正则化</a>
+          
+            <a href="/tags/Lasso正则化/" rel="tag"><i class="fa fa-tag"></i> Lasso正则化</a>
+          
+            <a href="/tags/svm/" rel="tag"><i class="fa fa-tag"></i> svm</a>
+          
+            <a href="/tags/决策树/" rel="tag"><i class="fa fa-tag"></i> 决策树</a>
+          
+            <a href="/tags/随机森林/" rel="tag"><i class="fa fa-tag"></i> 随机森林</a>
+          
+            <a href="/tags/梯度提升树-GBDT/" rel="tag"><i class="fa fa-tag"></i> 梯度提升树(GBDT)</a>
+          
+            <a href="/tags/多层感知机-MLP/" rel="tag"><i class="fa fa-tag"></i> 多层感知机(MLP)</a>
+          
+            <a href="/tags/XGBoost/" rel="tag"><i class="fa fa-tag"></i> XGBoost</a>
+          
+            <a href="/tags/LightGBM/" rel="tag"><i class="fa fa-tag"></i> LightGBM</a>
+          
+            <a href="/tags/贪心调参/" rel="tag"><i class="fa fa-tag"></i> 贪心调参</a>
+          
+            <a href="/tags/网格调参/" rel="tag"><i class="fa fa-tag"></i> 网格调参</a>
+          
+            <a href="/tags/贝叶斯调参/" rel="tag"><i class="fa fa-tag"></i> 贝叶斯调参</a>
+          
+        </div>
+        <div class="post-widgets">
+        
+        
+          <div class="wp_rating">
+          
+            <div id="wpac-rating"></div>
+          </div>
+        
+
+        
+
+        
+          <div class="social-share">
+            
+              
+
+
+<div class="likely">
+    <div class="twitter">Tweet</div>
+    <div class="facebook">Share</div>
+    <div class="linkedin">Link</div>
+    <div class="gplus">Plus</div>
+    <div class="vkontakte">Share</div>
+    <div class="odnoklassniki">Class</div>
+    <div class="telegram">Send</div>
+    <div class="whatsapp">Send</div>
+    <div class="pinterest">Pin</div>
+</div>
+<script src="//cdn.jsdelivr.net/npm/ilyabirman-likely@2/release/likely.js"></script>
+
+
+            
+            
+              <div id="needsharebutton-postbottom">
+                <span class="btn">
+                  <i class="fa fa-share-alt" aria-hidden="true"></i>
+                </span>
+              </div>
+            
+          </div>
+        
+        </div>
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+              <a href="/一文解决-matplotlib绘制极坐标热力图并插值优化.html" rel="next" title="一文解决--matplotlib绘制极坐标热力图并插值优化">
+                <i class="fa fa-chevron-left"></i> 一文解决--matplotlib绘制极坐标热力图并插值优化
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+              <a href="/简单地打造一个搜索工具-爬取所有网页并创造单词的反向索引.html" rel="prev" title="简单地打造一个搜索工具--爬取所有网页并创造单词的反向索引">
+                简单地打造一个搜索工具--爬取所有网页并创造单词的反向索引 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+<div>
+
+  
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:16px;">-------------   本 文 结 束 <i class="fa fa-heart"></i> 感 谢 您 的 阅 读    -------------</div>
+    
+</div>
+  
+</div>
+ 
+
+
+
+
+    <script type="text/javascript" src="/js/src/linkcard.js"></script>
+  </div>
+<script type="text/javascript" src="/js/src/linkcard.js"></script>
+
+          </div>
+          
+    
+    <div class="comments" id="comments"></div>
+  
+
+
+        </div>
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image"
+      src="/images/head.jpg"
+      alt="柯摩">
+  <p class="site-author-name" itemprop="name">柯摩</p>
+  <div class="site-description motion-element" itemprop="description">真实自有万钧之力</div>
+</div>
+  <nav class="site-state motion-element">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">23</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/categories/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">分类</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">84</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+  <div class="feed-link motion-element">
+    <a href="/atom.xml" rel="alternate">
+      <i class="fa fa-rss"></i>RSS
+    </a>
+  </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://github.com/ExcaliburEX" title="GitHub &rarr; https://github.com/ExcaliburEX" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="mailto:912011727@qq.com" title="E-Mail &rarr; mailto:912011727@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://weibo.com/u/5339619827" title="Weibo &rarr; https://weibo.com/u/5339619827" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://user.qzone.qq.com/912011727" title="QQ &rarr; https://user.qzone.qq.com/912011727" rel="noopener" target="_blank"><i class="fa fa-fw fa-qq"></i>QQ</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://blog-1259799643.cos.ap-shanghai.myqcloud.com/wechat-qcode.jpg" title="Wechat &rarr; https://blog-1259799643.cos.ap-shanghai.myqcloud.com/wechat-qcode.jpg" rel="noopener" target="_blank"><i class="fa fa-fw fa-weixin"></i>Wechat</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://twitter.com/Excaliburjp" title="Twitter &rarr; https://twitter.com/Excaliburjp" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://space.bilibili.com/2142109" title="Bilibili &rarr; https://space.bilibili.com/2142109" rel="noopener" target="_blank"><i class="fa fa-fw fa-mobile"></i>Bilibili</a>
+      </span>
+    
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    
+  
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+        </div>
+      </div>
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#0️⃣-前言"><span class="nav-number">1.</span> <span class="nav-text">0️⃣ 前言</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#0️⃣-1️⃣-赛题重述"><span class="nav-number">1.0.1.</span> <span class="nav-text">0️⃣.1️⃣ 赛题重述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0️⃣-2️⃣-数据集概述"><span class="nav-number">1.0.2.</span> <span class="nav-text">0️⃣.2️⃣ 数据集概述</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1️⃣-数据处理"><span class="nav-number">2.</span> <span class="nav-text">1️⃣ 数据处理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2️⃣-线性回归"><span class="nav-number">3.</span> <span class="nav-text">2️⃣ 线性回归</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2️⃣-1️⃣-简单建模"><span class="nav-number">3.1.</span> <span class="nav-text">2️⃣.1️⃣ 简单建模</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2️⃣-2️⃣-处理长尾分布"><span class="nav-number">3.2.</span> <span class="nav-text">2️⃣.2️⃣ 处理长尾分布</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3️⃣-五折交叉验证¶（cross-val-score）"><span class="nav-number">4.</span> <span class="nav-text">3️⃣ 五折交叉验证¶（cross_val_score）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3️⃣-1️⃣-cross-val-score相应函数的应用"><span class="nav-number">4.1.</span> <span class="nav-text">3️⃣.1️⃣ cross_val_score相应函数的应用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3️⃣-2️⃣-考虑真实世界限制"><span class="nav-number">4.2.</span> <span class="nav-text">3️⃣.2️⃣ 考虑真实世界限制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3️⃣-3️⃣-绘制学习率曲线与验证曲线¶"><span class="nav-number">4.3.</span> <span class="nav-text">3️⃣.3️⃣ 绘制学习率曲线与验证曲线¶</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4️⃣-多种模型对比"><span class="nav-number">5.</span> <span class="nav-text">4️⃣ 多种模型对比</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#4️⃣-1️⃣-线性模型-amp-嵌入式特征选择"><span class="nav-number">5.1.</span> <span class="nav-text">4️⃣.1️⃣ 线性模型 &amp; 嵌入式特征选择</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4️⃣-1️⃣-1️⃣-LinearRegression，Ridge，Lasso方法的运行"><span class="nav-number">5.1.1.</span> <span class="nav-text">4️⃣.1️⃣.1️⃣ LinearRegression，Ridge，Lasso方法的运行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4️⃣-1️⃣-2️⃣-三种方法的对比"><span class="nav-number">5.1.2.</span> <span class="nav-text">4️⃣.1️⃣.2️⃣ 三种方法的对比</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4️⃣-2️⃣-非线性模型"><span class="nav-number">5.2.</span> <span class="nav-text">4️⃣.2️⃣ 非线性模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4️⃣-3️⃣-模型调参"><span class="nav-number">5.3.</span> <span class="nav-text">4️⃣.3️⃣ 模型调参</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4️⃣-3️⃣-1️⃣-贪心调参"><span class="nav-number">5.3.1.</span> <span class="nav-text">4️⃣.3️⃣.1️⃣ 贪心调参</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4️⃣-3️⃣-2️⃣-Grid-Search-网格调参"><span class="nav-number">5.3.2.</span> <span class="nav-text">4️⃣.3️⃣.2️⃣ Grid Search 网格调参</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4️⃣-3️⃣-3️⃣-贝叶斯调参"><span class="nav-number">5.3.3.</span> <span class="nav-text">4️⃣.3️⃣.3️⃣ 贝叶斯调参</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5️⃣-总结"><span class="nav-number">6.</span> <span class="nav-text">5️⃣ 总结</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+  
+<script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
+<script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
+<div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div id="myCanvasContainer" class="widget tagcloud">
+        <canvas width="250" height="250" id="resCanvas" style="width=100%">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/">Algorithm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Barrier/">Barrier</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BeautifulSoup/">BeautifulSoup</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BoxPlot/">BoxPlot</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DataMining/">DataMining</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Diary/">Diary</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Editor/">Editor</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IQR/">IQR</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Job/">Job</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jupyter/">Jupyter</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Lasso正则化/">Lasso正则化</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Learning/">Learning</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LightGBM/">LightGBM</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linear-Regression/">Linear Regression</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MATLAB/">MATLAB</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Navie-Bayes/">Navie Bayes</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Next/">Next</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OJ/">OJ</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Onehot/">Onehot</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Reading/">Reading</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ridge正则化/">Ridge正则化</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Science-Uranology/">Science Uranology</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Selenium/">Selenium</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Study/">Study</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Thinking/">Thinking</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tianchi/">Tianchi</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/XGBoost/">XGBoost</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/alive-progress/">alive_progress</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cross-validation/">cross validation</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/custom/">custom</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/distributed-system/">distributed system</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/groupby/">groupby</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/matplotlib/">matplotlib</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/multithreading/">multithreading</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pandas/">pandas</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/requests/">requests</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/seaborn/">seaborn</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/socket/">socket</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/svm/">svm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/二进制/">二进制</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/五折交叉验证/">五折交叉验证</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/内存优化/">内存优化</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/决策树/">决策树</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/分布式/">分布式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/分布式计算/">分布式计算</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/包裹式-wrapper/">包裹式(wrapper)</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/博客/">博客</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/反向索引/">反向索引</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/回忆/">回忆</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/地铁线路优化/">地铁线路优化</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/多层感知机-MLP/">多层感知机(MLP)</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/多线程/">多线程</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/嵌入式（embedding）/">嵌入式（embedding）</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/感情/">感情</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/插值/">插值</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数学建模/">数学建模</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/日记/">日记</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/朋友圈/">朋友圈</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/朴素贝叶斯/">朴素贝叶斯</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/极坐标/">极坐标</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/梯度提升树-GBDT/">梯度提升树(GBDT)</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/正则表达式/">正则表达式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/正态分布/">正态分布</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/毕业论文/">毕业论文</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/气象图/">气象图</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/温馨/">温馨</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/热力图/">热力图</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/画图/">画图</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/目标函数/">目标函数</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/真挚/">真挚</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/约束条件/">约束条件</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网格调参/">网格调参</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/节点通信/">节点通信</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/调查问卷/">调查问卷</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/贝叶斯调参/">贝叶斯调参</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/贪心调参/">贪心调参</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/过滤式-filter/">过滤式(filter)</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/遗传算法/">遗传算法</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/问卷星/">问卷星</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随机森林/">随机森林</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随笔/">随笔</a><span class="tag-list-count">2</span></li></ul>
+        </canvas>
+    </div>
+</div>
+
+
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2015 – <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">柯摩</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    
+    <span title="站点总字数">142k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    
+    <span title="站点阅读时长">2:09</span>
+</div>
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">全站共 66.4k 字</span>
+</div>
+
+<div class="run_time" style=" text-align:center;">
+  <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+  <script>
+    var now = new Date(); 
+    function createtime() { 
+        var grt= new Date("08/06/2019 00:00:00");//此处修改你的建站时间或者网站上线时间 
+        now.setTime(now.getTime()+250); 
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+        document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+    } 
+    setInterval("createtime()",250);
+  </script>
+
+<div class="BbeiAn-info">
+  皖ICP备 -
+    <a target="_blank" href="http://www.miitbeian.gov.cn/" style="color:#f0d784"  rel="nofollow">19020907</a> <!--a标签中增加nofollow属性，避免爬虫出站。-->| 
+	<a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=32050802011200" style="color:#f0d784;text-decoration:none;padding-left:30px;background:url(https://s1.ax1x.com/2018/09/29/ilmwIH.png) no-repeat left center" rel="nofollow">苏公网安备 32050802011200号</a>	  <!--这里将图标作为了背景，以使得能和后面的文字在同一行-->
+</div>
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="总访客量">
+      总访客量 <span class="busuanzi-value" id="busuanzi_value_site_uv"></span> 人
+    </span>
+  
+    <span class="post-meta-divider">|</span>
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="总访问量">
+      总访客数 <span class="busuanzi-value" id="busuanzi_value_site_pv"></span> 次
+    </span>
+  
+</div>
+
+
+
+
+  <script>
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//tajs.qq.com/stats?sId=66458571";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+  
+  <div id="needsharebutton-float">
+    <span class="btn">
+      <i class="fa fa-share-alt" aria-hidden="true"></i>
+    </span>
+  </div>
+<script src="/lib/needsharebutton/needsharebutton.js"></script>
+<script>
+    pbOptions = {};
+      pbOptions.iconStyle = "box";
+    
+      pbOptions.boxForm = "horizontal";
+    
+      pbOptions.position = "bottomCenter";
+    
+      pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+    
+    new needShareButton('#needsharebutton-postbottom', pbOptions);
+    flOptions = {};
+      flOptions.iconStyle = "box";
+    
+      flOptions.boxForm = "horizontal";
+    
+      flOptions.position = "middleRight";
+    
+      flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+    
+    new needShareButton('#needsharebutton-float', flOptions);
+</script>
+
+
+  </div>
+
+  
+    
+    
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+  <script src="/lib/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script src="/lib/reading_progress/reading_progress.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/valine@1.3.9/dist/Valine.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+<script src="/js/utils.js?v=7.3.0"></script>
+  <script src="/js/motion.js?v=7.3.0"></script>
+
+
+  <script src="/js/schemes/muse.js?v=7.3.0"></script>
+
+
+
+<script src="/js/next-boot.js?v=7.3.0"></script>
+
+
+
+
+
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+  
+  <script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+
+
+  <script src="/lib/bookmark/bookmark.min.js?v=1.0"></script>
+  <script>
+  if (CONFIG.page.isPost) {
+    bookmark.scrollToMark('auto', "#更多");
+  } else {
+    bookmark.loadBookmark();
+  }
+  </script>
+
+
+
+
+
+
+
+
+
+
+  <script>
+  if (CONFIG.page.isPost) {
+    wpac_init = window.wpac_init || [];
+    wpac_init.push({
+      widget: 'Rating',
+      id: 20167,
+      el: 'wpac-rating',
+      color: 'fc6423'
+    });
+    (function() {
+      if ('WIDGETPACK_LOADED' in window) return;
+      WIDGETPACK_LOADED = true;
+      var mc = document.createElement('script');
+      mc.type = 'text/javascript';
+      mc.async = true;
+      mc.src = '//embed.widgetpack.com/widget.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+    })();
+  }
+  </script>
+
+
+
+  <script src="/js/local-search.js?v=7.3.0"></script>
+
+
+
+
+
+
+
+
+<script>
+function embedPDF() {
+  $('body').find('div.pdf').each(function(i, o) {
+    PDFObject.embed($(o).attr('target'), $(o), {
+      pdfOpenParams: {
+        navpanes: 0,
+        toolbar: 0,
+        statusbar: 0,
+        pagemode: 'thumbs',
+        view: 'FitH'
+      },
+      PDFJS_URL: '/lib/pdf/web/viewer.html',
+      height: $(o).attr('height') || '500px'
+    });
+  });
+}
+if ($('body').find('div.pdf').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/pdfobject@2/pdfobject.min.js', embedPDF, window.PDFObject);
+}
+</script>
+
+
+
+
+
+
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', function() {
+    MathJax.Hub.Typeset();
+  }, window.MathJax);
+</script>
+
+    
+  
+
+  
+
+  
+
+
+  
+  <script src="/js/scrollspy.js?v=7.3.0"></script>
+<script src="/js/post-details.js?v=7.3.0"></script>
+
+  <script type="text/javascript" src="/js/src/linkcard.js"></script>
+
+    
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="https://site-1258928558.cos.ap-guangzhou.myqcloud.com/js/Valine.min.js"></script>
+
+  <!--<script src="//unpkg.com/valine/dist/Valine.min.js"></script>-->
+  <!-- https://deserts.io/diy-a-comment-system/ -->
+  <script type="text/javascript">
+    new Valine({
+        lang: 'zh-cn',
+        admin_email: '912011727@qq.com', //博主邮箱
+        el: '#comments' ,
+        appId: 'u4vO2zGHJKiMhlMhYbgBgq1E-gzGzoHsz',
+        appKey: 'XRdJWVzmRfYF0uw6oUQztM7B',
+        emoticon_url: 'https://cdn.jsdelivr.net/gh/ExcaliburEX/blog_file@master/emojis/',
+        emoticon_list: ["aini.png",	"aoteman.png",	"aru (1).png",	"aru (2).png",	"aru (3).png",	"aru (4).png",	"aru (5).png",	"aru (6).png",	"aru (7).png",	"aru (8).png",	"aru (9).png",	"aru (10).png",	"aru (11).png",	"aru (12).png",	"aru (13).png",	"aru (14).png",	"aru (15).png",	"aru (16).png",	"aru (17).png",	"aru (18).png",	"aru (19).png",	"aru (20).png",	"aru (21).png",	"aru (22).png",	"aru (23).png",	"aru (24).png",	"aru (25).png",	"aru (26).png",	"aru (27).png",	"aru (28).png",	"aru (29).png",	"aru (30).png",	"aru (31).png",	"aru (32).png",	"aru (33).png",	"aru (34).png",	"aru (35).png",	"aru (36).png",	"aru (37).png",	"aru (38).png",	"aru (39).png",	"aru (40).png",	"aru (41).png",	"aru (42).png",	"aru (43).png",	"aru (44).png",	"aru (45).png",	"aru (46).png",	"aru (47).png",	"aru (48).png",	"aru (49).png",	"aru (50).png",	"aru (51).png",	"aru (52).png",	"aru (53).png",	"aru (54).png",	"aru (55).png",	"aru (56).png",	"aru (57).png",	"aru (58).png",	"aru (59).png",	"aru (60).png",	"aru (61).png",	"aru (62).png",	"aru (63).png",	"aru (64).png",	"aru (65).png",	"aru (66).png",	"aru (67).png",	"aru (68).png",	"aru (69).png",	"aru (70).png",	"aru (71).png",	"aru (72).png",	"aru (73).png",	"aru (74).png",	"aru (75).png",	"aru (76).png",	"aru (77).png",	"aru (78).png",	"aru (79).png",	"aru (80).png",	"aru (81).png",	"aru (82).png",	"aru (83).png",	"aru (84).png",	"aru (85).png",	"aru (86).png",	"aru (87).png",	"aru (88).png",	"aru (89).png",	"aru (90).png",	"aru (91).png",	"aru (92).png",	"aru (93).png",	"aru (94).png",	"aru (95).png",	"aru (96).png",	"aru (97).png",	"aru (98).png",	"aru (99).png",	"aru (100).png",	"aru (101).png",	"aru (102).png",	"aru (103).png",	"aru (104).png",	"aru (105).png",	"aru (106).png",	"aru (107).png",	"aru (108).png",	"aru (109).png",	"aru (110).png",	"aru (111).png",	"aru (112).png",	"aru (113).png",	"aru (114).png",	"aru (115).png",	"aru (116).png",	"aru (117).png",	"aru (118).png",	"aru (119).png",	"aru (120).png",	"aru (121).png",	"aru (122).png",	"aru (123).png",	"aru (124).png",	"aru (125).png",	"aru (126).png",	"aru (127).png",	"aru (128).png",	"aru (129).png",	"aru (130).png",	"aru (131).png",	"aru (132).png",	"aru (133).png",	"aru (134).png",	"aru (135).png",	"aru (136).png",	"aru (137).png",	"aru (138).png",	"aru (139).png",	"aru (140).png",	"aru (141).png",	"aru (142).png",	"aru (143).png",	"aru (144).png",	"aru (145).png",	"aru (146).png",	"aru (147).png",	"aru (148).png",	"aru (149).png",	"aru (150).png",	"aru (151).png",	"aru (152).png",	"aru (153).png",	"aru (154).png",	"aru (155).png",	"aru (156).png",	"aru (157).png",	"aru (158).png",	"aru (159).png",	"aru (160).png",	"aru (161).png",	"aru (162).png",	"aru (163).png",	"aru (164).png",	"baibai.png",	"beishang.png",	"bili_1.png",	"bili_2.png",	"bili_3.png",	"bili_4.png",	"bili_5.png",	"bili_6.png",	"bili_7.png",	"bili_8.png",	"bili_9.png",	"bili_10.png",	"bili_11.png",	"bili_12.png",	"bili_13.png",	"bili_14.png",	"bili_15.png",	"bili_16.png",	"bili_17.png",	"bili_18.png",	"bili_19.png",	"bili_20.png",	"bili_21.png",	"bili_22.png",	"bili_23.png",	"bili_24.png",	"bili_25.png",	"bili_26.png",	"bili_27.png",	"bili_28.png",	"bili_29.png",	"bili_30.png",	"bili_31.png",	"bili_32.png",	"bili_33.png",	"bili_34.png",	"bili_35.png",	"bili_36.png",	"bili_37.png",	"bili_38.png",	"bili_39.png",	"bili_40.png",	"bili_41.png",	"bili_42.png",	"bili_43.png",	"bili_44.png",	"bili_45.png",	"bili_46.png",	"bili_47.png",	"bili_48.png",	"bili_49.png",	"bili_50.png",	"bishi.png",	"bizui.png",	"chanzui.png",	"chijing.png",	"dahaqi.png",	"dalian.png",	"ding.png",	"dog1.png",	"dog2.png",	"dog3.png",	"dog4.png",	"dog5.png",	"dog6.png",	"dog7.png",	"dog8.png",	"dog9.png",	"dog10.png",	"dog11.png",	"dog12.png",	"dog13.png",	"dog14.png",	"dog15.png",	"doge.png",	"erha.png",	"feizao.png",	"ganmao.png",	"geili.png",	"guzhang.png",	"haha.png",	"haixiu.png",	"hehe.png",	"heixian.png",	"heng.png",	"huaxin.png",	"hufen.png",	"jiong.png",	"jiyan.png",	"keai.png",	"kelian.png",	"ku.png",	"kun.png",	"landelini.png",	"lei.png",	"meng.png",	"miao.png",	"nanhaier.png",	"nu.png",	"numa.png",	"nvhaier.png",	"OK.png",	"qian.png",	"qinqin.png",	"qq-1.gif",	"qq-2.gif",	"qq-3.gif",	"qq-4.gif",	"qq-5.gif",	"qq-6.gif",	"qq-7.gif",	"qq-8.gif",	"qq-9.gif",	"qq-10.gif",	"qq-11.gif",	"qq-12.gif",	"qq-13.gif",	"qq-14.gif",	"qq-15.gif",	"qq-16.gif",	"qq-17.gif",	"qq-18.gif",	"qq-19.gif",	"qq-20.gif",	"qq-21.gif",	"qq-22.gif",	"qq-23.gif",	"qq-24.gif",	"qq-25.gif",	"qq-26.gif",	"qq-27.gif",	"qq-28.gif",	"qq-29.gif",	"qq-30.gif",	"qq-31.gif",	"qq-32.gif",	"qq-33.gif",	"qq-34.gif",	"qq-35.gif",	"qq-36.gif",	"qq-37.gif",	"qq-38.gif",	"qq-39.gif",	"qq-40.gif",	"qq-41.gif",	"qq-42.gif",	"qq-43.gif",	"qq-44.gif",	"qq-45.gif",	"qq-46.gif",	"qq-47.gif",	"qq-48.gif",	"qq-49.gif",	"qq-50.gif",	"qq-51.gif",	"qq-52.gif",	"qq-53.gif",	"qq-54.gif",	"qq-55.gif",	"qq-56.gif",	"qq-57.gif",	"qq-58.gif",	"qq-59.gif",	"qq-60.gif",	"qq-61.gif",	"qq-62.gif",	"qq-63.gif",	"qq-64.gif",	"qq-65.gif",	"qq-66.gif",	"qq-67.gif",	"qq-68.gif",	"qq-69.gif",	"qq-70.gif",	"qq-71.gif",	"qq-72.gif",	"qq-73.gif",	"qq-74.gif",	"qq-75.gif",	"qq-76.gif",	"qq-77.gif",	"qq-78.gif",	"qq-79.gif",	"qq-80.gif",	"qq-81.gif",	"qq-82.gif",	"qq-83.gif",	"qq-84.gif",	"qq-85.gif",	"qq-86.gif",	"qq-87.gif",	"qq-88.gif",	"qq-89.gif",	"qq-90.gif",	"qq-91.gif",	"qq-92.gif",	"qq-93.gif",	"qq-94.gif",	"qq-95.gif",	"qq-96.gif",	"qq-97.gif",	"qq-98.gif",	"qq-99.gif",	"qq-100.gif",	"qq-101.gif",	"qq-102.gif",	"qq-103.gif",	"qq-104.gif",	"qq-105.gif",	"qq-106.gif",	"qq-107.gif",	"qq-108.gif",	"qq-109.gif",	"qq-110.gif",	"qq-111.gif",	"qq-112.gif",	"qq-113.gif",	"qq-114.gif",	"qq-115.gif",	"qq-116.gif",	"qq-117.gif",	"qq-118.gif",	"qq-119.gif",	"qq-120.gif",	"qq-121.gif",	"qq-122.gif",	"qq-123.gif",	"qq-124.gif",	"qq-125.gif",	"qq-126.gif",	"qq-127.gif",	"qq-128.gif",	"qq-129.gif",	"qq-130.gif",	"qq-131.gif",	"qq-132.gif",	"qq-133.gif",	"qq-134.gif",	"qq-135.gif",	"qq-136.gif",	"qq-137.gif",	"qq-138.gif",	"qq-139.gif",	"qq-140.gif",	"shayan.png",	"shengbing.png",	"shenma.png",	"shenshou.png",	"shiwang.png",	"shuai.png",	"shuijiao.png",	"sikao.png",	"sina_1.png",	"sina_2.png",	"sina_3.png",	"sina_4.png",	"sina_5.png",	"sina_6.png",	"sina_7.png",	"sina_8.png",	"sina_9.png",	"sina_10.png",	"sina_11.png",	"sina_12.png",	"sina_13.png",	"sina_14.png",	"sina_15.png",	"sina_16.png",	"sina_17.png",	"sina_18.png",	"sina_19.png",	"sina_20.png",	"sina_21.png",	"sina_22.png",	"sina_23.png",	"sina_24.png",	"sina_25.png",	"sina_26.png",	"sina_27.png",	"sina_28.png",	"sina_29.png",	"sina_30.png",	"sina_31.png",	"sina_32.png",	"sina_33.png",	"sina_34.png",	"sina_35.png",	"sina_36.png",	"sina_37.png",	"sina_38.png",	"sina_39.png",	"sina_40.png",	"sina_41.png",	"sina_42.png",	"sina_43.png",	"sina_44.png",	"sina_45.png",	"taikaixin.png",	"tieba-1.png",	"tieba-2.png",	"tieba-3.png",	"tieba-4.png",	"tieba-5.png",	"tieba-6.png",	"tieba-7.png",	"tieba-8.png",	"tieba-9.png",	"tieba-10.png",	"tieba-11.png",	"tieba-12.png",	"tieba-13.png",	"tieba-14.png",	"tieba-15.png",	"tieba-16.png",	"tieba-17.png",	"tieba-18.png",	"tieba-19.png",	"tieba-20.png",	"tieba-21.png",	"tieba-22.png",	"tieba-23.png",	"tieba-24.png",	"tieba-25.png",	"tieba-26.png",	"tieba-27.png",	"tieba-28.png",	"tieba-29.png",	"tieba-30.png",	"tieba-31.png",	"tieba-32.png",	"tieba-33.png",	"tieba-34.png",	"tieba-35.png",	"tieba-36.png",	"tieba-37.png",	"tieba-38.png",	"tieba-39.png",	"tieba-40.png",	"tieba-41.png",	"tieba-42.png",	"tieba-43.png",	"tieba-44.png",	"touxiao.png",	"tu.png",	"tuzi.png",	"v5.png",	"wabishi.png",	"weiqu.png",	"what.png",	"xi.png",	"xiaoku.png",	"xiongmao.png",	"xixi.png",	"xu.png",	"yinxian.png",	"yiwen.png",	"youhengheng.png",	"yun.png",	"zhi.png",	"zhuakuang.png",	"zhutou.png",	"zuiyou.png",	"zuohengheng.png",	"不高兴.png",	"乖.png",	"你懂的.png",	"便便.png",	"勉强.png",	"吐.png",	"吐舌.png",	"呀咩爹.png",	"呵呵.png",	"哈哈.png",	"啊.png",	"喷.png",	"大拇指.png",	"太开心.png",	"太阳.png",	"委屈.png",	"小乖.png",	"小红脸.png",	"彩虹.png",	"心碎.png",	"怒.png",	"惊哭.png",	"惊讶.png",	"懒得理.png",	"手纸.png",	"挖鼻.png",	"捂嘴笑.png",	"星星月亮.png",	"汗.png",	"沙发.png",	"泪.png",	"滑稽.png",	"灯泡.png",	"爱心.png",	"犀利.png",	"狂汗.png",	"玫瑰.png",	"疑问.png",	"真棒.png",	"睡觉.png",	"礼物.png",	"笑尿.png",	"笑眼.png",	"红领巾.png",	"胜利.png",	"花心.png",	"茶杯.png",	"药丸.png",	"蛋糕.png",	"蜡烛.png",	"鄙视.png",	"酷.png",	"酸爽.png",	"钱币.png",	"阴险.png",	"音乐.png",	"香蕉.png",	"黑线.png"],
+        placeholder: 'Just go go',
+  });
+
+  <!--点击邮件中的链接跳转至相应评论-->
+  if(window.location.hash){
+      var checkExist = setInterval(function() {
+         if ($(window.location.hash).length) {
+            $('html, body').animate({scrollTop: $(window.location.hash).offset().top-90}, 1000);
+            clearInterval(checkExist);
+         }
+      }, 100);
+   }
+  </script>
+
+  <script type="text/javascript" src="/js/src/image.js"></script>
+
+
+
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
+
+</body>
+</html>
