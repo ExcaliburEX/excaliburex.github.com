@@ -2079,7 +2079,7 @@ div.post-meta {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #cff;
+  background: #873c59;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
