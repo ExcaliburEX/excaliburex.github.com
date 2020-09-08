@@ -19,7 +19,7 @@
   <meta name="google-site-verification" content="ELbK6WK_Oi8CisIxzYbp86oWSo2__-8MbVOmWyGpgRI">
   <meta name="baidu-site-verification" content="xwPujxAXwa">
 
-<link rel="stylesheet" href="/css/main9.css">
+<link rel="stylesheet" href="/css/main18.css">
 
 <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noto Serif SC:300,300italic,400,400italic,700,700italic|Noto Serif SC Black:300,300italic,400,400italic,700,700italic|consolas:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
 <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
@@ -48,14 +48,14 @@
     lazyload: false,
     pangu: false,
     algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
+      applicationID: 'IXLMLOF7V1',
+      apiKey: 'f824dc3a782d076ff5a1670039edcf79',
+      indexName: 'search',
       hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"我们没有找到任何搜索结果: ${query}","hits_stats":"找到约 ${hits} 条结果，用时 ${time} ms"}
     },
-    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
-    path: './public/search.xml',
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
     tabs: true,
     motion: {"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     translation: {
@@ -87,7 +87,8 @@
 <meta property="og:image" content="https://blog-1259799643.cos.ap-shanghai.myqcloud.com/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20191102205949.jpg">
 <meta property="og:image" content="https://blog-1259799643.cos.ap-shanghai.myqcloud.com/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20191102210025.jpg">
 <meta property="og:image" content="https://blog-1259799643.cos.ap-shanghai.myqcloud.com/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20191102210054.jpg">
-<meta property="og:updated_time" content="2020-06-29T16:49:01.338Z">
+<meta property="og:image" content="https://photos-1259799643.cos.ap-shanghai.myqcloud.com/%E5%B2%81%E6%9C%88%E5%A6%82%E6%AD%8C/6.29%E7%9A%84%E6%9C%88%E5%85%89.jpg">
+<meta property="og:updated_time" content="2020-07-09T10:34:14.952Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="相识">
 <meta name="twitter:description" content="相识，只是有缘，仅此而已。">
@@ -167,6 +168,8 @@
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+<link type='text/css' rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" media='all'/>
+<link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/5.13.1/css/all.min.css" rel="stylesheet">
 
   <div class="container sidebar-position-left">
     <div class="headband"></div>
@@ -216,6 +219,19 @@
       
       
         
+        <li class="menu-item menu-item-人生小记">
+      
+    
+      
+    
+
+    <a href="/人生小记/" rel="section"><i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>人生小记</a>
+
+  </li>
+      
+      
+      
+        
         <li class="menu-item menu-item-about">
       
     
@@ -235,7 +251,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">84</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">95</span></a>
 
   </li>
       
@@ -248,7 +264,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">8</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">9</span></a>
 
   </li>
       
@@ -261,7 +277,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">23</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">26</span></a>
 
   </li>
       
@@ -328,22 +344,25 @@
 
     <div class="site-search">
       
-  <div class="popup search-popup local-search-popup">
-  <div class="local-search-header clearfix">
-    <span class="search-icon">
+  <div class="algolia-popup popup search-popup">
+  <div class="algolia-search">
+    <div class="algolia-search-input-icon">
       <i class="fa fa-search"></i>
-    </span>
-    <span class="popup-btn-close">
-      <i class="fa fa-times-circle"></i>
-    </span>
-    <div class="local-search-input-wrapper">
-      <input autocomplete="off"
-             placeholder="搜索..." spellcheck="false"
-             type="text" id="local-search-input">
     </div>
+    <div class="algolia-search-input" id="algolia-search-input"></div>
   </div>
-  <div id="local-search-result"></div>
+
+  <div class="algolia-results">
+    <div id="algolia-stats"></div>
+    <div id="algolia-hits"></div>
+    <div id="algolia-pagination" class="algolia-pagination"></div>
+  </div>
+
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
 </div>
+
 
 
     </div>
@@ -424,7 +443,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-06-30 00:49:01" itemprop="dateModified" datetime="2020-06-30T00:49:01+08:00">2020-06-30</time>
+                <time title="修改时间：2020-07-09 18:34:14" itemprop="dateModified" datetime="2020-07-09T18:34:14+08:00">2020-07-09</time>
               </span>
             
           
@@ -459,7 +478,7 @@
               <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
             </span>
             <span class="post-meta-divider">|</span>
-          <span title="post.wordcount"><span class="post-meta-item-icon"><i class="fa fa-file-word-o"></i></span>字数： 11.6k</span>
+          <span title="post.wordcount"><span class="post-meta-item-icon"><i class="fa fa-file-word-o"></i></span>字数： 13.6k</span>
           
             
   
@@ -485,7 +504,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span>15k</span>
+              <span>18k</span>
             </span>
           
             <span class="post-meta-item" title="阅读时长">
@@ -495,7 +514,7 @@
               
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
               
-              <span>14 分钟</span>
+              <span>16 分钟</span>
             </span>
           
 
@@ -510,7 +529,7 @@
       
         <p>相识，只是有缘，仅此而已。<br><a id="more"></a></p>
 
-    <div id="aplayer-XIEyagdo" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="955587085" data-server="netease" data-type="playlist" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="250px" data-preload="auto" data-theme="#ad887a" data-loop="all" data-order="list"></div>
+    <div id="aplayer-DzhjHvaD" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="955587085" data-server="netease" data-type="playlist" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="250px" data-preload="auto" data-theme="#ad887a" data-loop="all" data-order="list"></div>
 <p><br></p>
 <p>  此前的文章，已经过去了很久。这段很长的时光经历了很多，认识了很多人，看了很多书，也想通了很多，家里如今也非常和谐，早已抛弃了那些不太合适的想法。只是既然曾经某一瞬，某个深夜有过这样自我拷问的想法，我也无需否定它，仅是记录，也是警醒以后的自己：<strong>要思考，但不要自我陷入</strong>。</p>
 <p>  同时，我也想记录下这些。</p>
@@ -693,6 +712,36 @@
 <p>现在，我已经不想再回来梦中<br>梦是什么<br>梦即现实<br>现实是什么<br>现实连接着遥远的未来</br></p>
 <h2 id="20-6-26-6-29"><a href="#20-6-26-6-29" class="headerlink" title="20.6.26~6.29"></a>20.6.26~6.29</h2><div class="note primary no-icon">
             <p><strong>今天晚上的月亮好美，想要跟你分享，但一想我们好久没聊天了，想到这，突然觉得月亮也不漂亮了。</strong></br><br><strong>你的目光总是看着我看不见的远方，看着窗外，看着天空，我总想赶上，却总也追不上。</strong></br><br><strong>目光交汇时，你的眼神满含惆怅，却故作轻松，我看得清，却又仿佛看不清。</strong></br><br><strong>你应该有很多话要告诉我，却好像什么也没说，我只是静静倾听，别无他求。</strong></p>
+          </div>
+<h2 id="20-6-30"><a href="#20-6-30" class="headerlink" title="20.6.30"></a><font face="Times New Roman">20.6.30</font></h2><div class="note primary no-icon">
+            <p>今日真的难得的晴天，弄了一天的各种markdown以及overleaf的写作模板，大概算是一劳永逸吧。晚上大家一起厨房炒粉，圆桌谈，亭台聊人生，三国无限杀，乐趣实在无穷。不禁怀疑，这生活是不是太美滋滋了、</p>
+          </div>
+<ul>
+<li><p><strong>一些句子</strong></p>
+<ul>
+<li>是“Wow”!</br>霍金对这个世界发出的词，是惊叹。即使他一生受尽病痛折磨，全身失去控制能力，他对于这个世界，依然像一个孩童般热爱。</br>言犹在耳，霍金却已离我们而去。在迈克尔·怀特与约翰·葛瑞本所著的《霍金传》中，霍金首先是一个天赋异禀、敢于直言、敢于想象的科学家，其次才是一个身残志坚，可敬的人。</br>这位从年轻时起就坐在轮椅上的科学家，从没放弃对宇宙的探索，也从未丢失对生活的信心。正如霍金自己说过：“如果生活没有了乐趣，那将是一场悲剧。”</br>3月14日是爱因斯坦的生日，霍金于同一天去世，有人说，他大概是去给爱因斯坦过生日了。那么，祝福两位伟人在某个星球安好</li>
+<li>老一辈人，先苦后甜，我们这一代，先甜后苦。先苦后甜易，先甜后苦难。</br>正如钱钟书的《围城》里写道：天下只有两种人。譬如一串葡萄到手，一种人挑最好的先吃，另一种人把最好的留在最后吃。照例第一种人应该乐观，因为他每吃一颗都是吃剩的葡萄里最好的；第二种人应该悲观，因为他每吃一颗都是吃剩的葡萄里最坏的。</br>不过事实上适得其反，缘故是第二种人还有希望，第一种人只有回忆。</li>
+<li>最难熬的状态就是，眼里操心着不再年轻的父母，脑子里想着乱七八糟的事业，心里还藏着一个不可能的姑娘，胸膛里还撑起着一个遥远的远方！</li>
+<li>有一个夜晚我烧毁了所有的记忆，从此我的梦就透明了。有一个早晨我扔掉了所有的昨天，从此我的脚步就轻盈了。</li>
+<li>每个人都会有缺陷，就像被上帝咬过的苹果，有的人缺陷比较大，正是因为上帝特别喜欢他的芬芳。</li>
+<li>语言和文字真的是不可执取的东西，当一句话说出来或者写下来，它就不是你的了，你必须允许别人任意解读，甚至误读。所以我最想说的话，其实在我开口的一刹那就已经说完。</li>
+</ul>
+</li>
+<li><p>昨夜的月亮</p>
+</li>
+</ul>
+<p><img src="https://photos-1259799643.cos.ap-shanghai.myqcloud.com/%E5%B2%81%E6%9C%88%E5%A6%82%E6%AD%8C/6.29%E7%9A%84%E6%9C%88%E5%85%89.jpg" alt="6.29的月亮"></p>
+<h2 id="20-7-1-7-3"><a href="#20-7-1-7-3" class="headerlink" title="20.7.1~7.3"></a><font face="Times New Roman">20.7.1~7.3</font></h2><div class="note primary no-icon">
+            <p>  近来时晴时雨，一号的晴天朗日，傍晚出门取外卖的温晴草香，令人陶醉。二号的又诉诸了衷肠，可是又如何，不过是徒增烦恼，我的内心早就知道那些现实的原因，可是我又能怎样呢，也没什么遗憾的。做不出来的事情，说出来也没有任何意义，我不会对她太过于直白，我也不会就此放弃，我恐怕永远也不敢说出我的心意，就算我向她展现了某些代表价值的东西，那又如何，又能表达什么呢，这样是告诉她我很有钱还是在乞求她的认可还是怜悯？</br></br>除了把实验室的Latex模板弄出来，记得1号弄了一天简历的模板，然后用了一份跟白天弄的没关做的自己的简历，最后苏州微软没有任何回信。</br></br>当然那个下午还是充实又开心的一段时光，一起创造新的具有纪念意义的事物，共同创造的乐趣，这恐怕就是古往今来人人乐于称道的事情吧。今天计划了7号的之后的事情，希望能实施顺利吧。</p>
+          </div>
+<h2 id="20-7-4-7-5"><a href="#20-7-4-7-5" class="headerlink" title="20.7.4~7.5"></a><font face="Times New Roman">20.7.4~7.5</font></h2><div class="note primary no-icon">
+            <p>  半年了，久违地回了一趟学校。那条林荫大道，此次此刻走起来，却有一种以往从未感受过的轻松感。推着车，从本部到东区，身体快要失去知觉。翻墙出去，烧烤很好吃，主要是我烧的，嗯。歌唱到声嘶力竭，回来墙翻得也是刺激，往来的人群，无不驻足观看我们四人的精彩树林翻墙秀。</br></br>今天终于实施了计划，几个小时之前，成功了计划的第一步，彼时的我还是很开心的，但此时此刻，敲下这些文字的时的我，却被无边的绝望包围。我们很成功地合作完成了这次华丽的“壮举”，在我看来一切都很完美。可是，所有人都抓着那个“朋友”的字眼不放，我们坐下来，一直聊到深夜，我淡淡地描绘那个计划，我不知道结果，我知道我只是该这么做，也许结果终将令我失去自我。我只想说友人之后，还能更进一步嘛？我不会耍脾气，更无法完全忘记她，更做不到让她关注我，与我分享，更别提让她对我产生嫉妒，亦或使计让她认为我在拒绝谁。可是一切会怎么发展，我不敢想象……</p>
+          </div>
+<h2 id="20-7-6"><a href="#20-7-6" class="headerlink" title="20.7.6"></a><font face="Times New Roman">20.7.6</font></h2><div class="note primary no-icon">
+            <p>  你要问我为什么总喜欢感动自我，或许是吧，但歌曲，文章如果连自己都感动不了，如何深入他人的心灵呢？与人交流，与世界对话，与灵魂私语，不常怀感动之心又何以与自己达成和解呢。有的时候，我无法想象富有的，掌权的，成功的我是什么样子，有时候我又觉得那样有时挺悲哀的，那时的我应该再也回不到现在这种总是会有一些思路在脑海中打转的状态了吧，那样的我不再是我，也挺令我厌恶的。我从来都是做最真诚的我，所以我也经常受伤害，这些伤害最多地来自于我自身的敏感体质。“真实自有万钧之力”，我知道有时你就算把所有的你自己掏出来给人看，也会被完全遗弃在一旁，所以你更多需要做的是找到那个想倾听你所有事情的人，在她面前你所有的内心都可以奔涌而出，而不用担心，这股洪流会将她带到永远看不见的远方。</br></br>说到这，我知道，我们也许已经不可能了，我有预感，她永远愿意做我的倾听者，只是她一如既往地履行诺言与对我的愧疚。我的心不算平静，却也不失波澜的撞击。</p>
+          </div>
+<h2 id="20-7-7"><a href="#20-7-7" class="headerlink" title="20.7.7"></a><font face="Times New Roman">20.7.7</font></h2><div class="note primary no-icon">
+            <p>  又到了这一熟悉的一刻，又是这番场景。接下来几个小时会发生什么呢，是什么都不会发生，还是以后她不再敢见我，还是会向我预料的方向发展呢。我不敢想象，无论是哪一种结果我都不敢想象。可时光毕竟是走到了现在，我们已经不算是陌生人了，却总还是原地打转，我只能去打破这层阻隔，至于结果如何，已经不是我能奢望得了的了。</br></br>计划好的流程，准备好要说的话，我知道我就算排练一万遍，也还是会出错，无法改变，因为我恐惧的是因为某一个举措或者某一句话让她离我远去。我该不该说出那些准备好的话，还是只是顺其自然，到头来与上次一样，简单的一次相见。她是在等待我，还是完全不在意我做什么……接下来会发生什么呢。</p>
           </div><script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -726,7 +775,7 @@
     <li class="popular-posts-item">
       
       
-      <div class="popular-posts-title"><a href="\Java学习笔记.html" rel="bookmark">Java学习笔记</a></div>
+      <div class="popular-posts-title"><a href="\天池-二手车价格预测-Task4-建模调参.html" rel="bookmark">天池_二手车价格预测_Task4_建模调参</a></div>
       
     </li>
   
@@ -740,14 +789,14 @@
     <li class="popular-posts-item">
       
       
-      <div class="popular-posts-title"><a href="\读《约翰·克利斯朵夫》.html" rel="bookmark">读《约翰·克利斯朵夫》</a></div>
+      <div class="popular-posts-title"><a href="\Java学习笔记.html" rel="bookmark">Java学习笔记</a></div>
       
     </li>
   
     <li class="popular-posts-item">
       
       
-      <div class="popular-posts-title"><a href="\天池-二手车价格预测-Task4-建模调参.html" rel="bookmark">天池_二手车价格预测_Task4_建模调参</a></div>
+      <div class="popular-posts-title"><a href="\天池-二手车价格预测-Task1-2-赛题理解与数据分析.html" rel="bookmark">天池二手车价格预测Task1-2—赛题理解与数据分析</a></div>
       
     </li>
   
@@ -951,7 +1000,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">23</span>
+          <span class="site-state-item-count">26</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -982,7 +1031,9 @@
         
           
         
-        <span class="site-state-item-count">8</span>
+          
+        
+        <span class="site-state-item-count">9</span>
         <span class="site-state-item-name">分类</span>
         </a>
       </div>
@@ -1165,7 +1216,29 @@
         
           
         
-        <span class="site-state-item-count">84</span>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">95</span>
         <span class="site-state-item-name">标签</span>
         </a>
       </div>
@@ -1275,7 +1348,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#19-10-30"><span class="nav-number">1.</span> <span class="nav-text">19.10.30</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#19-10-31"><span class="nav-number">2.</span> <span class="nav-text">19.10.31</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#19-11-1"><span class="nav-number">3.</span> <span class="nav-text">19.11.1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#19-11-2"><span class="nav-number">4.</span> <span class="nav-text">19.11.2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#19-11-3"><span class="nav-number">5.</span> <span class="nav-text">19.11.3</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#19-11-4"><span class="nav-number">6.</span> <span class="nav-text">19.11.4</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#19-11-5"><span class="nav-number">7.</span> <span class="nav-text">19.11.5</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#19-11-6"><span class="nav-number">8.</span> <span class="nav-text">19.11.6</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#19-11-7"><span class="nav-number">9.</span> <span class="nav-text">19.11.7</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#19-11-8"><span class="nav-number">10.</span> <span class="nav-text">19.11.8</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#19-11-9"><span class="nav-number">11.</span> <span class="nav-text">19.11.9</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#19-11-10"><span class="nav-number">12.</span> <span class="nav-text">19.11.10</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#19-11-11"><span class="nav-number">13.</span> <span class="nav-text">19.11.11</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#19-11-12"><span class="nav-number">14.</span> <span class="nav-text">19.11.12</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#19-11-13"><span class="nav-number">15.</span> <span class="nav-text">19.11.13</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#19-11-14"><span class="nav-number">16.</span> <span class="nav-text">19.11.14</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#19-11-15"><span class="nav-number">17.</span> <span class="nav-text">19.11.15</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#19-11-16"><span class="nav-number">18.</span> <span class="nav-text">19.11.16</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#19-11-17"><span class="nav-number">19.</span> <span class="nav-text">19.11.17</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#19-11-18"><span class="nav-number">20.</span> <span class="nav-text">19.11.18</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#19-11-22"><span class="nav-number">21.</span> <span class="nav-text">19.11.22</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#19-11-23"><span class="nav-number">22.</span> <span class="nav-text">19.11.23</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#19-11-26"><span class="nav-number">23.</span> <span class="nav-text">19.11.26</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#19-11-27"><span class="nav-number">24.</span> <span class="nav-text">19.11.27</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#19-11-28"><span class="nav-number">25.</span> <span class="nav-text">19.11.28</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#19-11-29"><span class="nav-number">26.</span> <span class="nav-text">19.11.29</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#19-12-1"><span class="nav-number">27.</span> <span class="nav-text">19.12.1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#19-12-3"><span class="nav-number">28.</span> <span class="nav-text">19.12.3</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#19-12-4"><span class="nav-number">29.</span> <span class="nav-text">19.12.4</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#19-12-6"><span class="nav-number">30.</span> <span class="nav-text">19.12.6</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#19-12-11"><span class="nav-number">31.</span> <span class="nav-text">19.12.11</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#19-12-12"><span class="nav-number">32.</span> <span class="nav-text">19.12.12</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#19-12-13"><span class="nav-number">33.</span> <span class="nav-text">19.12.13</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#19-12-14"><span class="nav-number">34.</span> <span class="nav-text">19.12.14</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#19-12-15"><span class="nav-number">35.</span> <span class="nav-text">19.12.15</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#19-12-16"><span class="nav-number">36.</span> <span class="nav-text">19.12.16</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#19-12-20"><span class="nav-number">37.</span> <span class="nav-text">19.12.20</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#19-12-21"><span class="nav-number">38.</span> <span class="nav-text">19.12.21</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#19-12-22"><span class="nav-number">39.</span> <span class="nav-text">19.12.22</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#19-12-23"><span class="nav-number">40.</span> <span class="nav-text">19.12.23</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#19-12-24"><span class="nav-number">41.</span> <span class="nav-text">19.12.24</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#19-12-25"><span class="nav-number">42.</span> <span class="nav-text">19.12.25</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#19-12-26"><span class="nav-number">43.</span> <span class="nav-text">19.12.26</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#19-12-28-20-1-5"><span class="nav-number">44.</span> <span class="nav-text">19.12.28~20.1.5</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#20-1-17"><span class="nav-number">45.</span> <span class="nav-text">20.1.17</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#20-1-24"><span class="nav-number">46.</span> <span class="nav-text">20.1.24</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#20-3-14-15"><span class="nav-number">47.</span> <span class="nav-text">20.3.14~15</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#20-3-16-18"><span class="nav-number">48.</span> <span class="nav-text">20.3.16~18</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#20-5-1-12"><span class="nav-number">49.</span> <span class="nav-text">20.5.1~12</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#20-6-16-6-18"><span class="nav-number">50.</span> <span class="nav-text">20.6.16~6.18</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#20-6-19-6-20"><span class="nav-number">51.</span> <span class="nav-text">20.6.19~6.20</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#20-6-21-6-22"><span class="nav-number">52.</span> <span class="nav-text">20.6.21~6.22</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#20-6-23-6-25"><span class="nav-number">53.</span> <span class="nav-text">20.6.23~6.25</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#20-6-26-6-29"><span class="nav-number">54.</span> <span class="nav-text">20.6.26~6.29</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#19-10-30"><span class="nav-number">1.</span> <span class="nav-text">19.10.30</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#19-10-31"><span class="nav-number">2.</span> <span class="nav-text">19.10.31</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#19-11-1"><span class="nav-number">3.</span> <span class="nav-text">19.11.1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#19-11-2"><span class="nav-number">4.</span> <span class="nav-text">19.11.2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#19-11-3"><span class="nav-number">5.</span> <span class="nav-text">19.11.3</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#19-11-4"><span class="nav-number">6.</span> <span class="nav-text">19.11.4</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#19-11-5"><span class="nav-number">7.</span> <span class="nav-text">19.11.5</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#19-11-6"><span class="nav-number">8.</span> <span class="nav-text">19.11.6</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#19-11-7"><span class="nav-number">9.</span> <span class="nav-text">19.11.7</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#19-11-8"><span class="nav-number">10.</span> <span class="nav-text">19.11.8</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#19-11-9"><span class="nav-number">11.</span> <span class="nav-text">19.11.9</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#19-11-10"><span class="nav-number">12.</span> <span class="nav-text">19.11.10</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#19-11-11"><span class="nav-number">13.</span> <span class="nav-text">19.11.11</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#19-11-12"><span class="nav-number">14.</span> <span class="nav-text">19.11.12</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#19-11-13"><span class="nav-number">15.</span> <span class="nav-text">19.11.13</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#19-11-14"><span class="nav-number">16.</span> <span class="nav-text">19.11.14</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#19-11-15"><span class="nav-number">17.</span> <span class="nav-text">19.11.15</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#19-11-16"><span class="nav-number">18.</span> <span class="nav-text">19.11.16</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#19-11-17"><span class="nav-number">19.</span> <span class="nav-text">19.11.17</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#19-11-18"><span class="nav-number">20.</span> <span class="nav-text">19.11.18</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#19-11-22"><span class="nav-number">21.</span> <span class="nav-text">19.11.22</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#19-11-23"><span class="nav-number">22.</span> <span class="nav-text">19.11.23</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#19-11-26"><span class="nav-number">23.</span> <span class="nav-text">19.11.26</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#19-11-27"><span class="nav-number">24.</span> <span class="nav-text">19.11.27</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#19-11-28"><span class="nav-number">25.</span> <span class="nav-text">19.11.28</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#19-11-29"><span class="nav-number">26.</span> <span class="nav-text">19.11.29</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#19-12-1"><span class="nav-number">27.</span> <span class="nav-text">19.12.1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#19-12-3"><span class="nav-number">28.</span> <span class="nav-text">19.12.3</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#19-12-4"><span class="nav-number">29.</span> <span class="nav-text">19.12.4</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#19-12-6"><span class="nav-number">30.</span> <span class="nav-text">19.12.6</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#19-12-11"><span class="nav-number">31.</span> <span class="nav-text">19.12.11</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#19-12-12"><span class="nav-number">32.</span> <span class="nav-text">19.12.12</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#19-12-13"><span class="nav-number">33.</span> <span class="nav-text">19.12.13</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#19-12-14"><span class="nav-number">34.</span> <span class="nav-text">19.12.14</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#19-12-15"><span class="nav-number">35.</span> <span class="nav-text">19.12.15</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#19-12-16"><span class="nav-number">36.</span> <span class="nav-text">19.12.16</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#19-12-20"><span class="nav-number">37.</span> <span class="nav-text">19.12.20</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#19-12-21"><span class="nav-number">38.</span> <span class="nav-text">19.12.21</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#19-12-22"><span class="nav-number">39.</span> <span class="nav-text">19.12.22</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#19-12-23"><span class="nav-number">40.</span> <span class="nav-text">19.12.23</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#19-12-24"><span class="nav-number">41.</span> <span class="nav-text">19.12.24</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#19-12-25"><span class="nav-number">42.</span> <span class="nav-text">19.12.25</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#19-12-26"><span class="nav-number">43.</span> <span class="nav-text">19.12.26</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#19-12-28-20-1-5"><span class="nav-number">44.</span> <span class="nav-text">19.12.28~20.1.5</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#20-1-17"><span class="nav-number">45.</span> <span class="nav-text">20.1.17</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#20-1-24"><span class="nav-number">46.</span> <span class="nav-text">20.1.24</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#20-3-14-15"><span class="nav-number">47.</span> <span class="nav-text">20.3.14~15</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#20-3-16-18"><span class="nav-number">48.</span> <span class="nav-text">20.3.16~18</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#20-5-1-12"><span class="nav-number">49.</span> <span class="nav-text">20.5.1~12</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#20-6-16-6-18"><span class="nav-number">50.</span> <span class="nav-text">20.6.16~6.18</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#20-6-19-6-20"><span class="nav-number">51.</span> <span class="nav-text">20.6.19~6.20</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#20-6-21-6-22"><span class="nav-number">52.</span> <span class="nav-text">20.6.21~6.22</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#20-6-23-6-25"><span class="nav-number">53.</span> <span class="nav-text">20.6.23~6.25</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#20-6-26-6-29"><span class="nav-number">54.</span> <span class="nav-text">20.6.26~6.29</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#20-6-30"><span class="nav-number">55.</span> <span class="nav-text">20.6.30</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#20-7-1-7-3"><span class="nav-number">56.</span> <span class="nav-text">20.7.1~7.3</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#20-7-4-7-5"><span class="nav-number">57.</span> <span class="nav-text">20.7.4~7.5</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#20-7-6"><span class="nav-number">58.</span> <span class="nav-text">20.7.6</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#20-7-7"><span class="nav-number">59.</span> <span class="nav-text">20.7.7</span></a></li></ol></div>
             
 
           </div>
@@ -1297,7 +1370,7 @@
     <h3 class="widget-title">Tag Cloud</h3>
     <div id="myCanvasContainer" class="widget tagcloud">
         <canvas width="250" height="250" id="resCanvas" style="width=100%">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/">Algorithm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Barrier/">Barrier</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BeautifulSoup/">BeautifulSoup</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BoxPlot/">BoxPlot</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DataMining/">DataMining</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Diary/">Diary</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Editor/">Editor</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IQR/">IQR</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Job/">Job</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jupyter/">Jupyter</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Lasso正则化/">Lasso正则化</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Learning/">Learning</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LightGBM/">LightGBM</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linear-Regression/">Linear Regression</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MATLAB/">MATLAB</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Navie-Bayes/">Navie Bayes</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Next/">Next</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OJ/">OJ</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Onehot/">Onehot</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Reading/">Reading</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ridge正则化/">Ridge正则化</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Science-Uranology/">Science Uranology</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Selenium/">Selenium</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Study/">Study</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Thinking/">Thinking</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tianchi/">Tianchi</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/XGBoost/">XGBoost</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/alive-progress/">alive_progress</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cross-validation/">cross validation</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/custom/">custom</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/distributed-system/">distributed system</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/groupby/">groupby</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/matplotlib/">matplotlib</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/multithreading/">multithreading</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pandas/">pandas</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/requests/">requests</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/seaborn/">seaborn</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/socket/">socket</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/svm/">svm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/二进制/">二进制</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/五折交叉验证/">五折交叉验证</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/内存优化/">内存优化</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/决策树/">决策树</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/分布式/">分布式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/分布式计算/">分布式计算</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/包裹式-wrapper/">包裹式(wrapper)</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/博客/">博客</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/反向索引/">反向索引</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/回忆/">回忆</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/地铁线路优化/">地铁线路优化</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/多层感知机-MLP/">多层感知机(MLP)</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/多线程/">多线程</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/嵌入式（embedding）/">嵌入式（embedding）</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/感情/">感情</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/插值/">插值</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数学建模/">数学建模</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/日记/">日记</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/朋友圈/">朋友圈</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/朴素贝叶斯/">朴素贝叶斯</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/极坐标/">极坐标</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/梯度提升树-GBDT/">梯度提升树(GBDT)</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/正则表达式/">正则表达式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/正态分布/">正态分布</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/毕业论文/">毕业论文</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/气象图/">气象图</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/温馨/">温馨</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/热力图/">热力图</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/画图/">画图</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/目标函数/">目标函数</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/真挚/">真挚</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/约束条件/">约束条件</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网格调参/">网格调参</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/节点通信/">节点通信</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/调查问卷/">调查问卷</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/贝叶斯调参/">贝叶斯调参</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/贪心调参/">贪心调参</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/过滤式-filter/">过滤式(filter)</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/遗传算法/">遗传算法</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/问卷星/">问卷星</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随机森林/">随机森林</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随笔/">随笔</a><span class="tag-list-count">2</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/">Algorithm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Barrier/">Barrier</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BeautifulSoup/">BeautifulSoup</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BoxPlot/">BoxPlot</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CVM/">CVM</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DataMining/">DataMining</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Diary/">Diary</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ECS/">ECS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Editor/">Editor</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Go/">Go</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IPFS/">IPFS</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IQR/">IQR</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Job/">Job</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jupyter/">Jupyter</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Lasso正则化/">Lasso正则化</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Learning/">Learning</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LightGBM/">LightGBM</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linear-Regression/">Linear Regression</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MATLAB/">MATLAB</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Navie-Bayes/">Navie Bayes</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Next/">Next</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OJ/">OJ</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Onehot/">Onehot</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Reading/">Reading</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ridge正则化/">Ridge正则化</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSH/">SSH</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Science-Uranology/">Science Uranology</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Selenium/">Selenium</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Study/">Study</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Thinking/">Thinking</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tianchi/">Tianchi</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubuntu/">Ubuntu</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/XGBoost/">XGBoost</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Xftp/">Xftp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Xshell/">Xshell</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/alive-progress/">alive_progress</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cross-validation/">cross validation</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/custom/">custom</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/distributed-system/">distributed system</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/groupby/">groupby</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/matplotlib/">matplotlib</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/multithreading/">multithreading</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pandas/">pandas</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/requests/">requests</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/seaborn/">seaborn</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/socket/">socket</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/svm/">svm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/二进制/">二进制</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/五折交叉验证/">五折交叉验证</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/内存优化/">内存优化</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/决策树/">决策树</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/分布式/">分布式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/分布式计算/">分布式计算</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/包裹式-wrapper/">包裹式(wrapper)</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/博客/">博客</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/反向索引/">反向索引</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/回忆/">回忆</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/地铁线路优化/">地铁线路优化</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/多层感知机-MLP/">多层感知机(MLP)</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/多线程/">多线程</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/嵌入式（embedding）/">嵌入式（embedding）</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/感情/">感情</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/插值/">插值</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数学建模/">数学建模</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/日记/">日记</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/朋友圈/">朋友圈</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/朴素贝叶斯/">朴素贝叶斯</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/极坐标/">极坐标</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/梯度提升树-GBDT/">梯度提升树(GBDT)</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/正则表达式/">正则表达式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/正态分布/">正态分布</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/毕业论文/">毕业论文</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/气象图/">气象图</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/温馨/">温馨</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/热力图/">热力图</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/画图/">画图</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/目标函数/">目标函数</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/真挚/">真挚</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/私有网络/">私有网络</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/约束条件/">约束条件</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网格调参/">网格调参</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/节点通信/">节点通信</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/虚拟机/">虚拟机</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/调查问卷/">调查问卷</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/贝叶斯调参/">贝叶斯调参</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/贪心调参/">贪心调参</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/过滤式-filter/">过滤式(filter)</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/遗传算法/">遗传算法</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/问卷星/">问卷星</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随机森林/">随机森林</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随笔/">随笔</a><span class="tag-list-count">2</span></li></ul>
         </canvas>
     </div>
 </div>
@@ -1325,19 +1398,19 @@
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">142k</span>
+    <span title="站点总字数">150k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">2:09</span>
+    <span title="站点阅读时长">2:17</span>
 </div>
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">全站共 66.6k 字</span>
+  <span class="post-count">全站共 71.4k 字</span>
 </div>
 
 <div class="run_time" style=" text-align:center;">
@@ -1361,7 +1434,7 @@
 
 <div class="BbeiAn-info">
   皖ICP备 -
-    <a target="_blank" href="http://www.miitbeian.gov.cn/" style="color:#f0d784"  rel="nofollow">19020907</a> <!--a标签中增加nofollow属性，避免爬虫出站。-->| 
+    <a target="_blank" href="https://beian.miit.gov.cn/" style="color:#f0d784"  rel="nofollow">19020907</a> <!--a标签中增加nofollow属性，避免爬虫出站。-->| 
 	<a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=32050802011200" style="color:#f0d784;text-decoration:none;padding-left:30px;background:url(https://s1.ax1x.com/2018/09/29/ilmwIH.png) no-repeat left center" rel="nofollow">苏公网安备 32050802011200号</a>	  <!--这里将图标作为了背景，以使得能和后面的文字在同一行-->
 </div>
 
@@ -1538,7 +1611,13 @@
 
 
 
-  <script src="/js/local-search.js?v=7.3.0"></script>
+  
+<link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+<script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+
+
+<script src="/js/algolia-search.js?v=7.3.0"></script>
+
 
 
 

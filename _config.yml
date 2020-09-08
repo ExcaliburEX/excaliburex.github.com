@@ -87,7 +87,7 @@ deploy:
   #branch: run-page
   
 search:
-  path: ./public/search.xml
+  path: search.xml
   field: post
   format: html
   limit: 10000
@@ -128,11 +128,12 @@ aplayer:
 
 # hexo-tag-cloud
 tag_cloud:
-    textFont: Noto Serif SC, Noto Serif SC
-    textColor: '#ff7040'
-    textHeight: 20
-    outlineColor: '#40cfff'
-    maxSpeed: 0.5 
+    # enable: false
+    # textFont: Noto Serif SC, Noto Serif SC
+    # textColor: '#ff7040'
+    # textHeight: 20
+    # outlineColor: '#40cfff'
+    # maxSpeed: 0.5 
 
 sitemap:
   path: sitemap.xml
@@ -158,3 +159,9 @@ githubEmojis:
 #     title: '影中万象'
 #     quote: 'Three Thousand Times and One Punch.'
 #   timeout: 10000
+
+
+algolia:
+  applicationID: 'IXLMLOF7V1'
+  apiKey: 'f824dc3a782d076ff5a1670039edcf79'
+  indexName: 'search'

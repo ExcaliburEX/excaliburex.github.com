@@ -1,0 +1,1604 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+ <script type="text/javascript" src="/js/src/linkcard.js"></script>
+<head>
+  <meta charset="UTF-8">
+<meta name="generator" content="Hexo 3.9.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/head.jpg?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/head.jpg?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/head.jpg?v=7.3.0">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.3.0" color="#222">
+  <meta name="google-site-verification" content="ELbK6WK_Oi8CisIxzYbp86oWSo2__-8MbVOmWyGpgRI">
+  <meta name="baidu-site-verification" content="xwPujxAXwa">
+
+<link rel="stylesheet" href="/css/main18.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noto Serif SC:300,300italic,400,400italic,700,700italic|Noto Serif SC Black:300,300italic,400,400italic,700,700italic|consolas:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+  <link rel="stylesheet" href="/lib/fancybox/source/jquery.fancybox.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/ilyabirman-likely@2/release/likely.css">
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link rel="stylesheet" href="/lib/pace/pace-theme-flash.min.css?v=1.0.2">
+
+
+
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.3.0',
+    sidebar: {"position":"left","display":"hide","offset":12,"onmobile":true},
+    back2top: {"enable":true,"sidebar":true,"scrollpercent":true},
+    save_scroll: true,
+    copycode: {"enable":true,"show_result":true,"style":"mac"},
+    fancybox: true,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      applicationID: 'IXLMLOF7V1',
+      apiKey: 'f824dc3a782d076ff5a1670039edcf79',
+      indexName: 'search',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"我们没有找到任何搜索结果: ${query}","hits_stats":"找到约 ${hits} 条结果，用时 ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    tabs: true,
+    motion: {"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    }
+  };
+</script>
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/0f81ff2f.js","daovoice")
+  daovoice('init', {
+      app_id: "be6d4aef"
+    });
+  daovoice('update');
+  </script>
+
+  <meta name="description" content="IPFS三部曲，之三。">
+<meta name="keywords" content="Ubuntu,Linux,Xshell,虚拟机,IPFS,CVM,ECS,私有网络">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在本地VMware的Ubuntu，腾讯云CVM以及阿里云的ECS中搭建IPFS私有网络">
+<meta property="og:url" content="https://kemo.xyz/在本地VMware的Ubuntu，腾讯云CVM以及阿里云的ECS中搭建IPFS私有网络.html">
+<meta property="og:site_name" content="柯摩的BLOG">
+<meta property="og:description" content="IPFS三部曲，之三。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200806175530875.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0V4Y2FsaWJ1clVsaW1pdGVk,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200806175640292.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200806175729830.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200806174837562.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0V4Y2FsaWJ1clVsaW1pdGVk,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200806192317965.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0V4Y2FsaWJ1clVsaW1pdGVk,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200806212017943.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0V4Y2FsaWJ1clVsaW1pdGVk,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200806192835742.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200806193239567.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0V4Y2FsaWJ1clVsaW1pdGVk,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200806193616983.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200806193752298.png">
+<meta property="og:updated_time" content="2020-09-02T09:17:32.469Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="在本地VMware的Ubuntu，腾讯云CVM以及阿里云的ECS中搭建IPFS私有网络">
+<meta name="twitter:description" content="IPFS三部曲，之三。">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20200806175530875.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0V4Y2FsaWJ1clVsaW1pdGVk,size_16,color_FFFFFF,t_70">
+  <link rel="alternate" href="/atom.xml" title="柯摩的BLOG" type="application/atom+xml">
+  <link rel="canonical" href="https://kemo.xyz/在本地VMware的Ubuntu，腾讯云CVM以及阿里云的ECS中搭建IPFS私有网络">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>在本地VMware的Ubuntu，腾讯云CVM以及阿里云的ECS中搭建IPFS私有网络 | 柯摩的BLOG</title>
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-145155839-1"></script>
+  <script>
+    var host = window.location.hostname;
+    if (host !== "localhost" || !true) {
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-145155839-1');
+    }
+  </script>
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?43fd6fab7512d8897b8d9cf67c49b600";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+<link type='text/css' rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" media='all'/>
+<link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/5.13.1/css/all.min.css" rel="stylesheet">
+
+  <div class="container sidebar-position-left">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">柯摩的BLOG</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <h1 class="site-subtitle" itemprop="description">Forget before get.</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+      
+      
+      
+        
+        <li class="menu-item menu-item-home">
+      
+    
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-人生小记">
+      
+    
+      
+    
+
+    <a href="/人生小记/" rel="section"><i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>人生小记</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-about">
+      
+    
+      
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-tags">
+      
+    
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">95</span></a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-categories">
+      
+    
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">9</span></a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-archives">
+      
+    
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">26</span></a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-运动日记">
+      
+    
+      
+    
+
+    <a href="/sports/" rel="section"><i class="menu-item-icon fa fa-fw fa-heart"></i> <br>运动日记</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-相册">
+      
+    
+      
+    
+
+    <a href="/photos/" rel="section"><i class="menu-item-icon fa fa-fw fa-photo"></i> <br>相册</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-热门">
+      
+    
+      
+    
+
+    <a href="/top/" rel="section"><i class="menu-item-icon fa fa-fw fa-fire"></i> <br>热门</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-友链">
+      
+    
+      
+    
+
+    <a href="/links/" rel="section"><i class="menu-item-icon fa fa-fw fa-users"></i> <br>友链</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a href="javascript:;" class="popup-trigger">
+        
+          <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+      </li>
+    
+  </ul>
+
+    
+
+    <div class="site-search">
+      
+  <div class="algolia-popup popup search-popup">
+  <div class="algolia-search">
+    <div class="algolia-search-input-icon">
+      <i class="fa fa-search"></i>
+    </div>
+    <div class="algolia-search-input" id="algolia-search-input"></div>
+  </div>
+
+  <div class="algolia-results">
+    <div id="algolia-stats"></div>
+    <div id="algolia-hits"></div>
+    <div id="algolia-pagination" class="algolia-pagination"></div>
+  </div>
+
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+
+
+
+    </div>
+</nav>
+
+<!-- 打字礼花及震动特效 -->
+<script type="text/javascript" src="https://blog-1259799643.cos.ap-shanghai.myqcloud.com/fire.js"></script>
+<script>
+  POWERMODE.colorful = true; // ture 为启用礼花特效
+  POWERMODE.shake = true; // false 为禁用震动特效
+  document.body.addEventListener('input', POWERMODE);
+</script>
+</div>
+    </header>
+
+    
+
+  <a href="https://github.com/ExcaliburEX" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content page-post-detail">
+            
+
+  <div id="posts" class="posts-expand">
+    
+    <div class="reading-progress-bar"></div>
+
+
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://kemo.xyz/在本地VMware的Ubuntu，腾讯云CVM以及阿里云的ECS中搭建IPFS私有网络.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="柯摩">
+      <meta itemprop="description" content="真实自有万钧之力">
+      <meta itemprop="image" content="/images/head.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="柯摩的BLOG">
+    </span>
+      <header class="post-header">
+
+        
+          <h2 class="post-title" itemprop="name headline">在本地VMware的Ubuntu，腾讯云CVM以及阿里云的ECS中搭建IPFS私有网络
+
+            
+          </h2>
+        
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2020-09-02 17:02:29 / 修改时间：17:17:32" itemprop="dateCreated datePublished" datetime="2020-09-02T17:02:29+08:00">2020-09-02</time>
+            </span>
+          
+            
+
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Ubuntu/" itemprop="url" rel="index"><span itemprop="name">Ubuntu</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            <span id="/在本地VMware的Ubuntu，腾讯云CVM以及阿里云的ECS中搭建IPFS私有网络.html" class="post-meta-item leancloud_visitors" data-flag-title="在本地VMware的Ubuntu，腾讯云CVM以及阿里云的ECS中搭建IPFS私有网络" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+          
+            <span class="post-meta-item" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+            <span class="post-meta-divider">|</span>
+          <span title="post.wordcount"><span class="post-meta-item-icon"><i class="fa fa-file-word-o"></i></span>字数： 1.1k</span>
+          
+            
+  
+  <span class="post-meta-item">
+    
+    <span class="post-meta-item-icon">
+      <i class="fa fa-comment-o"></i>
+    </span>
+    <span class="post-meta-item-text">评论数：</span>
+  
+    <a href="/在本地VMware的Ubuntu，腾讯云CVM以及阿里云的ECS中搭建IPFS私有网络.html#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/在本地VMware的Ubuntu，腾讯云CVM以及阿里云的ECS中搭建IPFS私有网络.html" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+          
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">本文字数：</span>
+              
+              <span>2.2k</span>
+            </span>
+          
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              
+              <span>2 分钟</span>
+            </span>
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>IPFS三部曲，之三。<br><a id="more"></a></p>
+<h1 id="0️⃣-前言"><a href="#0️⃣-前言" class="headerlink" title="0️⃣ 前言"></a>0️⃣ 前言</h1><ul>
+<li><p>连接<strong>腾讯云CVM</strong>，以及<strong>阿里云ECS</strong>可以用<strong>FinalShell</strong>或者<strong>Xshell</strong>，用<strong>Xshell</strong>的教程在这里<a href="https://blog.csdn.net/ExcaliburUlimited/article/details/107718611" target="_blank" rel="noopener">保姆级教程——Xshell连接虚拟机中的Ubuntu并通过Xftp传输文件</a>，连接本地Ubuntu和云端服务器步骤是一样的，只是ip输入的是公网ip。</p>
+</li>
+<li><p>在连接完毕后就可以进行后面的操作。</p>
+</li>
+<li><p>查看三个节点机器的IP地址：</p>
+<ol>
+<li><p>VMware中Ubuntu18.04的IP，即运行</p>
+ <figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ifconfig</span><br></pre></td></tr></tbody></table></figure>
+<p> 得到</p>
+<p> <img src="https://img-blog.csdnimg.cn/20200806175530875.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0V4Y2FsaWJ1clVsaW1pdGVk,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p> 这里的<code>192.168.3.105</code>便是。</p>
+</li>
+<li><p>腾讯云CVM</p>
+<p> <img src="https://img-blog.csdnimg.cn/20200806175640292.png" alt="在这里插入图片描述"></p>
+<p> 需要用到的就是这里的公网ip：<code>129.211.103.82</code>。</p>
+</li>
+<li><p>阿里云ECS</p>
+<p> <img src="https://img-blog.csdnimg.cn/20200806175729830.png" alt="在这里插入图片描述"></p>
+<p> 需要用到的就是这里的公网ip：<code>47.96.189.80</code>。</p>
+</li>
+</ol>
+</li>
+</ul>
+<h1 id="1️⃣-安装IPFS"><a href="#1️⃣-安装IPFS" class="headerlink" title="1️⃣ 安装IPFS"></a>1️⃣ 安装<code>IPFS</code></h1><p>具体请看这篇文章：<a href="https://blog.csdn.net/ExcaliburUlimited/article/details/107717905" target="_blank" rel="noopener">一文完全解决——Ubuntu20.04下源码构建安装IPFS环境</a><br>在最后运行：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ipfs init</span><br></pre></td></tr></tbody></table></figure>
+<p>注意一下输出信息：<br><img src="https://img-blog.csdnimg.cn/20200806174837562.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0V4Y2FsaWJ1clVsaW1pdGVk,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>也就是这里生成的<code>.ipfs</code>文件在什么位置，不记得可以再运行一遍<code>ipfs init</code>即可，这个位置后面要用到。</p>
+<h1 id="2️⃣-生成共享Key"><a href="#2️⃣-生成共享Key" class="headerlink" title="2️⃣ 生成共享Key"></a>2️⃣ 生成共享Key</h1><ul>
+<li>因为我们要组建的是私有网络，所有节点需要使用相同的<strong>私有key</strong>来加入网络中，我们使用<code>go-ipfs-swarm-key-gen</code>工具来生成共享key。我准备把本地的VMware的Ubuntu作为主运行节点，所以在这台Ubuntu上运行如下命令：</li>
+</ul>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#编译工具</span></span><br><span class="line">go get github.com/Kubuxu/go-ipfs-swarm-key-gen/ipfs-swarm-key-gen</span><br><span class="line"><span class="built_in">cd</span> <span class="variable">$GOPATH</span></span><br><span class="line"><span class="built_in">cd</span> src/github.com/Kubuxu/go-ipfs-swarm-key-gen/ipfs-swarm-key-gen/</span><br><span class="line">go build</span><br><span class="line"><span class="comment"># 生成key</span></span><br><span class="line">./ipfs-swarm-key-gen > /home/excalibur/.ipfs/swarm.key</span><br></pre></td></tr></tbody></table></figure>
+<p>然后分别运行：</p>
+<ul>
+<li><p>对腾讯云服务器：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 将本地生成的key拷贝到腾讯云服务器上的相同目录下</span></span><br><span class="line">scp /home/excalibur/.ipfs/swarm.key 192.168.3.105:/home/ubuntu/.ipfs/</span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li><p>对阿里云服务器：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 将本地生成的key拷贝到阿里云服务器上的相同目录下</span></span><br><span class="line">scp /home/excalibur/.ipfs/swarm.key 47.96.189.80:/root/.ipfs/</span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li><p>这里有三点需要注意：</p>
+<ol>
+<li><code>/home/excalibur/.ipfs/swarm.key</code>这里面的<code>/home/excalibur/.ipfs/</code>是我的<code>ipfs</code>配置文件夹，你应该根据自己的位置修改，也就是之前提到的那个目录。</li>
+<li><code>47.96.189.80:/root/.ipfs/</code>，这里面前面的<code>ip</code>地址要根据你服务器的修改，并且后面的<code>/root/.ipfs/</code>也要根据你服务器上的<code>ipfs</code>文件夹修改，可以运行<code>ipfs init</code>进行查看。</li>
+<li>如果遇到密码输入正确，然而出现<code>Permissioned denied</code>的情况，就输入<code>su</code>进入管理员模式，重新运行上面两个<code>scp</code>命令。</li>
+</ol>
+</li>
+</ul>
+<h1 id="3️⃣-移除默认的boostrap节点"><a href="#3️⃣-移除默认的boostrap节点" class="headerlink" title="3️⃣ 移除默认的boostrap节点"></a>3️⃣ 移除默认的<code>boostrap</code>节点</h1><ul>
+<li>因为要运行在私有网络上，不进入公网，必须删除其他启动节点信息。在三个节点上分别运行如下命令：</li>
+</ul>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ipfs bootstrap rm --all</span><br></pre></td></tr></tbody></table></figure>
+<h1 id="4️⃣-添加启动boostrap节点信息"><a href="#4️⃣-添加启动boostrap节点信息" class="headerlink" title="4️⃣ 添加启动boostrap节点信息"></a>4️⃣ 添加启动<code>boostrap</code>节点信息</h1><ul>
+<li>这里以本地Ubuntu为启动节点，首先在本地节点运行如下命令：</li>
+</ul>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ipfs id</span><br></pre></td></tr></tbody></table></figure>
+<p>得到：</p>
+<p><img src="https://img-blog.csdnimg.cn/20200806192317965.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0V4Y2FsaWJ1clVsaW1pdGVk,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>我们需要这里的<code>hash</code>值：<code>QmTADgGT4MaCd3aTpD4vweGLQdWhr8oH8sue43DDioWBXA</code>，然后再加上之前的本地节点的ip地址：<code>192.168.3.105</code>，就得到了所有需要的<code>bootstrap</code>信息，然后分别在两台云服务器上运行如下命令：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ipfs bootstrap add /ip4/192.168.3.105/tcp/4001/ipfs/QmTADgGT4MaCd3aTpD4vweGLQdWhr8oH8sue43DDioWBXA</span><br></pre></td></tr></tbody></table></figure>
+<p>即可将本地节点作为它们的启动节点，自动加入<code>ipfs</code>网络。</p>
+<h1 id="5️⃣-查看启动状态"><a href="#5️⃣-查看启动状态" class="headerlink" title="5️⃣ 查看启动状态"></a>5️⃣ 查看启动状态</h1><ul>
+<li>分别在三个节点上运行：</li>
+</ul>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ipfs daemon</span><br></pre></td></tr></tbody></table></figure>
+<ul>
+<li>然后在任意节点上运行：</li>
+</ul>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ipfs swarm peers</span><br></pre></td></tr></tbody></table></figure>
+<p>将看到其他网络内节点的运行信息，我这里是在本地Ubuntu上运行的命令，可以看到腾讯云服务器的节点信息，但是阿里云不在😅。<br>原因在于ECS的安全组设置：打开阿里云服务器设置，首先<code>网络与安全组</code>，然后<code>安全组配置</code>，然后<code>配置规则</code>，<code>手动添加</code>三个端口，分别是4001,5001，以及8080，最后ip地址可以是本地Ubuntu地址，或者直接设置成<code>0.0.0.0/0</code>。<br><img src="https://img-blog.csdnimg.cn/20200806212017943.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0V4Y2FsaWJ1clVsaW1pdGVk,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p><img src="https://img-blog.csdnimg.cn/20200806192835742.png" alt="在这里插入图片描述"></p>
+<ul>
+<li>也可以运行：</li>
+</ul>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ipfs stats bitswap</span><br></pre></td></tr></tbody></table></figure>
+<p>可以看到<br><img src="https://img-blog.csdnimg.cn/20200806193239567.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0V4Y2FsaWJ1clVsaW1pdGVk,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>这里的<code>partners</code>字段为1，说明当前网络有2个节点。</p>
+<h1 id="6️⃣-上传下载测试"><a href="#6️⃣-上传下载测试" class="headerlink" title="6️⃣ 上传下载测试"></a>6️⃣ 上传下载测试</h1><ul>
+<li>在本地节点上传一个文件：</li>
+</ul>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> helloworld > hello.txt</span><br><span class="line">ipfs add hello.txt</span><br></pre></td></tr></tbody></table></figure>
+<p>得到：</p>
+<p><img src="https://img-blog.csdnimg.cn/20200806193616983.png" alt="在这里插入图片描述"></p>
+<ul>
+<li>可以在云服务器节点查看下载这个文件：</li>
+</ul>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ipfs cat QmUU2HcUBVSXkfWPUc3WUSeCMrWWeEJTuAgR9uyWBhh9Nf</span><br><span class="line">ipfs get QmUU2HcUBVSXkfWPUc3WUSeCMrWWeEJTuAgR9uyWBhh9Nf</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/20200806193752298.png" alt="在这里插入图片描述"></p>
+<p>可见，就很纳爱斯！😁😁😁</p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
+    </div>
+      
+  <div class="popular-posts-header">相关文章推荐</div>
+  <ul class="popular-posts">
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="\一文完全解决Ubuntu20-04下源码构建安装IPFS环境.html" rel="bookmark">一文完全解决Ubuntu20.04下源码构建安装IPFS环境</a></div>
+      
+    </li>
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="\保姆级教程Xshell连接虚拟机中的Ubuntu并通过Xftp传输文件.html" rel="bookmark">保姆级教程Xshell连接虚拟机中的Ubuntu并通过Xftp传输文件</a></div>
+      
+    </li>
+  
+  </ul>
+
+
+    
+    
+    
+     
+     
+  
+
+
+
+    
+      <div>
+        <div id="reward-container">
+  <div>喜欢就支持一下吧~</div>
+  <button id="reward-button" disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/微信.jpg" alt="柯摩 微信支付">
+        <p>微信支付</p>
+      </div>
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/支付宝.jpg" alt="柯摩 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+      </div>
+      <div>
+        
+
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>柯摩</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://kemo.xyz/在本地VMware的Ubuntu，腾讯云CVM以及阿里云的ECS中搭建IPFS私有网络.html" title="在本地VMware的Ubuntu，腾讯云CVM以及阿里云的ECS中搭建IPFS私有网络">https://kemo.xyz/在本地VMware的Ubuntu，腾讯云CVM以及阿里云的ECS中搭建IPFS私有网络.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
+
+    <footer class="post-footer">
+          
+        
+        <div class="post-tags">
+            <a href="/tags/Ubuntu/" rel="tag"><i class="fa fa-tag"></i> Ubuntu</a>
+          
+            <a href="/tags/Linux/" rel="tag"><i class="fa fa-tag"></i> Linux</a>
+          
+            <a href="/tags/Xshell/" rel="tag"><i class="fa fa-tag"></i> Xshell</a>
+          
+            <a href="/tags/虚拟机/" rel="tag"><i class="fa fa-tag"></i> 虚拟机</a>
+          
+            <a href="/tags/IPFS/" rel="tag"><i class="fa fa-tag"></i> IPFS</a>
+          
+            <a href="/tags/CVM/" rel="tag"><i class="fa fa-tag"></i> CVM</a>
+          
+            <a href="/tags/ECS/" rel="tag"><i class="fa fa-tag"></i> ECS</a>
+          
+            <a href="/tags/私有网络/" rel="tag"><i class="fa fa-tag"></i> 私有网络</a>
+          
+        </div>
+        <div class="post-widgets">
+        
+        
+          <div class="wp_rating">
+          
+            <div id="wpac-rating"></div>
+          </div>
+        
+
+        
+
+        
+          <div class="social-share">
+            
+              
+
+
+<div class="likely">
+    <div class="twitter">Tweet</div>
+    <div class="facebook">Share</div>
+    <div class="linkedin">Link</div>
+    <div class="gplus">Plus</div>
+    <div class="vkontakte">Share</div>
+    <div class="odnoklassniki">Class</div>
+    <div class="telegram">Send</div>
+    <div class="whatsapp">Send</div>
+    <div class="pinterest">Pin</div>
+</div>
+<script src="//cdn.jsdelivr.net/npm/ilyabirman-likely@2/release/likely.js"></script>
+
+
+            
+            
+              <div id="needsharebutton-postbottom">
+                <span class="btn">
+                  <i class="fa fa-share-alt" aria-hidden="true"></i>
+                </span>
+              </div>
+            
+          </div>
+        
+        </div>
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+              <a href="/一文完全解决Ubuntu20-04下源码构建安装IPFS环境.html" rel="next" title="一文完全解决Ubuntu20.04下源码构建安装IPFS环境">
+                <i class="fa fa-chevron-left"></i> 一文完全解决Ubuntu20.04下源码构建安装IPFS环境
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+          </div>
+        </div>
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+<div>
+
+  
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:16px;">-------------   本 文 结 束 <i class="fa fa-heart"></i> 感 谢 您 的 阅 读    -------------</div>
+    
+</div>
+  
+</div>
+ 
+
+
+
+
+    <script type="text/javascript" src="/js/src/linkcard.js"></script>
+  </div>
+<script type="text/javascript" src="/js/src/linkcard.js"></script>
+
+          </div>
+          
+    
+    <div class="comments" id="comments"></div>
+  
+
+
+        </div>
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image"
+      src="/images/head.jpg"
+      alt="柯摩">
+  <p class="site-author-name" itemprop="name">柯摩</p>
+  <div class="site-description motion-element" itemprop="description">真实自有万钧之力</div>
+</div>
+  <nav class="site-state motion-element">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">26</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/categories/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">分类</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">95</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+  <div class="feed-link motion-element">
+    <a href="/atom.xml" rel="alternate">
+      <i class="fa fa-rss"></i>RSS
+    </a>
+  </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://github.com/ExcaliburEX" title="GitHub &rarr; https://github.com/ExcaliburEX" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="mailto:912011727@qq.com" title="E-Mail &rarr; mailto:912011727@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://weibo.com/u/5339619827" title="Weibo &rarr; https://weibo.com/u/5339619827" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://user.qzone.qq.com/912011727" title="QQ &rarr; https://user.qzone.qq.com/912011727" rel="noopener" target="_blank"><i class="fa fa-fw fa-qq"></i>QQ</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://blog-1259799643.cos.ap-shanghai.myqcloud.com/wechat-qcode.jpg" title="Wechat &rarr; https://blog-1259799643.cos.ap-shanghai.myqcloud.com/wechat-qcode.jpg" rel="noopener" target="_blank"><i class="fa fa-fw fa-weixin"></i>Wechat</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://twitter.com/Excaliburjp" title="Twitter &rarr; https://twitter.com/Excaliburjp" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://space.bilibili.com/2142109" title="Bilibili &rarr; https://space.bilibili.com/2142109" rel="noopener" target="_blank"><i class="fa fa-fw fa-mobile"></i>Bilibili</a>
+      </span>
+    
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    
+  
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+        </div>
+      </div>
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#0️⃣-前言"><span class="nav-number">1.</span> <span class="nav-text">0️⃣ 前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1️⃣-安装IPFS"><span class="nav-number">2.</span> <span class="nav-text">1️⃣ 安装IPFS</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2️⃣-生成共享Key"><span class="nav-number">3.</span> <span class="nav-text">2️⃣ 生成共享Key</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3️⃣-移除默认的boostrap节点"><span class="nav-number">4.</span> <span class="nav-text">3️⃣ 移除默认的boostrap节点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4️⃣-添加启动boostrap节点信息"><span class="nav-number">5.</span> <span class="nav-text">4️⃣ 添加启动boostrap节点信息</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5️⃣-查看启动状态"><span class="nav-number">6.</span> <span class="nav-text">5️⃣ 查看启动状态</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6️⃣-上传下载测试"><span class="nav-number">7.</span> <span class="nav-text">6️⃣ 上传下载测试</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+  
+<script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
+<script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
+<div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div id="myCanvasContainer" class="widget tagcloud">
+        <canvas width="250" height="250" id="resCanvas" style="width=100%">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/">Algorithm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Barrier/">Barrier</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BeautifulSoup/">BeautifulSoup</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BoxPlot/">BoxPlot</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CVM/">CVM</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DataMining/">DataMining</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Diary/">Diary</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ECS/">ECS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Editor/">Editor</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Go/">Go</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IPFS/">IPFS</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IQR/">IQR</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Job/">Job</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jupyter/">Jupyter</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Lasso正则化/">Lasso正则化</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Learning/">Learning</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LightGBM/">LightGBM</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linear-Regression/">Linear Regression</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MATLAB/">MATLAB</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Navie-Bayes/">Navie Bayes</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Next/">Next</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OJ/">OJ</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Onehot/">Onehot</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Reading/">Reading</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ridge正则化/">Ridge正则化</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSH/">SSH</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Science-Uranology/">Science Uranology</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Selenium/">Selenium</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Study/">Study</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Thinking/">Thinking</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tianchi/">Tianchi</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubuntu/">Ubuntu</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/XGBoost/">XGBoost</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Xftp/">Xftp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Xshell/">Xshell</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/alive-progress/">alive_progress</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cross-validation/">cross validation</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/custom/">custom</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/distributed-system/">distributed system</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/groupby/">groupby</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/matplotlib/">matplotlib</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/multithreading/">multithreading</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pandas/">pandas</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/requests/">requests</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/seaborn/">seaborn</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/socket/">socket</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/svm/">svm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/二进制/">二进制</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/五折交叉验证/">五折交叉验证</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/内存优化/">内存优化</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/决策树/">决策树</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/分布式/">分布式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/分布式计算/">分布式计算</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/包裹式-wrapper/">包裹式(wrapper)</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/博客/">博客</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/反向索引/">反向索引</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/回忆/">回忆</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/地铁线路优化/">地铁线路优化</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/多层感知机-MLP/">多层感知机(MLP)</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/多线程/">多线程</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/嵌入式（embedding）/">嵌入式（embedding）</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/感情/">感情</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/插值/">插值</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数学建模/">数学建模</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/日记/">日记</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/朋友圈/">朋友圈</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/朴素贝叶斯/">朴素贝叶斯</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/极坐标/">极坐标</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/梯度提升树-GBDT/">梯度提升树(GBDT)</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/正则表达式/">正则表达式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/正态分布/">正态分布</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/毕业论文/">毕业论文</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/气象图/">气象图</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/温馨/">温馨</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/热力图/">热力图</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/画图/">画图</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/目标函数/">目标函数</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/真挚/">真挚</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/私有网络/">私有网络</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/约束条件/">约束条件</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网格调参/">网格调参</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/节点通信/">节点通信</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/虚拟机/">虚拟机</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/调查问卷/">调查问卷</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/贝叶斯调参/">贝叶斯调参</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/贪心调参/">贪心调参</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/过滤式-filter/">过滤式(filter)</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/遗传算法/">遗传算法</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/问卷星/">问卷星</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随机森林/">随机森林</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随笔/">随笔</a><span class="tag-list-count">2</span></li></ul>
+        </canvas>
+    </div>
+</div>
+
+
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2015 – <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">柯摩</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    
+    <span title="站点总字数">150k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    
+    <span title="站点阅读时长">2:17</span>
+</div>
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">全站共 71.4k 字</span>
+</div>
+
+<div class="run_time" style=" text-align:center;">
+  <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+  <script>
+    var now = new Date(); 
+    function createtime() { 
+        var grt= new Date("08/06/2019 00:00:00");//此处修改你的建站时间或者网站上线时间 
+        now.setTime(now.getTime()+250); 
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+        document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+    } 
+    setInterval("createtime()",250);
+  </script>
+
+<div class="BbeiAn-info">
+  皖ICP备 -
+    <a target="_blank" href="https://beian.miit.gov.cn/" style="color:#f0d784"  rel="nofollow">19020907</a> <!--a标签中增加nofollow属性，避免爬虫出站。-->| 
+	<a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=32050802011200" style="color:#f0d784;text-decoration:none;padding-left:30px;background:url(https://s1.ax1x.com/2018/09/29/ilmwIH.png) no-repeat left center" rel="nofollow">苏公网安备 32050802011200号</a>	  <!--这里将图标作为了背景，以使得能和后面的文字在同一行-->
+</div>
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="总访客量">
+      总访客量 <span class="busuanzi-value" id="busuanzi_value_site_uv"></span> 人
+    </span>
+  
+    <span class="post-meta-divider">|</span>
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="总访问量">
+      总访客数 <span class="busuanzi-value" id="busuanzi_value_site_pv"></span> 次
+    </span>
+  
+</div>
+
+
+
+
+  <script>
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//tajs.qq.com/stats?sId=66458571";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+  
+  <div id="needsharebutton-float">
+    <span class="btn">
+      <i class="fa fa-share-alt" aria-hidden="true"></i>
+    </span>
+  </div>
+<script src="/lib/needsharebutton/needsharebutton.js"></script>
+<script>
+    pbOptions = {};
+      pbOptions.iconStyle = "box";
+    
+      pbOptions.boxForm = "horizontal";
+    
+      pbOptions.position = "bottomCenter";
+    
+      pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+    
+    new needShareButton('#needsharebutton-postbottom', pbOptions);
+    flOptions = {};
+      flOptions.iconStyle = "box";
+    
+      flOptions.boxForm = "horizontal";
+    
+      flOptions.position = "middleRight";
+    
+      flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+    
+    new needShareButton('#needsharebutton-float', flOptions);
+</script>
+
+
+  </div>
+
+  
+    
+    
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+  <script src="/lib/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script src="/lib/reading_progress/reading_progress.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/valine@1.3.9/dist/Valine.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+<script src="/js/utils.js?v=7.3.0"></script>
+  <script src="/js/motion.js?v=7.3.0"></script>
+
+
+  <script src="/js/schemes/muse.js?v=7.3.0"></script>
+
+
+
+<script src="/js/next-boot.js?v=7.3.0"></script>
+
+
+
+
+
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+  
+  <script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+
+
+  <script src="/lib/bookmark/bookmark.min.js?v=1.0"></script>
+  <script>
+  if (CONFIG.page.isPost) {
+    bookmark.scrollToMark('auto', "#更多");
+  } else {
+    bookmark.loadBookmark();
+  }
+  </script>
+
+
+
+
+
+
+
+
+
+
+  <script>
+  if (CONFIG.page.isPost) {
+    wpac_init = window.wpac_init || [];
+    wpac_init.push({
+      widget: 'Rating',
+      id: 20167,
+      el: 'wpac-rating',
+      color: 'fc6423'
+    });
+    (function() {
+      if ('WIDGETPACK_LOADED' in window) return;
+      WIDGETPACK_LOADED = true;
+      var mc = document.createElement('script');
+      mc.type = 'text/javascript';
+      mc.async = true;
+      mc.src = '//embed.widgetpack.com/widget.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+    })();
+  }
+  </script>
+
+
+
+  
+<link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+<script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+
+
+<script src="/js/algolia-search.js?v=7.3.0"></script>
+
+
+
+
+
+
+
+
+
+<script>
+function embedPDF() {
+  $('body').find('div.pdf').each(function(i, o) {
+    PDFObject.embed($(o).attr('target'), $(o), {
+      pdfOpenParams: {
+        navpanes: 0,
+        toolbar: 0,
+        statusbar: 0,
+        pagemode: 'thumbs',
+        view: 'FitH'
+      },
+      PDFJS_URL: '/lib/pdf/web/viewer.html',
+      height: $(o).attr('height') || '500px'
+    });
+  });
+}
+if ($('body').find('div.pdf').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/pdfobject@2/pdfobject.min.js', embedPDF, window.PDFObject);
+}
+</script>
+
+
+
+
+
+
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', function() {
+    MathJax.Hub.Typeset();
+  }, window.MathJax);
+</script>
+
+    
+  
+
+  
+
+  
+
+
+  
+  <script src="/js/scrollspy.js?v=7.3.0"></script>
+<script src="/js/post-details.js?v=7.3.0"></script>
+
+  <script type="text/javascript" src="/js/src/linkcard.js"></script>
+
+    
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="https://site-1258928558.cos.ap-guangzhou.myqcloud.com/js/Valine.min.js"></script>
+
+  <!--<script src="//unpkg.com/valine/dist/Valine.min.js"></script>-->
+  <!-- https://deserts.io/diy-a-comment-system/ -->
+  <script type="text/javascript">
+    new Valine({
+        lang: 'zh-cn',
+        admin_email: '912011727@qq.com', //博主邮箱
+        el: '#comments' ,
+        appId: 'u4vO2zGHJKiMhlMhYbgBgq1E-gzGzoHsz',
+        appKey: 'XRdJWVzmRfYF0uw6oUQztM7B',
+        emoticon_url: 'https://cdn.jsdelivr.net/gh/ExcaliburEX/blog_file@master/emojis/',
+        emoticon_list: ["aini.png",	"aoteman.png",	"aru (1).png",	"aru (2).png",	"aru (3).png",	"aru (4).png",	"aru (5).png",	"aru (6).png",	"aru (7).png",	"aru (8).png",	"aru (9).png",	"aru (10).png",	"aru (11).png",	"aru (12).png",	"aru (13).png",	"aru (14).png",	"aru (15).png",	"aru (16).png",	"aru (17).png",	"aru (18).png",	"aru (19).png",	"aru (20).png",	"aru (21).png",	"aru (22).png",	"aru (23).png",	"aru (24).png",	"aru (25).png",	"aru (26).png",	"aru (27).png",	"aru (28).png",	"aru (29).png",	"aru (30).png",	"aru (31).png",	"aru (32).png",	"aru (33).png",	"aru (34).png",	"aru (35).png",	"aru (36).png",	"aru (37).png",	"aru (38).png",	"aru (39).png",	"aru (40).png",	"aru (41).png",	"aru (42).png",	"aru (43).png",	"aru (44).png",	"aru (45).png",	"aru (46).png",	"aru (47).png",	"aru (48).png",	"aru (49).png",	"aru (50).png",	"aru (51).png",	"aru (52).png",	"aru (53).png",	"aru (54).png",	"aru (55).png",	"aru (56).png",	"aru (57).png",	"aru (58).png",	"aru (59).png",	"aru (60).png",	"aru (61).png",	"aru (62).png",	"aru (63).png",	"aru (64).png",	"aru (65).png",	"aru (66).png",	"aru (67).png",	"aru (68).png",	"aru (69).png",	"aru (70).png",	"aru (71).png",	"aru (72).png",	"aru (73).png",	"aru (74).png",	"aru (75).png",	"aru (76).png",	"aru (77).png",	"aru (78).png",	"aru (79).png",	"aru (80).png",	"aru (81).png",	"aru (82).png",	"aru (83).png",	"aru (84).png",	"aru (85).png",	"aru (86).png",	"aru (87).png",	"aru (88).png",	"aru (89).png",	"aru (90).png",	"aru (91).png",	"aru (92).png",	"aru (93).png",	"aru (94).png",	"aru (95).png",	"aru (96).png",	"aru (97).png",	"aru (98).png",	"aru (99).png",	"aru (100).png",	"aru (101).png",	"aru (102).png",	"aru (103).png",	"aru (104).png",	"aru (105).png",	"aru (106).png",	"aru (107).png",	"aru (108).png",	"aru (109).png",	"aru (110).png",	"aru (111).png",	"aru (112).png",	"aru (113).png",	"aru (114).png",	"aru (115).png",	"aru (116).png",	"aru (117).png",	"aru (118).png",	"aru (119).png",	"aru (120).png",	"aru (121).png",	"aru (122).png",	"aru (123).png",	"aru (124).png",	"aru (125).png",	"aru (126).png",	"aru (127).png",	"aru (128).png",	"aru (129).png",	"aru (130).png",	"aru (131).png",	"aru (132).png",	"aru (133).png",	"aru (134).png",	"aru (135).png",	"aru (136).png",	"aru (137).png",	"aru (138).png",	"aru (139).png",	"aru (140).png",	"aru (141).png",	"aru (142).png",	"aru (143).png",	"aru (144).png",	"aru (145).png",	"aru (146).png",	"aru (147).png",	"aru (148).png",	"aru (149).png",	"aru (150).png",	"aru (151).png",	"aru (152).png",	"aru (153).png",	"aru (154).png",	"aru (155).png",	"aru (156).png",	"aru (157).png",	"aru (158).png",	"aru (159).png",	"aru (160).png",	"aru (161).png",	"aru (162).png",	"aru (163).png",	"aru (164).png",	"baibai.png",	"beishang.png",	"bili_1.png",	"bili_2.png",	"bili_3.png",	"bili_4.png",	"bili_5.png",	"bili_6.png",	"bili_7.png",	"bili_8.png",	"bili_9.png",	"bili_10.png",	"bili_11.png",	"bili_12.png",	"bili_13.png",	"bili_14.png",	"bili_15.png",	"bili_16.png",	"bili_17.png",	"bili_18.png",	"bili_19.png",	"bili_20.png",	"bili_21.png",	"bili_22.png",	"bili_23.png",	"bili_24.png",	"bili_25.png",	"bili_26.png",	"bili_27.png",	"bili_28.png",	"bili_29.png",	"bili_30.png",	"bili_31.png",	"bili_32.png",	"bili_33.png",	"bili_34.png",	"bili_35.png",	"bili_36.png",	"bili_37.png",	"bili_38.png",	"bili_39.png",	"bili_40.png",	"bili_41.png",	"bili_42.png",	"bili_43.png",	"bili_44.png",	"bili_45.png",	"bili_46.png",	"bili_47.png",	"bili_48.png",	"bili_49.png",	"bili_50.png",	"bishi.png",	"bizui.png",	"chanzui.png",	"chijing.png",	"dahaqi.png",	"dalian.png",	"ding.png",	"dog1.png",	"dog2.png",	"dog3.png",	"dog4.png",	"dog5.png",	"dog6.png",	"dog7.png",	"dog8.png",	"dog9.png",	"dog10.png",	"dog11.png",	"dog12.png",	"dog13.png",	"dog14.png",	"dog15.png",	"doge.png",	"erha.png",	"feizao.png",	"ganmao.png",	"geili.png",	"guzhang.png",	"haha.png",	"haixiu.png",	"hehe.png",	"heixian.png",	"heng.png",	"huaxin.png",	"hufen.png",	"jiong.png",	"jiyan.png",	"keai.png",	"kelian.png",	"ku.png",	"kun.png",	"landelini.png",	"lei.png",	"meng.png",	"miao.png",	"nanhaier.png",	"nu.png",	"numa.png",	"nvhaier.png",	"OK.png",	"qian.png",	"qinqin.png",	"qq-1.gif",	"qq-2.gif",	"qq-3.gif",	"qq-4.gif",	"qq-5.gif",	"qq-6.gif",	"qq-7.gif",	"qq-8.gif",	"qq-9.gif",	"qq-10.gif",	"qq-11.gif",	"qq-12.gif",	"qq-13.gif",	"qq-14.gif",	"qq-15.gif",	"qq-16.gif",	"qq-17.gif",	"qq-18.gif",	"qq-19.gif",	"qq-20.gif",	"qq-21.gif",	"qq-22.gif",	"qq-23.gif",	"qq-24.gif",	"qq-25.gif",	"qq-26.gif",	"qq-27.gif",	"qq-28.gif",	"qq-29.gif",	"qq-30.gif",	"qq-31.gif",	"qq-32.gif",	"qq-33.gif",	"qq-34.gif",	"qq-35.gif",	"qq-36.gif",	"qq-37.gif",	"qq-38.gif",	"qq-39.gif",	"qq-40.gif",	"qq-41.gif",	"qq-42.gif",	"qq-43.gif",	"qq-44.gif",	"qq-45.gif",	"qq-46.gif",	"qq-47.gif",	"qq-48.gif",	"qq-49.gif",	"qq-50.gif",	"qq-51.gif",	"qq-52.gif",	"qq-53.gif",	"qq-54.gif",	"qq-55.gif",	"qq-56.gif",	"qq-57.gif",	"qq-58.gif",	"qq-59.gif",	"qq-60.gif",	"qq-61.gif",	"qq-62.gif",	"qq-63.gif",	"qq-64.gif",	"qq-65.gif",	"qq-66.gif",	"qq-67.gif",	"qq-68.gif",	"qq-69.gif",	"qq-70.gif",	"qq-71.gif",	"qq-72.gif",	"qq-73.gif",	"qq-74.gif",	"qq-75.gif",	"qq-76.gif",	"qq-77.gif",	"qq-78.gif",	"qq-79.gif",	"qq-80.gif",	"qq-81.gif",	"qq-82.gif",	"qq-83.gif",	"qq-84.gif",	"qq-85.gif",	"qq-86.gif",	"qq-87.gif",	"qq-88.gif",	"qq-89.gif",	"qq-90.gif",	"qq-91.gif",	"qq-92.gif",	"qq-93.gif",	"qq-94.gif",	"qq-95.gif",	"qq-96.gif",	"qq-97.gif",	"qq-98.gif",	"qq-99.gif",	"qq-100.gif",	"qq-101.gif",	"qq-102.gif",	"qq-103.gif",	"qq-104.gif",	"qq-105.gif",	"qq-106.gif",	"qq-107.gif",	"qq-108.gif",	"qq-109.gif",	"qq-110.gif",	"qq-111.gif",	"qq-112.gif",	"qq-113.gif",	"qq-114.gif",	"qq-115.gif",	"qq-116.gif",	"qq-117.gif",	"qq-118.gif",	"qq-119.gif",	"qq-120.gif",	"qq-121.gif",	"qq-122.gif",	"qq-123.gif",	"qq-124.gif",	"qq-125.gif",	"qq-126.gif",	"qq-127.gif",	"qq-128.gif",	"qq-129.gif",	"qq-130.gif",	"qq-131.gif",	"qq-132.gif",	"qq-133.gif",	"qq-134.gif",	"qq-135.gif",	"qq-136.gif",	"qq-137.gif",	"qq-138.gif",	"qq-139.gif",	"qq-140.gif",	"shayan.png",	"shengbing.png",	"shenma.png",	"shenshou.png",	"shiwang.png",	"shuai.png",	"shuijiao.png",	"sikao.png",	"sina_1.png",	"sina_2.png",	"sina_3.png",	"sina_4.png",	"sina_5.png",	"sina_6.png",	"sina_7.png",	"sina_8.png",	"sina_9.png",	"sina_10.png",	"sina_11.png",	"sina_12.png",	"sina_13.png",	"sina_14.png",	"sina_15.png",	"sina_16.png",	"sina_17.png",	"sina_18.png",	"sina_19.png",	"sina_20.png",	"sina_21.png",	"sina_22.png",	"sina_23.png",	"sina_24.png",	"sina_25.png",	"sina_26.png",	"sina_27.png",	"sina_28.png",	"sina_29.png",	"sina_30.png",	"sina_31.png",	"sina_32.png",	"sina_33.png",	"sina_34.png",	"sina_35.png",	"sina_36.png",	"sina_37.png",	"sina_38.png",	"sina_39.png",	"sina_40.png",	"sina_41.png",	"sina_42.png",	"sina_43.png",	"sina_44.png",	"sina_45.png",	"taikaixin.png",	"tieba-1.png",	"tieba-2.png",	"tieba-3.png",	"tieba-4.png",	"tieba-5.png",	"tieba-6.png",	"tieba-7.png",	"tieba-8.png",	"tieba-9.png",	"tieba-10.png",	"tieba-11.png",	"tieba-12.png",	"tieba-13.png",	"tieba-14.png",	"tieba-15.png",	"tieba-16.png",	"tieba-17.png",	"tieba-18.png",	"tieba-19.png",	"tieba-20.png",	"tieba-21.png",	"tieba-22.png",	"tieba-23.png",	"tieba-24.png",	"tieba-25.png",	"tieba-26.png",	"tieba-27.png",	"tieba-28.png",	"tieba-29.png",	"tieba-30.png",	"tieba-31.png",	"tieba-32.png",	"tieba-33.png",	"tieba-34.png",	"tieba-35.png",	"tieba-36.png",	"tieba-37.png",	"tieba-38.png",	"tieba-39.png",	"tieba-40.png",	"tieba-41.png",	"tieba-42.png",	"tieba-43.png",	"tieba-44.png",	"touxiao.png",	"tu.png",	"tuzi.png",	"v5.png",	"wabishi.png",	"weiqu.png",	"what.png",	"xi.png",	"xiaoku.png",	"xiongmao.png",	"xixi.png",	"xu.png",	"yinxian.png",	"yiwen.png",	"youhengheng.png",	"yun.png",	"zhi.png",	"zhuakuang.png",	"zhutou.png",	"zuiyou.png",	"zuohengheng.png",	"不高兴.png",	"乖.png",	"你懂的.png",	"便便.png",	"勉强.png",	"吐.png",	"吐舌.png",	"呀咩爹.png",	"呵呵.png",	"哈哈.png",	"啊.png",	"喷.png",	"大拇指.png",	"太开心.png",	"太阳.png",	"委屈.png",	"小乖.png",	"小红脸.png",	"彩虹.png",	"心碎.png",	"怒.png",	"惊哭.png",	"惊讶.png",	"懒得理.png",	"手纸.png",	"挖鼻.png",	"捂嘴笑.png",	"星星月亮.png",	"汗.png",	"沙发.png",	"泪.png",	"滑稽.png",	"灯泡.png",	"爱心.png",	"犀利.png",	"狂汗.png",	"玫瑰.png",	"疑问.png",	"真棒.png",	"睡觉.png",	"礼物.png",	"笑尿.png",	"笑眼.png",	"红领巾.png",	"胜利.png",	"花心.png",	"茶杯.png",	"药丸.png",	"蛋糕.png",	"蜡烛.png",	"鄙视.png",	"酷.png",	"酸爽.png",	"钱币.png",	"阴险.png",	"音乐.png",	"香蕉.png",	"黑线.png"],
+        placeholder: 'Just go go',
+  });
+
+  <!--点击邮件中的链接跳转至相应评论-->
+  if(window.location.hash){
+      var checkExist = setInterval(function() {
+         if ($(window.location.hash).length) {
+            $('html, body').animate({scrollTop: $(window.location.hash).offset().top-90}, 1000);
+            clearInterval(checkExist);
+         }
+      }, 100);
+   }
+  </script>
+
+  <script type="text/javascript" src="/js/src/image.js"></script>
+
+
+
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
+
+</body>
+</html>
